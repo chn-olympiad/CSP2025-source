@@ -1,0 +1,13 @@
+#include <bits/stdc++.h>
+using namespace std;
+string s;
+int a[1000010],z=1;
+int main(){
+    freopen("number.in","r",stdin);
+    freopen("number.out","w",stdout);
+    cin>>s;
+    for (int i=0;i<s.length();i++) if (s[i]>='0'&&s[i]<='9') a[z++]=s[i]-'0';
+    sort(a+1,a+z);
+    for (int i=z-1;i>=1;i--) cout<<a[i];
+    return 0;
+}

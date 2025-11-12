@@ -1,0 +1,18 @@
+#include<iostream>
+#include<cstdio>
+#include<cstring>
+using namespace std;
+int n,q;
+string s1[100001],s2[100001],s3[100001],s4[100001];
+int main()
+{
+	freopen("replace.in","r",stdin);
+	freopen("replace.out","w",stdout);
+	cin>>n>>q;
+	for(int i=1;i<=n;i++)
+		cin>>s1[i]>>s2[i];
+	for(int i=1;i<=q;i++)
+		cin>>s3[i]>>s4[i];
+	for(int i=1;i<=q;i++)
+		cout<<0<<'\n';
+}

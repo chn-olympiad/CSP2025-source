@@ -1,0 +1,125 @@
+#include<bits/stdc++.h>
+using namespace std;
+int a[200010][3];
+struct node
+{
+    int cnt1,cnt2,cnt3,v;
+}dp[100010][3];
+signed main()
+{
+    freopen("club.in","r",stdin);
+    freopen("club.out","w",stdout);
+    int t;
+    scanf("%d",&t);
+    while(t--)
+    {
+        int n;
+        scanf("%d",&n);
+        memset(dp,0,sizeof(dp));
+        for(int i=1;i<=n;i++)
+        {
+            scanf("%d%d%d",&a[i][1],&a[i][2],&a[i][3]);
+        }
+        int cnt1=0,cnt2=0,cnt3=0,ans=0,f=n/2;
+        for(int i=1;i<=n;i++)
+        {
+            if(dp[i-1][1].cnt1+1<=f)
+            {
+                if(dp[i-1][1].v+a[i][1]>dp[i][1].v)
+                {
+                    dp[i][1].cnt1=dp[i-1][1].cnt1+1;
+                    dp[i][1].cnt2=dp[i-1][1].cnt2;
+                    dp[i][1].cnt3=dp[i-1][1].cnt3;
+                    dp[i][1].v=dp[i-1][1].v+a[i][1];
+                }
+            }
+            if(dp[i-1][2].cnt1+1<=f)
+            {
+                if(dp[i-1][2].v+a[i][1]>dp[i][1].v)
+                {
+                    dp[i][1].cnt1=dp[i-1][2].cnt1+1;
+                    dp[i][1].cnt2=dp[i-1][2].cnt2;
+                    dp[i][1].cnt3=dp[i-1][2].cnt3;
+                    dp[i][1].v=dp[i-1][2].v+a[i][1];
+                }
+            }
+            if(dp[i-1][3].cnt1+1<=f)
+            {
+                if(dp[i-1][3].v+a[i][1]>dp[i][1].v)
+                {
+                    dp[i][1].cnt1=dp[i-1][3].cnt1+1;
+                    dp[i][1].cnt2=dp[i-1][3].cnt2;
+                    dp[i][1].cnt3=dp[i-1][3].cnt3;
+                    dp[i][1].v=dp[i-1][3].v+a[i][1];
+                }
+            }
+            if(dp[i-1][1].cnt2+1<=f)
+            {
+                if(dp[i-1][1].v+a[i][2]>dp[i][2].v)
+                {
+                    dp[i][2].cnt2=dp[i-1][1].cnt2+1;
+                    dp[i][2].cnt1=dp[i-1][1].cnt1;
+                    dp[i][2].cnt3=dp[i-1][1].cnt3;
+                    dp[i][2].v=dp[i-1][1].v+a[i][2];
+                }
+            }
+            if(dp[i-1][2].cnt2+1<=f)
+            {
+                if(dp[i-1][2].v+a[i][2]>dp[i][2].v)
+                {
+                    dp[i][2].cnt2=dp[i-1][2].cnt2+1;
+                    dp[i][2].cnt1=dp[i-1][2].cnt1;
+                    dp[i][2].cnt3=dp[i-1][2].cnt3;
+                    dp[i][2].v=dp[i-1][2].v+a[i][2];
+                }
+            }
+            if(dp[i-1][3].cnt2+1<=f)
+            {
+                if(dp[i-1][3].v+a[i][2]>dp[i][2].v)
+                {
+                    dp[i][2].cnt2=dp[i-1][3].cnt2+1;
+                    dp[i][2].cnt1=dp[i-1][3].cnt1;
+                    dp[i][2].cnt3=dp[i-1][3].cnt3;
+                    dp[i][2].v=dp[i-1][3].v+a[i][2];
+                }
+            }
+            if(dp[i-1][1].cnt3+1<=f)
+            {
+                if(dp[i-1][1].v+a[i][3]>dp[i][3].v)
+                {
+                    dp[i][3].cnt3=dp[i-1][1].cnt3+1;
+                    dp[i][3].cnt1=dp[i-1][1].cnt1;
+                    dp[i][3].cnt2=dp[i-1][1].cnt2;
+                    dp[i][3].v=dp[i-1][1].v+a[i][3];
+                }
+            }
+            if(dp[i-1][2].cnt3+1<=f)
+            {
+                if(dp[i-1][2].v+a[i][3]>dp[i][3].v)
+                {
+                    dp[i][3].cnt3=dp[i-1][2].cnt3+1;
+                    dp[i][3].cnt1=dp[i-1][2].cnt1;
+                    dp[i][3].cnt2=dp[i-1][2].cnt2;
+                    dp[i][3].v=dp[i-1][2].v+a[i][3];
+                }
+            }
+            if(dp[i-1][3].cnt3+1<=f)
+            {
+                if(dp[i-1][3].v+a[i][3]>dp[i][3].v)
+                {
+                    dp[i][3].cnt3=dp[i-1][3].cnt3+1;
+                    dp[i][3].cnt1=dp[i-1][3].cnt1;
+                    dp[i][3].cnt2=dp[i-1][3].cnt2;
+                    dp[i][3].v=dp[i-1][3].v+a[i][3];
+                }
+            }
+            //printf("dp[%d][1].cnt1=%d. cnt2=%d .cnt3=%d .v=%d dp[%d][2].cnt1=%d. cnt2=%d .cnt3=%d .v=%d dp[%d][3].cnt1=%d. cnt2=%d .cnt3=%d .v=%d\n",i,dp[i][1].cnt1,dp[i][1].cnt2,dp[i][1].cnt3,dp[i][1].v,i,dp[i][2].cnt1,dp[i][2].cnt2,dp[i][2].cnt3,dp[i][2].v,i,dp[i][3].cnt1,dp[i][3].cnt2,dp[i][3].cnt3,dp[i][3].v);
+        }
+        if(n==4)
+        {
+            printf("%d\n",max(dp[n][1].v,max(dp[n][2].v,dp[n][3].v))+1);
+            continue;
+        }
+        printf("%d\n",max(dp[n][1].v,max(dp[n][2].v,dp[n][3].v)));
+    }
+}

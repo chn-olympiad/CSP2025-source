@@ -1,0 +1,106 @@
+#include <iostream>
+#include <cstdio>
+#include <string>
+#include <ctime>
+#include <algorithm>
+#include <vector>
+using namespace std;
+#define FILENAME []() -> string {string t = __FILE__; t.erase(t.find_last_of('.')); t.erase(0, t.find_last_of('/') + 1); return t;}()
+#define INPUT (FILENAME + ".in").c_str()
+#define OUTPUT (FILENAME + ".out").c_str()
+#define FILEIO freopen(INPUT, "r", stdin), freopen(OUTPUT, "w", stdout)
+#define fin cin
+#define fout cout
+int T;
+int n;
+struct TrieNode {
+    TrieNode* son[27 * 27] = {};
+    TrieNode* fa = nullptr;
+    TrieNode* fail = nullptr;
+    int cnt = 0;
+    int depth = 0;
+} root;
+void solve() {
+    string x, y;
+    fin >> x >> y;
+    int st = x.size(), ed = 0;
+    for (int i = 0; i < x.size(); ++i) {
+        if (x[i] != y[i]) {
+            st = i;
+            break;
+        }
+    }
+    for (int i = x.size() - 1; i >= 0; --i) {
+        if (x[i] != y[i]) {
+            ed = i;
+            break;
+        }
+    }
+    // cerr << x << " " << y << "\n";
+    // cerr << "st-ed: " << st << " " << ed << "\n";
+    long long ans = 0;
+    // for (int i = 0; i <= st; ++i) {
+    //     TrieNode* now = &root;
+    //     for (int j = i; j < x.size(); ++j) {
+    //         if (now->son[x[j] - 'a'] == nullptr) { break; }
+    //         now = now->son[x[j] - 'a'];
+    //         if (now->son[y[j] - 'a'] == nullptr) { break; }
+    //         now = now->son[y[j] - 'a'];
+    //         if (j >= ed) {
+    //             // cerr << i << " " << j << " " << now->cnt << "\n";
+    //             ans += now->cnt;
+    //         }
+    //     }
+    // }
+    TrieNode* now = &root;
+    for (int i = 0; i < x.size(); ++i) {
+        if (now->son[(x[i] - 'a') * 27L + y[i] - 'a'] == nullptr) { break; }
+        now = now->son[(x[i] - 'a') * 27L + y[i] - 'a'];
+        cerr << i << " " << now->depth << "\n";
+        if (i >= ed) {
+            auto* tmp = now;
+            while (tmp->depth > max(0, i - st)) {
+                ans += tmp->cnt;
+                tmp = tmp->fail;
+                cerr << tmp->depth << " ";
+            }
+            cerr << "\n";
+        }
+    }
+    fout << ans << "\n";
+}
+auto main() -> int {
+    FILEIO;
+    ios::sync_with_stdio(false);
+    root.fa = &root;
+    root.fail = &root;
+    auto add_node = [](TrieNode* now, int ch) {
+        now->son[ch] = new TrieNode;
+        now->son[ch]->fa = now;
+        now->son[ch]->fail = now->fail->son[ch];
+        if (now == &root || now->son[ch]->fail == nullptr) {
+            now->son[ch]->fail = &root;
+        }
+    };
+    fin >> n >> T;
+    for (int i = 0; i < n; ++i) {
+        string x, y;
+        fin >> x >> y;
+        // cerr << x << " " << y << "\n";
+        TrieNode* now = &root;
+        for (int j = 0; j < x.size(); ++j) {
+            cerr << (x[j] - 'a') * 27L + y[j] - 'a' << "\n";
+            if (now->son[(x[j] - 'a') * 27L + y[j] - 'a'] == nullptr) {
+                add_node(now, (x[j] - 'a') * 27L + y[j] - 'a');
+                now->son[(x[j] - 'a') * 27L + y[j] - 'a']->depth = j;
+            }
+            now = now->son[(x[j] - 'a') * 27L + y[j] - 'a'];
+        }
+        ++now->cnt;
+    }
+    cerr << 1.0 * clock() / CLOCKS_PER_SEC << "\n";
+    while (T--) {
+        solve();
+    }
+    return 0;
+}

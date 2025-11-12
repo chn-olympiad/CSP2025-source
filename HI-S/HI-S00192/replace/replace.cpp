@@ -1,0 +1,20 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int n,m;
+
+int main()
+{
+	freopen("replace.in","r",stdin);
+	freopen("replace.out","w",stdout);
+	
+	cin>>n>>m;
+	while(m--)
+	{
+		puts("0");
+	}
+	
+	fclose(stdin);
+	fclose(stdout);
+	return 0;
+}

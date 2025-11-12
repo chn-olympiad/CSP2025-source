@@ -1,0 +1,20 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+	freopen("polygon.in","r",stdin);
+	freopen("polygon.out","w",stdout);
+	int n;
+	cin>>n;
+	cout<<n/2+n/3;
+	bool AK=0;
+	if(AK){
+		cout<<"rp++";
+	}
+	/*
+	unsigned long long rp;
+	while(1){
+		rp++;
+	}
+	*/
+	return 0;
+}

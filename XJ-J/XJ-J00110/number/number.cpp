@@ -1,0 +1,29 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+	freopen("number.in","r",stdin);
+	freopen("number.out","w",stdout);
+	int s=0,l;
+	string a;
+	cin>>a;
+	for(int i=0;i<a.size();i++){
+		if(a[i]>='0'&&a[i]<='9'){
+			s++;
+		}
+	}
+	int h[s];
+	l=s;
+	s=0;
+	for(int i=0;i<a.size();i++){
+		if(a[i]>='0'&&a[i]<='9'){
+			h[s]=a[i]-'0';
+			s++;
+		}
+	}
+	sort(h,h+l);
+	for(int i=l-1;i>=0;i--){
+		cout<<h[i];
+	}
+	return 0;
+}
+

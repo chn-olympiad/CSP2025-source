@@ -1,0 +1,16 @@
+#include<bits/stdc++.h>
+using namespace std;
+int n,m;
+string s;
+int c[10005];
+int main(){
+	freopen("employ.in","r",stdin);
+	freopen("employ.out","w",stdout);
+	scanf("%d%d",&n,&m);
+	cin>>s;
+	for(int i=1;i<=n;i++){
+		scanf("%d",&c[i]);
+	}
+	cout<<2<<endl;
+	return 0;
+}

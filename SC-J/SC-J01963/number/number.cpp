@@ -1,0 +1,24 @@
+#include<bits/stdc++.h>
+using namespace std;
+int a[105];
+int main(){ 
+	freopen("number.in","r",stdin);
+	freopen("number.out","w",stdout);
+	string s;
+	cin>>s;
+	string ans="";
+	for(int i=0;i<=s.size()-1;i++){
+		if(s[i]>='0'&&s[i]<='9'){
+			a[s[i]]++;
+		}
+	}
+	for(int i='9';i>='0';i--){
+		if(a[i]!=0){
+			for(int j=1;j<=a[i];j++){
+				ans+=i;
+			}
+		}
+	}
+	cout<<ans;
+	return 0;
+}

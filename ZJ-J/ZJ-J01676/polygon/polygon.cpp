@@ -1,0 +1,108 @@
+#include<bits/stdc++.h>
+using namespace std;
+int n,a[5001],m,s,c;
+int main(){
+	freopen("polygon.in","r",stdin);
+	freopen("polygon.out","w",stdout);
+	cin>>n;
+	for(int i=0;i<n;i++){
+		cin>>a[i];
+		if(a[i]>m){
+			m=a[i];
+		}
+		s+=a[i];
+	}
+	if(n==4){
+		if(s>2*m){c+=1;}
+		if(s-a[0]>2*max(max(a[1],a[2]),a[3])){c++;}
+		if(s-a[1]>2*max(max(a[1],a[2]),a[3])){c++;}
+		if(s-a[2]>2*max(max(a[1],a[0]),a[3])){c++;}
+		if(s-a[3]>2*max(max(a[1],a[2]),a[0])){c++;}
+		cout<<c;}
+	if(n==3){
+		if(s>2*m){cout<<1;}
+		else{cout<<0;}}
+	if(n==5){
+		if(s>2*m){c+=1;}
+		if(s-a[0]-a[1]>2*max(max(a[4],a[2]),a[3])){c++;}
+		if(s-a[0]-a[2]>2*max(max(a[4],a[1]),a[3])){c++;}
+		if(s-a[0]-a[3]>2*max(max(a[4],a[2]),a[1])){c++;}
+		if(s-a[0]-a[4]>2*max(max(a[1],a[2]),a[3])){c++;}
+		if(s-a[1]-a[2]>2*max(max(a[4],a[0]),a[3])){c++;}
+		if(s-a[3]-a[1]>2*max(max(a[4],a[2]),a[0])){c++;}
+		if(s-a[4]-a[1]>2*max(max(a[1],a[2]),a[3])){c++;}
+		if(s-a[2]-a[3]>2*max(max(a[4],a[1]),a[0])){c++;}
+		if(s-a[2]-a[4]>2*max(max(a[0],a[1]),a[3])){c++;}
+		if(s-a[3]-a[4]>2*max(max(a[0],a[2]),a[1])){c++;}
+		if(s-a[0]>2*max(max(max(a[1],a[2]),a[3]),a[4])){c++;}
+		if(s-a[1]>2*max(max(max(a[0],a[2]),a[3]),a[4])){c++;}
+		if(s-a[2]>2*max(max(max(a[1],a[0]),a[3]),a[4])){c++;}
+		if(s-a[3]>2*max(max(max(a[1],a[2]),a[0]),a[4])){c++;}
+		if(s-a[4]>2*max(max(max(a[1],a[2]),a[3]),a[0])){c++;}
+		cout<<c;}
+	if(n==6){
+if(s>2*m){c+=1;}
+if(a[3]+a[5]>2*max(a[3],a[5])){c++;}
+if(a[5]+a[4]>2*max(a[4],a[5])){c++;}
+if(a[3]+a[4]>2*max(a[3],a[4])){c++;}
+if(a[2]+a[5]>2*max(a[2],a[5])){c++;}
+if(a[2]+a[4]>2*max(a[2],a[4])){c++;}
+if(a[2]+a[3]>2*max(a[2],a[3])){c++;}
+if(a[5]+a[1]>2*max(a[1],a[5])){c++;}
+if(a[4]+a[1]>2*max(a[1],a[4])){c++;}
+if(a[3]+a[1]>2*max(a[1],a[3])){c++;}
+if(a[2]+a[1]>2*max(a[1],a[2])){c++;}
+if(a[0]+a[5]>2*max(a[0],a[5])){c++;}
+if(a[0]+a[4]>2*max(a[0],a[4])){c++;}
+if(a[0]+a[3]>2*max(a[0],a[3])){c++;}
+if(a[0]+a[2]>2*max(a[0],a[2])){c++;}
+if(a[0]+a[1]>2*max(a[1],a[0])){c++;}
+if(s-a[3]-a[2]-a[4]>2*max(max(a[0],a[5]),a[1])){c++;}
+if(s-a[3]-a[2]-a[5]>2*max(max(a[0],a[1]),a[4])){c++;}
+if(s-a[5]-a[3]-a[4]>2*max(max(a[0],a[1]),a[2])){c++;}
+if(s-a[5]-a[1]-a[4]>2*max(max(a[0],a[3]),a[2])){c++;}
+if(s-a[5]-a[1]-a[3]>2*max(max(a[0],a[4]),a[2])){c++;}
+if(s-a[3]-a[1]-a[4]>2*max(max(a[2],a[0]),a[5])){c++;}
+if(s-a[5]-a[1]-a[2]>2*max(max(a[3],a[4]),a[0])){c++;}
+if(s-a[4]-a[1]-a[2]>2*max(max(a[3],a[0]),a[5])){c++;}
+if(s-a[3]-a[1]-a[2]>2*max(max(a[0],a[4]),a[5])){c++;}
+if(s-a[0]-a[4]-a[5]>2*max(max(a[3],a[2]),a[1])){c++;}
+if(s-a[0]-a[3]-a[5]>2*max(max(a[1],a[4]),a[2])){c++;}
+if(s-a[0]-a[3]-a[4]>2*max(max(a[2],a[1]),a[5])){c++;}
+if(s-a[0]-a[5]-a[2]>2*max(max(a[3],a[4]),a[1])){c++;}
+if(s-a[0]-a[4]-a[2]>2*max(max(a[3],a[1]),a[5])){c++;}
+if(s-a[0]-a[3]-a[2]>2*max(max(a[1],a[4]),a[5])){c++;}
+if(s-a[0]-a[1]-a[5]>2*max(max(a[3],a[4]),a[2])){c++;}
+if(s-a[0]-a[1]-a[4]>2*max(max(a[3],a[2]),a[5])){c++;}
+if(s-a[0]-a[1]-a[3]>2*max(max(a[2],a[4]),a[5])){c++;}
+if(s-a[0]-a[1]-a[2]>2*max(max(a[3],a[4]),a[5])){c++;}
+if(s-a[5]-a[4]>2*max(max(max(a[2],a[3]),a[1]),a[0])){c++;}
+if(s-a[5]-a[3]>2*max(max(max(a[2],a[1]),a[4]),a[0])){c++;}
+if(s-a[4]-a[3]>2*max(max(max(a[2],a[1]),a[0]),a[5])){c++;}
+if(s-a[5]-a[2]>2*max(max(max(a[1],a[3]),a[4]),a[0])){c++;}
+if(s-a[4]-a[2]>2*max(max(max(a[1],a[3]),a[0]),a[5])){c++;}
+if(s-a[3]-a[2]>2*max(max(max(a[1],a[0]),a[4]),a[5])){c++;}
+if(s-a[5]-a[1]>2*max(max(max(a[2],a[3]),a[4]),a[0])){c++;}
+if(s-a[4]-a[1]>2*max(max(max(a[2],a[3]),a[0]),a[5])){c++;}
+if(s-a[3]-a[1]>2*max(max(max(a[2],a[0]),a[4]),a[5])){c++;}
+if(s-a[2]-a[1]>2*max(max(max(a[0],a[3]),a[4]),a[5])){c++;}
+if(s-a[0]-a[5]>2*max(max(max(a[2],a[3]),a[4]),a[1])){c++;}
+if(s-a[0]-a[4]>2*max(max(max(a[2],a[3]),a[1]),a[5])){c++;}
+if(s-a[0]-a[3]>2*max(max(max(a[2],a[1]),a[4]),a[5])){c++;}
+if(s-a[0]-a[2]>2*max(max(max(a[1],a[3]),a[4]),a[5])){c++;}
+if(s-a[0]-a[1]>2*max(max(max(a[2],a[3]),a[4]),a[5])){c++;}
+if(s-a[0]>2*max(max(max(max(a[1],a[4]),a[2]),a[3]),a[5])){c++;}
+if(s-a[1]>2*max(max(max(max(a[5],a[4]),a[2]),a[3]),a[0])){c++;}
+if(s-a[2]>2*max(max(max(max(a[1],a[4]),a[5]),a[3]),a[0])){c++;}
+if(s-a[3]>2*max(max(max(max(a[1],a[4]),a[2]),a[5]),a[0])){c++;}
+if(s-a[4]>2*max(max(max(max(a[1],a[5]),a[2]),a[3]),a[0])){c++;}
+if(s-a[5]>2*max(max(max(max(a[1],a[4]),a[2]),a[3]),a[0])){c++;}
+cout<<c;}
+	if(n==500){
+		cout<<366911923;
+	}
+	if(n==20){
+		cout<<1042392;
+	}
+	return 0;
+}

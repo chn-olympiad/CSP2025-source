@@ -1,0 +1,12 @@
+#include<bits/stdc++.h>
+using namespace std;
+long long n;
+
+int m=1001;
+int main(){
+    freopen("number.in","r",stdin);
+    freopen("number.out","w",stdout);
+    cin>>m;
+    cout<<m;
+    return 0;
+}

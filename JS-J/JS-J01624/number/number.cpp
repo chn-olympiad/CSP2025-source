@@ -1,0 +1,30 @@
+#include<bits/stdc++.h>
+using namespace std;
+int t[11];
+int main()
+{
+    freopen("number.in","r",stdin);
+    freopen("number.out","w",stdout);
+    string s;
+    cin>>s;
+    for(int i=0;i<s.size();i++)
+    {
+        if(s[i]>='0' && s[i]<='9')
+        {
+            t[s[i]-'0']++;
+        }
+    }
+    bool f=0;
+    for(int i=9;i>=0;i--)
+    {
+        if(f==0 && i==0)
+            break;
+        if(t[i]>0)
+        {
+            f=1;
+            for(int j=0;j<t[i];j++)
+                cout<<i;
+        }
+    }
+    return 0;
+}             

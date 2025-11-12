@@ -1,0 +1,106 @@
+#include<bits/stdc++.h> 
+using namespace std;
+struct node
+{
+	int j1,j2,j3;
+}a[100005];
+long long int t,n,j,f,w,s;
+int main()
+{
+	freopen("club.in","r",stdin);
+	freopen("club.out","w",stdout);
+	cin>>t;
+	while(t--)
+	{
+		s=0;
+		cin>>n;
+		for(int i=1;i<=n;i++)
+	    cin>>a[i].j1>>a[i].j2>>a[i].j3;
+	    for(int i=1;i<=n;i++)
+	    {
+	    	if(a[i].j1>=a[i].j2&&a[i].j1>=a[i].j3)
+	    	{
+	    		if(j+1<=n/2)
+	    		{
+	    			j++;
+	    			s+=a[i].j1;
+				}
+	    		else
+	    		{
+	    			if(a[i].j1==a[i].j2||a[i].j2>a[i].j3)
+	    			{
+	    				if(f+1<=n/2)
+	    				{
+	    					f++;
+	    					s+=a[i].j2;
+						}
+					}
+	    			if(a[i].j1==a[i].j3||a[i].j3>a[i].j2)
+	    			{
+	    				if(w+1<=n/2)
+	    				{
+	    					w++;
+	    					s+=a[i].j3;
+						}
+					}
+				}
+			}
+			if(a[i].j2>=a[i].j1&&a[i].j2>=a[i].j3)
+	    	{
+	    		if(f+1<=n/2)
+	    		{
+	    			f++;
+	    			s+=a[i].j2;
+				}
+	    		else
+	    		{
+	    			if(a[i].j2==a[i].j1||a[i].j1>a[i].j3)
+	    			{
+	    				if(j+1<=n/2)
+	    				{
+	    					j++;
+	    					s+=a[i].j1;
+						}
+					}
+	    			if(a[i].j2==a[i].j3||a[i].j3>a[i].j1)
+	    			{
+	    				if(w+1<=n/2)
+	    				{
+	    					w++;
+	    					s+=a[i].j3;
+						}
+					}
+				}
+			}
+			if(a[i].j3>=a[i].j1&&a[i].j3>=a[i].j2)
+	    	{
+	    		if(w+1<=n/2)
+	    		{
+	    			w++;
+	    			s+=a[i].j3;
+				}
+	    		else
+	    		{
+	    			if(a[i].j3==a[i].j1||a[i].j1>a[i].j2)
+	    			{
+	    				if(j+1<=n/2)
+	    				{
+	    					j++;
+	    					s+=a[i].j1;
+						}
+					}
+	    			if(a[i].j1==a[i].j3||a[i].j2>a[i].j1)
+	    			{
+	    				if(f+1<=n/2)
+	    				{
+	    					f++;
+	    					s+=a[i].j2;
+						}
+					}
+				}
+			}
+		}
+		cout<<s;
+	}
+	return 0;
+}

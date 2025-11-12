@@ -1,0 +1,17 @@
+#include <bits/stdc++.h>
+using namespace std;
+int n, k;
+vector<int> a;
+int main() {
+    freopen("xor.in", "r", stdin);
+    freopen("xor.out", "w", stdout);
+    cin >> n >> k;
+    for (int i = 1; i <= n; i++) {
+        cin >> k;
+        a.push_back(k);
+    }
+    cout << (n / 2) << "\n";
+    fclose(stdin);
+    fclose(stdout);
+    return 0;
+}

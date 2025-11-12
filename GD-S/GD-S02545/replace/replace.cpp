@@ -1,0 +1,100 @@
+#include<bits/stdc++.h>
+#define LL int
+#define rep(i,a,b,g) for(LL i=a;i<=b;i+=g)
+#define rem(i,a,b,g) for(LL i=a;i>=b;i-=g)
+using namespace std;
+LL n,q,l,r,ls,lt,st,cc,ff;
+string a[200010][3],s,t,sst,tts,ts,cg;
+map<pair<string,string>,vector<LL>>mp;
+vector<LL>v;
+int main()
+{
+	freopen("replace.in","r",stdin);
+	freopen("replace.out","w",stdout);
+	cin>>n>>q;
+	rep(i,1,n,1)
+	{
+		cin>>a[i][0]>>a[i][1];
+		ls=a[i][0].size();
+		rep(j,0,ls-1,1)
+		{
+			if(a[i][0][j]!=a[i][1][j])
+			{
+				l=j;
+				break;
+			}
+		}
+		rem(j,ls-1,0,1)
+		{
+			if(a[i][0][j]!=a[i][1][j])
+			{
+				r=j;
+				break;
+			}
+		}
+		s=a[i][0].substr(l,r-l+1);
+		t=a[i][1].substr(l,r-l+1);
+		mp[make_pair(s,t)].push_back(i);
+	}
+	rep(mst,1,q,1)
+	{
+		cin>>s>>t;
+		ls=s.size();
+		lt=t.size();
+		if(ls!=lt)
+		{
+			puts("0");
+			continue;
+		}
+		rep(i,0,ls-1,1)
+		{
+			if(s[i]!=t[i])
+			{
+				l=i;
+				break;
+			}
+		}
+		rem(i,ls-1,0,1)
+		{
+			if(s[i]!=t[i])
+			{
+				r=i;
+				break;
+			}
+		}
+		sst=s.substr(l,r-l+1);
+		tts=t.substr(l,r-l+1);
+		v=mp[make_pair(sst,tts)];
+		cc=0;
+		for(LL j:v)
+		{
+			st=s.find(a[j][0]);
+			if(st==-1)continue;
+			ff=a[j][0].size();
+			cg=s.substr(ls-ff+1,ff-1);
+			rem(p,ls-ff,0,1)
+			{
+				cg=s[p]+cg;
+				if(cg.substr(0,ff)!=a[j][0])continue;
+				ts=s;
+				rep(k,p,p+ff-1,1)
+				{
+					ts[k]=a[j][1][k-p];
+				}
+				if(ts==t)cc++;
+			}
+		}
+		cout<<cc<<'\n';
+	}
+	return 0;
+}
+//freopen
+//di
+//ke
+//de
+//hei
+//diao
+//you
+//duo
+//kong
+//bu

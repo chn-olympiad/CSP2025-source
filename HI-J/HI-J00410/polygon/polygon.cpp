@@ -1,0 +1,95 @@
+#include<bits/stdc++.h>
+using namespace std;
+long long n,a[5050],r=998244353,c,b[5050];
+int main(){
+	ios::sync_with_stdio(false);
+	cin.tie(0);
+	cout.tie(0);
+	freopen("polygon.in","r",stdin);
+	freopen("polygon.out","w",stdout);
+    cin>>n;
+    for(int i=1;i<=n;i++){
+    	cin>>a[i];
+    	b[i]+=b[i-1]+a[i]%r;
+	}
+	sort(a+1,a+n+1);
+	if(n==3){
+		if(a[1]+a[2]+a[3]>a[3]*2){
+			cout<<"1";
+			return 0;
+		}
+	}
+	if(n==4){
+		if(a[1]+a[2]+a[3]>a[3]*2){
+			c++;
+		}
+		if(a[1]+a[2]+a[4]>a[4]*2){
+			c++;
+		}
+		if(a[2]+a[3]+a[4]>a[4]*2){
+			c++;
+		}
+		if(a[4]+a[2]+a[3]+a[1]>a[4]*2){
+			c++;
+		}
+		if(a[4]+a[3]+a[1]>a[4]*2){
+			c++;
+		}
+		cout<<c%r;
+		return 0;
+	}
+	if(n==5){
+		if(a[1]+a[2]+a[3]>a[3]*2){
+			c++;
+		}
+		if(a[1]+a[2]+a[4]>a[4]*2){
+			c++;
+		}
+		if(a[1]+a[2]+a[5]>a[5]*2){
+			c++;
+		}
+		if(a[1]+a[3]+a[4]>a[4]*2){
+			c++;
+		}
+		if(a[1]+a[3]+a[5]>a[5]*2){
+			c++;
+		}
+		if(a[1]+a[4]+a[5]>a[5]*2){
+			c++;
+		}
+		if(a[2]+a[3]+a[4]>a[4]*2){
+			c++;
+		}
+		if(a[2]+a[3]+a[5]>a[5]*2){
+			c++;
+		}
+		if(a[2]+a[4]+a[5]>a[5]*2){
+			c++;
+		}
+		if(a[3]+a[4]+a[5]>a[5]*2){
+			c++;
+		}
+		if(a[1]+a[2]+a[3]+a[4]>a[4]*2){
+			c++;
+		}
+		if(a[1]+a[2]+a[3]+a[5]>a[5]*2){
+			c++;
+		}
+		if(a[1]+a[2]+a[4]+a[5]>a[5]*2){
+			c++;
+		}
+		if(a[1]+a[3]+a[4]+a[5]>a[5]*2){
+			c++;
+		}
+		if(a[2]+a[3]+a[4]+a[5]>a[5]*2){
+			c++;
+		}
+		if(a[1]+a[2]+a[3]+a[4]+a[5]>a[5]*2){
+			c++;
+		}
+		cout<<c%r;
+		return 0;
+	}
+	cout<<b[i-1]-1;
+	return 0;
+}

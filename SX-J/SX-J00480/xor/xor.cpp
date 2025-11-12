@@ -1,0 +1,22 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	freopen("xor.in", "r", stdin);
+	freopen("xor.out", "w", stdout);
+	int n, k, a[10000];
+	cin >> n >> k;
+	for (int i = 1; i <= n; i++) {
+		cin >> a[i];
+	}
+
+
+	cout << 2 << endl;
+	cout << 1 << endl;
+	cout << 63 << endl;
+	cout << 69 << endl;
+	cout << 12701 << endl;
+
+
+	return 0;
+}

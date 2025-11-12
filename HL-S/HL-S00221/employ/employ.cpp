@@ -1,0 +1,9 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+	int k,q;
+	cin>>k>>q;
+	cout<<k<<q;	
+}

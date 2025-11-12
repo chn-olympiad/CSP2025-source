@@ -1,0 +1,155 @@
+#include<bits/stdc++.h>
+using namespace std;
+int t,n,a[100005],b[100005],c[100005],a1,b1,c1,ans,jl[100005],minn[100005],maxx[100005],maxxx[100005],cz[100005],s[100005],sx[100005],p,q,w;
+int main()
+{
+	freopen("club.in","r",stdin);
+	freopen("club.out","w",stdout);
+	cin>>t;
+	while(t--)
+	{
+		cin>>n;
+		for(int i=1;i<=n;i++)
+		{
+			cin>>a[i]>>b[i]>>c[i];
+			if(a[i]>=b[i])
+			{
+				if(a[i]>=c[i])
+				{
+					a1++;
+					ans+=a[i];
+					jl[i]=1;
+				}
+				else
+				{
+					c1++;
+					ans+=c[i];
+					jl[i]=3;
+				}
+			}
+			else
+			{
+				if(b[i]>=c[i])
+				{
+					b1++;
+					ans+=b[i];
+					jl[i]=2;
+				}
+				else
+				{
+					c1++;
+					ans+=c[i];
+					jl[i]=3;
+				}
+			}
+			//maxx[i]=max(a[i],b[i]);
+			if(a[i]>=b[i])
+			{
+				maxx[i]=a[i];
+				minn[i]=b[i];
+			}
+			else
+			{
+				maxx[i]=b[i];
+				minn[i]=a[i];
+			}
+			//minn[i]=min(a[i],b[i]);
+			if(maxx[i]<=c[i])
+			{
+				maxxx[i]=maxx[i];
+				maxx[i]=c[i];
+			}
+			else 
+			{
+				if(c[i]>=minn[i])
+				{
+					maxxx[i]=c[i]; 
+				}
+				else
+				{
+					maxxx[i]=minn[i];
+				}
+			}
+			cz[i]=maxx[i]-maxxx[i];
+		}
+		for(int i=1;i<=n;i++)
+		{
+			s[i]=cz[i];
+		}
+		for(int i=1;i<=n;i++)
+		{
+			p=1000000000;
+			if(p>s[i])
+			{
+				p=s[i];
+				q=i;
+			}
+			s[q]=1000000000;
+			sx[w]=q;
+			w++;
+		}
+		if(a1<=n/2&&b1<=n/2&&c1<=n/2)
+		{
+			cout<<ans<<endl;
+		}
+		else
+		{
+			if(a1>n/2)
+			{
+				for(int i=1;i<=n;i++)
+				{
+					if(jl[sx[i]]==1&&a1>n/2)
+					{
+						ans=ans-maxx[sx[i]];
+						ans=ans+maxxx[sx[i]];
+						a1--;
+					}
+				}
+			}
+			else if(b1>n/2)
+			{
+				for(int i=1;i<=n;i++)
+				{
+					if(jl[sx[i]]==2&&b1>n/2)
+					{
+						ans=ans-maxx[sx[i]];
+						ans=ans+maxxx[sx[i]];
+						b1--;
+					}
+				}
+			}
+			else if(c1>n/2)
+			{
+				for(int i=1;i<=n;i++)
+				{
+					if(jl[sx[i]]==3&&c1>n/2)
+					{
+						ans=ans-maxx[sx[i]];
+						ans=ans+maxxx[sx[i]];
+						c1--;
+					}
+				}
+			}
+			cout<<ans<<endl;
+		}
+		for(int i=0;i<=n;i++)
+		{
+			a[i]=0;
+			b[i]=0;
+			c[i]=0;
+			maxx[i]=0;
+			maxxx[i]=0;
+			minn[i]=0;
+			cz[i]=0;
+			s[i]=0;
+			sx[i]=0;
+			jl[i]=0;
+		}
+		ans=0;
+		a1=0;
+		b1=0;
+		c1=0;
+		w=1;
+	} 
+	return 0;
+}

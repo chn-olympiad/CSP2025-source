@@ -1,0 +1,8 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+	int n,k;
+	cin>>n;
+	cout<<2;
+	return 0;
+} 

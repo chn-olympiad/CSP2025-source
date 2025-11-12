@@ -1,0 +1,300 @@
+#include<iostream>
+#include<cstdio>
+#include<cstring>
+#include<cmath>	
+long long a[100001],b[100001],c[100001],maxam[100001],maxbm[100001],maxcm[100001];	int min1;
+using namespace std;int minp,minap,minbp,mincp;int n,t;
+int main()
+{
+int a2,b2,c2,mina2,minc2,minb2;
+	freopen("club.in","r",stdin);
+	freopen("club.out","w",stdout);
+	int x,y,z;long long mina,minb,minc,manyi,a1,b1,c1;int k=0;
+	cin>>n;
+	for(int i=1;i<=n;i++)
+	{
+		a1=0;b1=0;c1=0;k=0;a2=0;b2=0;c2=0;
+		mina=99999;minb=99999;minc=99999;manyi=0;
+		memset(maxbm,0,sizeof(maxbm));
+		memset(maxam,0,sizeof(maxam));
+		memset(maxcm,0,sizeof(maxcm));
+		memset(b,0,sizeof(b));
+		memset(a,0,sizeof(a));
+		memset(c,0,sizeof(c));
+		cin>>t;
+		for(int j=1;j<=t;j++)
+		{
+			cin>>x>>y>>z;
+			if(k==0)
+			{
+				if(a2==n/2)
+				{
+	min1=99999999;
+	for(int i=1;i<=n/2;i++)
+	{
+		if(min1>a[i])
+		{min1=a[i];
+		minp=i;
+		}
+	}
+					mina=min1;
+					k=1;minap=minp;
+					mina2=maxam[minp];
+					
+				}
+				if(b2==n/2)
+				{
+					min1=99999999;
+	for(int i=1;i<=n/2;i++)
+	{
+		if(min1>b[i])
+		{min1=b[i];
+		minp=i;
+		}
+	}
+					minb=min1;
+					k=1;
+					minbp=minp;
+					minb2=maxbm[minp];
+				}
+				if(c2==n/2)
+				{
+					min1=99999999;
+	for(int i=1;i<=n/2;i++)
+	{
+		if(min1>c[i])
+		{min1=c[i];
+		minp=i;
+		}
+	}
+					minc=min1;
+					k=1;
+					mincp=minp;
+					minc2=maxcm[minp];
+				}
+			}
+		    if(x>=y)
+		    {
+		    	if(y>=z)
+		    	{
+		    	 if(a2<n/2)
+		    	 {
+		    	 	manyi=x+manyi;
+		    	 	a2=a2+1;
+		    	 	a[a2]=x;
+		    	 	maxam[a2]=y;
+		    	 	continue;
+				 }
+				 if(a2==n/2)
+				 {
+				 	if(mina2+x>y+mina)
+				    {manyi+=mina2;
+				    manyi+=x;
+				    a[minap]=x;
+				    manyi-=mina;
+				    min1=99999999;
+	for(int i=1;i<=n/2;i++)
+	{
+		if(min1>a[i])
+		{min1=a[i];
+		minp=i;
+		}
+	}
+				 	mina=min1; 
+				 	minap=minp;mina2=maxam[minp];continue;
+					}
+					else
+					{
+					manyi+=y;continue;
+					}
+				 }
+				}
+			else
+			{
+			if(x>=z)
+			{
+				 if(a2<n/2)
+		    	 {
+				 manyi+=x;
+		    	 	
+		    	 	a2=a2+1;
+		    	 	maxam[a2]=z;
+					 a[a2]=x;continue;
+					 }
+				 if(a2==n/2)
+				 {
+				 	if(mina2+x>z+mina)
+				    {manyi+=mina2;
+				    manyi+=x;
+				    a[minap]=x;
+				    manyi-=mina;
+				    min1=99999999;
+	for(int i=1;i<=n/2;i++)
+	{
+		if(min1>a[i])
+		{min1=a[i];
+		minp=i;
+		}
+	}
+				 	mina=min1;
+				 	minap=minp; mina2=maxam[minp];continue;
+					}
+					else
+					{
+					manyi+=z;continue;
+					}
+				 }}
+				else
+					{
+				if(c2<n/2)
+		    	 {
+		    	 	manyi+=z;c2=c2+1;
+		    	 	c[c2]=z;
+		    	 	maxcm[c2]=x;continue;
+				 }
+				 if(c2==n/2)
+				 {
+				 	if(minc2+z>x+minc)
+				    {manyi+=minc2;
+				    manyi+=z;
+				    c[mincp]=z;
+				    manyi-=minc;
+				    			min1=99999999;
+	for(int i=1;i<=n/2;i++)
+	{
+		if(min1>c[i])
+		{min1=c[i];
+		minp=i;
+		}
+	}
+					minc=min1;
+				 	
+				 	mincp=minp;minc2=maxcm[mincp];continue;
+					}
+					else
+					{
+					manyi+=x;continue;
+					}
+				 }
+				 }
+	}}
+	
+			if(x<y)
+			{
+			 if(x>=z)
+				{
+				 if(b2<n/2)
+		    	 {	
+				 manyi+=y;
+				 b2=b2+1;
+				 b[b2]=y;
+				 maxbm[b2]=x;
+		    	 	continue;
+					 }
+				 if(b2==n/2)
+				 {
+				 	if(minb2+y>=x+minb)
+				    {manyi+=minb2;
+				    manyi+=y;
+				    b[minbp]=y;
+				    manyi-=minb;
+				    for(int i=1;i<=n/2;i++)
+	{
+		if(min1>b[i])
+		{min1=b[i];
+		minp=i;
+		}
+	}
+				 	minb=min1;
+				 	minbp=minp;
+					 minb2=maxbm[minbp];continue;
+					}
+					else
+					{
+						manyi+=x;continue;
+					}
+				}
+			}
+			 else
+			    {
+				if(y>=z)
+				  {
+					if(b2<n/2)
+		    	 {
+		    	 	manyi+=y;
+		    	 	b2=b2+1;
+		    	 	b[b2]=y;
+		    	 	maxbm[b2]=z;
+		    	 continue;
+				 }
+				 if(b2==n/2)
+				 {
+				  if(minb2+y>z+minb)
+				    {
+				    manyi+=y;
+				    b[minbp]=y;
+				    manyi-=minb;
+				    for(int i=1;i<=n/2;i++)
+	{
+		if(min1>b[i])
+		{min1=b[i];
+		minp=i;
+		}
+	}
+				 	minb=min1;
+				 	minbp=minp;minb2=maxbm[minbp];continue;
+					}
+					else
+					{
+					manyi+=z;continue;
+					}
+				  }
+			}
+				  else
+				  {
+				  	if(c2<n/2)
+		    	 {
+		    	 	manyi+=z;
+		    	 	c2=c2+1;
+		    	 	c[c2]=z;
+		    	 	maxcm[c2]=y;
+		    	 	continue;
+				 }
+				 if(c2==n/2)
+				 {
+				  if(minc2+z>y+minc)
+				    {manyi+=minc2;
+				    manyi+=z;
+				    
+				    c[mincp]=z;
+				    manyi-=minc;
+				    			min1=99999999;
+	for(int i=1;i<=n/2;i++)
+	{
+		if(min1>c[i])
+		{min1=c[i];
+		minp=i;
+		}
+	}
+					minc=min1;
+				 	minc=min1;
+				 	mincp=minp;minc2=maxcm[mincp];continue;
+					}
+					else
+					{
+					manyi+=y;continue;
+					}
+				 }
+				  }
+				
+			}
+			}
+			}
+			cout<<manyi<<endl;
+		}
+		}
+			
+	
+	
+
+ 

@@ -1,0 +1,21 @@
+#include<bits/stdc++.h>
+#define ll long long
+using namespace std;
+string s,a;
+int main(){
+	freopen("number.in","r",stdin);
+	freopen("number.out","w",stdout);
+	ios::sync_with_stdio(false);
+	cin.tie(0);
+	cout.tie(0);
+	cin>>s;
+	for(int i=0;i<s.size();i++){
+		if(s[i]>='0'&&s[i]<='9'){
+			a+=s[i];
+		}
+	}
+	sort(a.begin(),a.end());
+	reverse(a.begin(),a.end());
+	cout<<a;
+	return 0;
+}

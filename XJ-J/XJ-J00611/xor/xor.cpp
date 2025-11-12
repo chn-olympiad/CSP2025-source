@@ -1,0 +1,14 @@
+#include<bits/stdc++.h> 
+using namespace std;
+int main()
+{
+	freopen ("xor.in","r",stdin);
+	freopen ("xor.out","w",stdout);
+	int n,i,a[500005];
+	cin>>n;
+	for(i=1;i<=n;i++)
+	{
+		cin>>a[i];
+	}
+	return 0;
+}

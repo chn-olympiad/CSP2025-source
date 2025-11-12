@@ -1,0 +1,18 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+	freopen("replace.in","r",stdin);
+	freopen("replace.out","w",stdout);
+	ios::sync_with_stdio(0);
+	cin.tie(0);cout.tie(0);
+	long long i,j;
+	long long n,m;
+	cin>>n>>m;
+	for (i=1;i<=m;i++)
+	{
+		cout<<0<<"\n";
+	}
+	return 0;
+}
+

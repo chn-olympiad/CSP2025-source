@@ -1,0 +1,19 @@
+#include<bits/stdc++.h>
+using namespace std;
+string s;
+vector<int> a;
+int main()
+{
+    freopen("number.in","r",stdin);
+    freopen("number.out","w",stdout);
+    cin >> s;
+    for(int i=0;i<(int)s.size();i++) if(s[i] >= '0' && s[i] <= '9') a.push_back((s[i] - '0'));
+    sort(a.begin(),a.end(),greater<int>());
+    if(a[0] == 0) puts("0");
+    else
+    {
+        for(int i=0;i<(int)a.size();i++) printf("%d",a[i]);
+        putchar('\n');
+    }
+    return 0;
+}

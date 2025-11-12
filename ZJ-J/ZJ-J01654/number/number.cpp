@@ -1,0 +1,19 @@
+#include<bits/stdc++.h>
+using namespace std;
+int tong[15];
+string s;
+int main(){
+	freopen("number.in","r",stdin);
+	freopen("number.out","w",stdout);
+	cin>>s;
+	for(int i=0;i<s.size();i++){
+		if('0'<=s[i] and s[i]<='9'){
+			tong[int(s[i]-'0')]++;
+		}
+	}
+	for(int i=9;i>=0;i--){
+		char c=char(i+'0');
+		while(tong[i]--) cout<<c;
+	}
+	return 0;
+}

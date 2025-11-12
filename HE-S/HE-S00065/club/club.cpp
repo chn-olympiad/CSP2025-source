@@ -1,0 +1,166 @@
+#include<bits/stdc++.h>
+using namespace std;
+int T,n,A,B;
+long long a1[100005];
+int main()
+{
+	freopen("club.in","r",stdin);
+	freopen("club.out","w",stdout);
+	cin>>T;
+	for(int q=1;q<=T;q++)
+	{
+		cin>>n;
+		long long a,b,c,num1=0,A=0,B=0,a2=0,b2=0,c2=0;
+		for(int i=1;i<=n;i++)
+		{
+			cin>>a>>b>>c;
+			a1[i]=a*100000000+b*10000+c;
+			if(c==0)
+			{
+				B++;
+				if(b==0)
+				{
+					A++;
+				}
+			}
+		}
+		sort(a1,a1+100005);
+		if(A>=n)
+		{
+			for(int i=100004;i>=100004-n/2+1;i--)
+			{
+				num1+=a1[i]/100000000;
+			}
+			for(int i=100004;i>=100004-n+1;i--)
+			{
+				a1[i]=0;
+			}
+			cout<<num1;
+			continue;
+		}
+		if(B>=n)
+		{
+			for(int i=100004;i>=100004-n+1;i--)
+			{
+				a=a1[i]/100000000;
+				b=a1[i]%100000000/10000;
+				if(a2>=n/2)
+				{
+					a=-1;
+				}
+				if(b2>=n/2)
+				{
+					b=-1;
+				}
+				if(a>b)
+				{
+					if(b>a1[i-1]/100000000||a-b<a1[i-1]/100000000-a1[i-1]%100000000/10000)
+					{
+						num1+=b;
+						b2++;
+						continue;
+					}
+					else
+					{
+						num1+=a;
+						a2++;
+					}
+				}
+				else
+				{
+					if(a>a1[i-1]%100000000/10000||b-a<a1[i-1]%100000000/10000-a1[i-1]/100000000)
+					{
+						num1+=a;
+						a2++;
+						continue;
+					}
+					else
+					{
+						num1+=b;
+						b2++;
+					}
+				}
+			}
+			for(int i=100004;i>=100004-n+1;i--)
+			{
+				a1[i]=0;
+			}
+			cout<<num1;
+			continue;
+		}
+		for(int i=100004;i>=100004-n+1;i--)
+		{
+			a=a1[i]/100000000;
+			b=a1[i]%100000000/10000;
+			c=a1[i]%10000;
+			if(a2>=n/2)
+			{
+				a=-1;
+			}
+			if(c2>=n/2)
+			{
+				c=-1;
+			}
+			if(b2>=n/2)
+			{
+				b=-1;
+			}
+			if(a>b)
+			{
+				if(b>a1[i-1]/100000000||a-b<a1[i-1]/100000000-a1[i-1]%100000000/10000)
+				{
+					num1+=b;
+					b2++;
+					continue;
+				}
+				if(c>a1[i-1]/100000000||a-c<a1[i-1]/100000000-a1[i-1]%10000)
+				{
+					num1+=c;
+					c2++;
+					continue;
+				}
+				if(a>c)
+				{
+					num1+=a;
+					a2++;
+				}
+				else
+				{
+					num1+=c;
+					c2++;
+				}
+			}
+			else
+			{
+				if(a>a1[i-1]%100000000/10000||b-a<a1[i-1]%100000000/10000-a1[i-1]/100000000)
+				{
+					num1+=a;
+					a2++;
+					continue;
+				}
+				if(c>a1[i-1]%100000000/10000||b-c<a1[i-1]%100000000/10000-a1[i-1]%10000)
+				{
+					num1+=c;
+					c2++;
+					continue;
+				}
+				if(c>b)
+				{
+					num1+=c;
+					c2++;
+				}
+				else
+				{
+					num1+=b;
+					b2++;
+				}
+			}
+		}
+		cout<<num1;
+		for(int i=100004;i>=100004-n+1;i--)
+		{
+			a1[i]=0;
+		}
+	}
+	return 0;
+}

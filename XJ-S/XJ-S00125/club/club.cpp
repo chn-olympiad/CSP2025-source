@@ -1,0 +1,245 @@
+#include<bits/stdc++.h>
+using namespace std;
+long long int t,i,j,k,n,s,m1[1000003],f1[1000093],m2[1000003],f2[1000093],m3[1000003],f3[1000093]; 
+struct node
+{
+	long long int x,y,z;
+}q[1000005];
+int main()
+{
+	freopen("club.in","r",stdin);
+	freopen("club.out","w",stdout);
+	cin>>t;
+	while(t--)
+	{
+		int ans=0,a,b,c,p;
+		a=b=c=0;
+		cin>>n;
+		s=n/2;
+		for(i=1;i<=n;i++)
+		{
+			cin>>q[i].x>>q[i].y>>q[i].z;
+			
+		}
+		for(i=1;i<=n;i++)
+		{
+			m1[i]=-1;
+			m2[i]=-1;
+			m3[i]=-1;
+			for(j=1;j<=n;j++)
+			{
+				if(m1[i]<q[j].x) 
+				{
+					m1[i]=q[j].x;
+					f1[i]=j;
+				}
+				if(m2[i]<q[j].y) 
+				{
+					m2[i]=q[j].y;
+					f2[i]=j;
+				}
+				if(m3[i]<q[j].z) 
+				{
+					m3[i]=q[j].z;
+					f3[i]=j;
+				}
+			}
+			q[f1[i]].x=-1;
+			q[f2[i]].y=-1;
+			q[f3[i]].z=-1;
+			
+		}
+		for(int u=1;u<=n;u++)
+		for(i=1;i<=n;i++)
+		{
+			
+			if(f1[i]!=-1&&f2[i]!=-1&&f3[i]!=-1)
+			{
+				
+			if(f1[i]==f2[i])
+			{
+				if(m1[i]-m1[i+1]>=m2[i]-m2[i+1])
+				{
+					
+					m2[i]=0;
+					for(k=1;k<=n;k++)
+					{
+						if(m2[k]==0)
+						{
+							m2[k]=m2[k+1];
+							m2[k+1]=0;
+						}
+					}
+					for(j=i;j<=n;j++)
+					{
+						f2[j]=f2[j+1];
+					}f1[i]=-1;
+				}
+				else
+				if(m1[i]-m1[i+1]<=m2[i]-m2[i+1])
+				{
+					
+					m1[i]=0;
+					for(k=1;k<=n;k++)
+					{
+						if(m1[k]==0)
+						{
+							m1[k]=m1[k+1];
+							m1[k+1]=0;
+						}
+					}
+					for(j=i;j<=n;j++)
+					{
+						f1[j]=f1[j+1];
+					}f2[i]=-1;
+				}
+			}
+			else
+			if(f2[i]==f3[i])
+			{
+				if(m2[i]-m2[i+1]>=m3[i]-m3[i+1])
+				{
+					
+					m3[i]=0;
+					for(k=1;k<=n;k++)
+					{
+						if(m3[k]==0)
+						{
+							m3[k]=m3[k+1];
+							m3[k+1]=0;
+						}
+					}
+					for(j=i;j<=n;j++)
+					{
+						f3[j]=f3[j+1];
+					}f2[i]=-1;
+				}
+				else
+				if(m2[i]-m2[i+1]<=m3[i]-m3[i+1])
+				{
+					
+					m2[i]=0;
+					for(k=1;k<=n;k++)
+					{
+						if(m2[k]==0)
+						{
+							m2[k]=m2[k+1];
+							m2[k+1]=0;
+						}
+					}
+					for(j=i;j<=n;j++)
+					{
+						f2[j]=f2[j+1];
+					}f3[i]=-1;
+				}
+			}
+			else
+			if(f3[i]==f1[i])
+			{
+				if(m3[i]-m3[i+1]>=m1[i]-m1[i+1])
+				{
+					
+					m1[i]=0;
+					for(k=1;k<=n;k++)
+					{
+						if(m1[k]==0)
+						{
+							m1[k]=m1[k+1];
+							m1[k+1]=0;
+						}
+					}
+					for(j=i;j<=n;j++)
+					{
+						f1[j]=f1[j+1];
+					}f3[i]=-1;
+				}
+				else
+				if(m3[i]-m3[i+1]<=m1[i]-m1[i+1])
+				{
+					
+					m3[i]=0;
+					for(k=1;k<=n;k++)
+					{
+						if(m3[k]==0)
+						{
+							m3[k]=m3[k+1];
+							m3[k+1]=0;
+						}
+					}
+					for(j=i;j<=n;j++)
+					{
+						f3[j]=f3[j+1];
+					}f1[i]=-1;
+				}
+				
+			}
+		}
+			else
+			{
+				if(f1[i]==-1)
+				{
+					m1[i]=0;
+					for(k=1;k<=n;k++)
+					{
+						if(m1[k]==0)
+						{
+							m1[k]=m1[k+1];
+							m1[k+1]=0;
+						}
+					}
+				}
+				else
+				if(f2[i]==-1)
+				{
+					m2[i]=0;
+					for(k=1;k<=n;k++)
+					{
+						if(m2[k]==0)
+						{
+							m2[k]=m2[k+1];
+							m2[k+1]=0;
+						}
+					}
+				}
+				else
+				if(f3[i]==-1)
+				{
+					
+					m3[i]=0;
+					for(k=1;k<=n;k++)
+					{
+						if(m3[k]==0)
+						{
+							m3[k]=m3[k+1];
+							m3[k+1]=0;
+						}
+					}
+				}
+			}
+			
+		}
+		for(i=1;i<=n;i++)
+		{
+			ans+=m1[i]+m2[i]+m3[i];
+			a++;
+			b++;
+			c++;
+			if(a>s)
+			{
+				ans-=m1[i];
+				a--;
+			}
+			if(b>s)
+			{
+				ans-=m2[i];
+				b--;
+			}
+			if(c>s)
+			{
+				ans-=m3[i];
+				c--;
+			}
+		}cout<<ans<<endl;
+	}
+	return 0;
+}

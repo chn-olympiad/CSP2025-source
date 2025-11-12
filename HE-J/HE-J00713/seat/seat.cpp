@@ -1,0 +1,83 @@
+#include<bits/stdc++.h>
+#include<cstdio>
+#include<cctype>
+using namespace std;
+
+const int N=1e4+5;
+
+int a[N];
+bool cmp(int a,int b)
+{
+	return a>b;
+}
+int ans[1005][1005];
+
+int main()
+{
+	freopen("seat.in","r",stdin);
+	freopen("seat.out","w",stdout);
+	int n,m;
+	cin>>n>>m;
+	for(int i=1;i<=n*m;i++)
+	{
+		cin>>a[i];
+	}
+	int r=a[1];
+	
+	sort(a+1,a+n*m+1,cmp);
+	
+	int now=1;
+	for(int i=1;i<=m;i++)
+	{
+		if(i%2==1)
+		{
+			for(int j=1;j<=n;j++)
+			{
+				ans[j][i]=a[now++];
+			}
+		}
+		else
+		{
+			for(int j=n;j>=1;j--)
+			{
+				ans[j][i]=a[now++];
+			}
+		}
+	}
+	///
+	/*
+	cout<<"a[1]="<<r<<endl;
+	for(int i=1;i<=n*m;i++)
+	{
+		cout<<a[i]<<" ";
+	}
+	cout<<endl;
+	///
+	
+	for(int i=1;i<=n;i++)
+	{
+		for(int j=1;j<=m;j++)
+		{
+			cout<<i<<" "<<j<<"->"<<ans[i][j]<<",";
+			
+		}
+		cout<<endl;
+	}*/
+	
+	for(int i=1;i<=n;i++)
+	{
+		for(int j=1;j<=m;j++)
+		{
+			if(ans[i][j]==r)
+			{
+				cout<<j<<" "<<i<<endl;
+			}
+		}
+	}
+	return 0;
+}
+/*
+
+2 2 99 100 97 98
+
+*/

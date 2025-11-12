@@ -1,0 +1,14 @@
+#include<bits/stdc++.h>
+using namespace std;
+const int N=5e5+10;
+long long n,k,a[N];
+int main(){
+	freoppen("xor.in","r","stdin")
+	freoppen("xor.out","w","stdout")
+	cin>>n>>k;
+	for(int i=1;i<=n;i++){
+		cin>>a[i];
+		}
+	cout<<2; 
+	return 0;
+}

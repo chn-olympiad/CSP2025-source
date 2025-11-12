@@ -1,0 +1,10 @@
+#include"bits/stdc++.h"
+using namespace std;
+int main(){
+	freopen("replace.in","r",stdin);
+	freopen("replace","w",stdout);
+	int a;
+	cin>>a>>a;
+	for(int i=0;i<a;i++) cout<<0<<endl;
+	return 0;
+}

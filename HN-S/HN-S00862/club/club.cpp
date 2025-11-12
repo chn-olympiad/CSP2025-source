@@ -1,0 +1,170 @@
+#include<bits/stdc++.h>
+using namespace std;
+int v,s=1,bb=0,yi=0,er=0,san=0;
+long long a[100005],b[100005],c[100005],da[100005];
+int daxiao(int x,int y,int z,int v)
+{
+	if(x>y&&x>z)
+	{
+		if(yi<v/2)
+		{
+			da[s]=x;
+			s++;
+			yi++;
+		}
+		else
+		{
+			if(y>z)
+			{
+				da[s]=y;
+				s++;
+				er++;
+			}
+			if(z>y)
+			{
+				da[s]=z;
+				s++;
+				san++;
+			}
+			if(y==z)
+			{
+				if(er>=san)
+				{
+					da[s]=z;
+					s++;
+					san++;
+				}
+				if(er<san)
+				{
+					da[s]=y;
+					s++;
+					er++;
+				}
+			}
+		}
+	}
+	if(y>x&&y>z)
+	{
+		if(er<v/2)
+		{
+			da[s]=y;
+			s++;
+			er++;
+		}
+		else
+		{
+			if(x>z)
+			{
+				da[s]=x;
+				s++;
+				yi++;
+			}
+			if(z>x)
+			{
+				da[s]=z;
+				s++;
+				san++;
+			}
+			if(x==z)
+			{
+				if(yi>=san)
+				{
+					da[s]=z;
+					s++;
+					san++;
+				}
+				if(yi<san)
+				{
+					da[s]=x;
+					s++;
+					yi++;
+				}
+			}
+		}
+	}
+	if(z>y&&z>x)
+	{
+		if(san<v/2)
+		{
+			da[s]=z;
+			s++;
+			san++;
+		}
+		else
+		{
+			if(y>x)
+			{
+				da[s]=y;
+				s++;
+				er++;
+			}
+			if(x>y)
+			{
+				da[s]=x;
+				s++;
+				yi++;
+			}
+			if(y==x)
+			{
+				if(er>=yi)
+				{
+					da[s]=x;
+					s++;
+					yi++;
+				}
+				if(er<yi)
+				{
+					da[s]=y;
+					s++;
+					er++;
+				}
+			}
+		}
+	}
+}
+void shu(int n)
+{
+	v=n;
+	while(n>0)
+	{
+		cin>>a[n]>>b[n]>>c[n];
+		n--;
+	}
+	for(int i=1;i<=v;i++)
+	{
+		daxiao(a[i],b[i],c[i],v);
+		bb=da[i]+bb;
+	}
+	cout<<bb<<endl;
+}
+int main()
+{
+	freopen("club.in","r",stdin);
+	freopen("club.out","w",stdout);
+	long long n,t,m;
+	cin>>t;
+	while(t>0)
+	{
+		t--;
+		cin>>n;
+		for(int i=1;i<=n;i++)
+		{
+			a[i]=0;
+			b[i]=0;
+			c[i]=0;
+		}
+		bb=0;
+		yi=0;
+		er=0;
+		san=0;
+		s=1;
+		
+		shu(n);
+	}
+			
+	
+	return 0;	
+} 
+
+
+

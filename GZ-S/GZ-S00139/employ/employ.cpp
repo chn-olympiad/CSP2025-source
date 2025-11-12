@@ -1,0 +1,17 @@
+//GZ-S00139 贵阳市第三实验中学 宋诗迪
+//?树 
+#include<bits/stdc++.h>
+using namespace std;
+void Solve_time(){
+	ios::sync_with_stdio(false);
+	cin.tie(0);
+}
+int main(){
+	freopen("employ.in","r",stdin);
+	freopen("employ.out","w",stdout);
+	Solve_time();
+	
+	return 0;
+	fclose(stdin);
+	fclose(stdout);	
+}

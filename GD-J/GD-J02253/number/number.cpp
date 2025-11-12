@@ -1,0 +1,28 @@
+#include<bits/stdc++.h>
+#include<cstdio>
+using namespace std;
+
+int cnt = 0, a[1000005];
+string s;
+
+bool cmp1(int a, int b) {
+	return a > b;
+}
+
+int main() {
+	freopen("number.in", "r", stdin);
+	freopen("number.out", "w", stdout);
+
+	cin >> s;
+	for(int i = 0;i < s.size(); i++) {
+		if(s[i] >= '0' && s[i] <= '9') a[cnt++] = s[i] - '0'; 
+	}
+	
+	sort(a, a + cnt, cmp1);
+	
+	for(int i = 0; i < cnt; i++){
+		cout << a[i];
+	} 
+	cout << endl;
+	return 0;
+}

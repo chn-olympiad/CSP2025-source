@@ -1,0 +1,19 @@
+#include<iostream>
+using namespace std;
+int num[15];
+int main(){
+	freopen("number.in","r",stdin);
+	freopen("number.out","w",stdout);
+	string s;
+	cin>>s;
+	for(int i=0;i<s.length();i++){
+		if(s[i]>='0'&&s[i]<='9')
+			num[s[i]-'0']++;
+	}
+	for(int i=9;i>=0;i--){
+		for(int j=num[i];j>=1;j--)
+			cout<<i;
+	}
+	fclose(stdin);
+	fclose(stdout);
+}

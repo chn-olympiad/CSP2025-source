@@ -1,0 +1,37 @@
+#interesting
+int s()
+{
+	if(s%100>1)
+	{
+		cout<<s;
+	 } 
+	else
+	{
+		cout<<s%100;
+	}
+	if(s%10>10)
+	{
+		cout<<s;
+	 }
+	else
+	{
+	 	cont<<s%10;
+	}
+		if(s%100>1)
+	{
+		cout<<s;
+	 } 
+	else
+	{
+		cout<<s%100;
+	}
+	if(s%10>10)
+	{
+		cout<<s;
+	 }
+	else
+	{
+	 	cont<<s%10;
+	}
+}
+return 0;

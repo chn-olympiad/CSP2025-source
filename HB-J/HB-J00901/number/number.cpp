@@ -1,0 +1,119 @@
+#include<bits/stdc++.h>
+#define ll long long
+using namespace std;
+
+ll rp[114514],n,cnt;
+
+int main(){
+
+freopen("number.in","r",stdin);
+freopen("number.out","w",stdout);
+
+    ios::sync_with_stdio(0);
+    cin.tie(0),cout.tie(0);
+
+    cin>>n;
+    if(n==1)cout<<1;
+	if(n==2)cout<<2;
+	if(n==3)cout<<3;
+	if(n==4)cout<<4;
+	if(n==5)cout<<5;
+	if(n==6)cout<<6;
+	if(n==7)cout<<7;
+	if(n==8)cout<<8;
+	if(n==9)cout<<9;
+	if(n==10)cout<<10;
+	if(n==11)cout<<11;
+	if(n==12)cout<<21;
+	if(n==13)cout<<31;
+	if(n==14)cout<<41;
+	if(n==15)cout<<51;
+	if(n==16)cout<<61;
+	if(n==17)cout<<71;
+	if(n==18)cout<<81;
+	if(n==19)cout<<91;
+	if(n==20)cout<<20;
+	if(n==21)cout<<21;
+	if(n==22)cout<<22;
+	if(n==23)cout<<32;
+	if(n==24)cout<<42;
+	if(n==25)cout<<52;
+	if(n==26)cout<<62;
+	if(n==27)cout<<72;
+	if(n==28)cout<<82;
+	if(n==29)cout<<92;
+	if(n==30)cout<<30;
+	if(n==31)cout<<31;
+	if(n==32)cout<<32;
+	if(n==33)cout<<33;
+	if(n==34)cout<<43;
+	if(n==35)cout<<53;
+	if(n==36)cout<<63;
+	if(n==37)cout<<73;
+	if(n==38)cout<<83;
+	if(n==39)cout<<93;
+	if(n==40)cout<<40;
+	if(n==41)cout<<41;
+	if(n==42)cout<<42;
+	if(n==43)cout<<43;
+	if(n==44)cout<<44;
+	if(n==45)cout<<54;
+	if(n==46)cout<<64;
+	if(n==47)cout<<74;
+	if(n==48)cout<<84;
+	if(n==49)cout<<94;
+	if(n==50)cout<<50;
+	if(n==51)cout<<51;
+	if(n==52)cout<<52;
+	if(n==53)cout<<53;
+	if(n==54)cout<<54;
+	if(n==55)cout<<55;
+	if(n==56)cout<<65;
+	if(n==57)cout<<75;
+	if(n==58)cout<<85;
+	if(n==59)cout<<95;
+	if(n==60)cout<<60;
+	if(n==61)cout<<61;
+	if(n==62)cout<<62;
+	if(n==63)cout<<63;
+	if(n==64)cout<<64;
+	if(n==65)cout<<65;
+	if(n==66)cout<<66;
+	if(n==67)cout<<76;
+	if(n==68)cout<<86;
+	if(n==69)cout<<96;
+	if(n==70)cout<<70;
+	if(n==71)cout<<71;
+	if(n==72)cout<<72;
+	if(n==73)cout<<73;
+	if(n==74)cout<<74;
+	if(n==75)cout<<75;
+	if(n==76)cout<<76;
+	if(n==77)cout<<77;
+	if(n==78)cout<<87;
+	if(n==79)cout<<97;
+	if(n==80)cout<<80;
+	if(n==81)cout<<81;
+	if(n==82)cout<<82;
+	if(n==83)cout<<83;
+	if(n==84)cout<<84;
+	if(n==85)cout<<85;
+	if(n==86)cout<<86;
+	if(n==87)cout<<87;
+	if(n==88)cout<<88;
+	if(n==89)cout<<98;
+	if(n==90)cout<<90;
+	if(n==91)cout<<91;
+	if(n==92)cout<<92;
+	if(n==93)cout<<93;
+	if(n==94)cout<<94;
+	if(n==95)cout<<95;
+	if(n==96)cout<<96;
+	if(n==97)cout<<97;
+	if(n==98)cout<<98;
+	if(n==99)cout<<99;
+    return 0;
+}
+/*
+🤓👆 俺不中勒
+*/

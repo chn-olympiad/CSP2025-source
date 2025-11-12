@@ -1,0 +1,25 @@
+#include <bits/stdc++.h>
+using namespace std;
+bool cmp(int x,int y){
+	return x > y;
+}
+int main(){
+	freopen("number.in","r",stdin);
+	freopen("number.out","w",stdout);
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+	cout.tie(0);
+	vector<int> a;
+	string s;
+	cin >> s;
+	for(int i = 0;i < (int)s.size();i++){
+		if('0' <= s[i] && s[i] <= '9'){
+			a.push_back(s[i] - '0');
+		}
+	}
+	sort(a.begin(),a.end(),cmp);
+	for(int i = 0;i < (int)a.size();i++){
+		cout << a[i];
+	}
+	return 0;
+}

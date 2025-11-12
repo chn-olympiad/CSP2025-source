@@ -1,0 +1,12 @@
+#include<bits/stdc++.h>
+using namespace std;
+int n,a[10010];
+int main(){
+    freopen("polygon.in","r",stdin);
+    freopen("polygon.out","w",stdout);
+    scanf("%d",&n);
+    for(int i=1;i<=n;i++)scanf("%d",&a[i]);
+    for(int i=n;i>=3;i++)if(
+    return 0;
+}
+//#Shang4Shan3Ruo6Shui4

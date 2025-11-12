@@ -1,0 +1,42 @@
+#include<bits/stdc++.h>
+using namespace std;
+string s;
+int num[10];
+int main(){
+	freopen("number.in","r",stdin);
+	freopen("number.out","w",stdout);
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+	cout.tie(0);
+	cin>>s;
+	for(int i=0;i<s.size();i++)
+	{
+		if('0'<=s[i]&&s[i]<='9')
+		{
+			num[s[i]-'0']++; 
+		}
+	}
+	for(int i=9;i>=0;i--)
+	{
+//		cout<<num[i]<<endl;
+		for(int j=1;j<=num[i];j++) cout<<i;
+	}
+	return 0;
+} 
+/*
+mi huo xing wei da shang
+
+
+
+Wo Bi Xu Yao Hen Hen Peng Ji Yi Xia
+
+
+bu shi,
+kao chang kong tiao zen me zhe me leng , hai dui zhe wo chui
+
+
+du zi hao teng 
+
+
+666 zai ce suo cuan le 10min
+*/

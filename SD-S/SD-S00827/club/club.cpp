@@ -1,0 +1,213 @@
+#include <bits/stdc++.h>
+using namespace std;
+long long a[100005],b[100005],c[100005],d[4];
+bool cmp(int a,int b)
+{
+	return a>b;
+}
+int main()
+{
+	freopen("club.in","r",stdin);
+	freopen("club.out","w",stdout);
+	long long t,n,x,s=0,e,maxn=0,f;
+	cin>>t;
+	for(int i=1;i<=t;i++)
+	{
+		cin>>n;
+		x=n/2;
+		s=0;
+		for(int k=1;k<=3;k++)
+		{
+			d[k]=0;
+		}
+		for(int j=1;j<=n;j++)
+		{
+			cin>>a[j]>>b[j]>>c[j];
+		}
+		if(n==2)
+		{
+			if(a[1]>b[1]&&a[1]>c[1])
+			{
+				s+=a[1];
+				e=1;
+			}
+			if(b[1]>c[1]&&b[1]>a[1])
+			{
+				s+=b[1];
+				e=2;
+			}
+			if(c[1]>b[1]&&c[1]>a[1])
+			{
+				s+=c[1];
+				e=3;
+			}
+			if(a[2]>b[2]&&a[2]>c[2])
+			{
+				s+=a[2];
+				f=1;
+			}
+			if(b[2]>c[2]&&b[2]>a[2])
+			{
+				s+=b[2];
+				f=2;
+			}
+			if(c[2]>b[2]&&c[2]>a[2])
+			{
+				s+=c[2];
+				f=3;
+			}
+			if(e==f&&e==1)
+			{
+				s=0;
+				maxn=0;
+				maxn+=max(b[1],c[1]);
+				maxn+=a[2];
+				s+=max(b[2],c[2]);
+				s+=a[1];
+				if(s>=maxn)
+				{
+					maxn=s;
+				}
+				cout<<maxn<<endl;
+				continue;
+			}
+			if(e==f&&e==2)
+			{
+				s=0;
+				maxn=0;
+				maxn+=max(a[1],c[1]);
+				maxn+=b[2];
+				s+=max(a[2],c[2]);
+				s+=b[1];
+				if(s>=maxn)
+				{
+					maxn=s;
+				}
+				cout<<maxn<<endl;
+				continue;
+			}
+			if(e==f&&e==3)
+			{
+				s=0;
+				maxn=0;
+				maxn+=max(b[1],a[1]);
+				maxn+=c[2];
+				s+=max(b[2],a[2]);
+				s+=c[1];
+				if(s>=maxn)
+				{
+					maxn=s;
+				}
+				cout<<maxn<<endl;
+				continue;
+			}
+			cout<<s<<endl;
+			continue;
+		}
+		if(b[1]==c[1]&&b[1]==0)
+		{
+			sort(a+1,a+1+n,cmp);
+			for(int j=1;j<=x;j++)
+			{
+				s+=a[j];
+			}
+			cout<<s<<endl;
+			continue;
+		}
+		if(b[1]==a[1]&&b[1]==0)
+		{
+			sort(c+1,c+1+n,cmp);
+			for(int j=1;j<=x;j++)
+			{
+				s+=c[j];
+			}
+			cout<<s<<endl;
+			continue;
+		}
+		if(c[1]==a[1]&&c[1]==0)
+		{
+			sort(b+1,b+1+n,cmp);
+			for(int j=1;j<=x;j++)
+			{
+				s+=b[j];
+			}
+			cout<<s<<endl;
+			continue;
+		}
+		for(int j=1;j<=n;j++)
+		{
+			if(a[j]==b[j]&&b[j]>=c[j])
+			{
+				s+=a[j];
+				continue;
+			}
+			if(b[j]==c[j]&&c[j]>=a[j])
+			{
+				s+=b[j];
+				continue;
+			}
+			if(a[j]==c[j]&&a[j]>=b[j])
+			{
+				s+=a[j];
+				continue;
+			}
+			if(a[j]>b[j]&&a[j]>c[j])
+			{
+				if(d[1]<x)
+				{
+					s+=a[j];
+					d[1]++;
+				}
+				else if(b[j]>c[j])
+				{
+					s+=b[j];
+					d[2]++;
+				}
+				else
+				{
+					s+=c[j];
+					d[3]++;
+				}
+			}
+			else if(b[j]>a[j]&&b[j]>c[j])
+			{
+				if(d[2]<x)
+				{
+					s+=b[j];
+					d[2]++;
+				}
+				else if(a[j]>c[j])
+				{
+					s+=a[j];
+					d[1]++;
+				}
+				else
+				{
+					s+=c[j];
+					d[3]++;
+				}
+			}
+			else if(c[j]>a[j]&&c[j]>b[j])
+			{
+				if(d[3]<x)
+				{
+					s+=c[j];
+					d[3]++;
+				}
+				else if(a[j]>b[j])
+				{
+					s+=a[j];
+					d[1]++;
+				}
+				else
+				{
+					s+=b[j];
+					d[2]++;
+				}
+			}
+		}
+		cout<<s<<endl;
+	}
+	cout<<endl;
+	return 0;
+ } 

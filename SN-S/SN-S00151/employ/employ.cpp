@@ -1,0 +1,13 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	freopen("employ.in","r",stdin);
+	freopen("employ.out","w",stdout);
+	int n, m, k;
+	cin >> n >> m >> k;
+	int r = rand() % k;
+	cout<<r;
+	
+	return 0;
+}

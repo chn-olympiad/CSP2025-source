@@ -1,0 +1,79 @@
+#include<bits/stdc++.h>
+using namespace std;
+int n,a[1000005],f;
+string s;
+int main()
+{
+    freopen("number.in","r",stdin);
+    freopen("number.out","w",stdout);
+    cin>>s;
+    for(int i=0;i<=s.size()-1;i++)
+    {
+        if(s[i]=='1')
+        {
+            a[i]=1;
+            n++;
+        }
+        if(s[i]=='2')
+        {
+            a[i]=2;
+            n++;
+        }
+        if(s[i]=='3')
+        {
+            a[i]=3;
+            n++;
+        }
+        if(s[i]=='4')
+        {
+            a[i]=4;
+            n++;
+        }
+        if(s[i]=='5')
+        {
+            a[i]=5;
+            n++;
+        }
+        if(s[i]=='6')
+        {
+            a[i]=6;
+            n++;
+        }
+        if(s[i]=='7')
+        {
+            a[i]=7;
+            n++;
+        }
+        if(s[i]=='8')
+        {
+            a[i]=8;
+            n++;
+        }
+        if(s[i]=='9')
+        {
+            a[i]=9;
+            n++;
+        }
+        if(s[i]=='0')
+        {
+            a[i]=0;
+            n++;
+        }
+    }
+    if(n==1)
+    {
+        cout<<a[0];
+    }
+    else
+    {
+    sort(a,a+n);
+    int i=0;
+    while(i<n)
+    {
+        f+=a[i]*pow(10,i);
+        i++;
+    }
+    cout<<f;
+    }
+    return 0;
+}

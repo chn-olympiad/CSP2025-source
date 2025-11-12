@@ -1,0 +1,113 @@
+#include<bits/stdc++.h>
+using namespace std;
+long long n,a[5010];
+int main(){
+    freopen("polygon.in","r",stdin);
+    freopen("polygon.out","w",stdout);
+    cin>>n;
+    if(n==3){
+        long long a,b,c,maxn;
+        cin>>a>>b>>c;
+        maxn=max(a,max(c,b));
+        if((a+b+c)>(maxn*2)){
+            cout<<1;
+        }else{
+            cout<<0;
+        }
+    }else if(n==4){
+        long long a,b,c,d,cnt=0,maxn;
+        cin>>a>>b>>c>>d;
+        maxn=max(a,max(c,b));
+        if((a+b+c)>(maxn*2)){
+            cnt++;
+        }
+        maxn=max(a,max(c,d));
+        if((a+d+c)>(maxn*2)){
+            cnt++;
+        }
+        maxn=max(d,max(c,b));
+        if((d+b+c)>(maxn*2)){
+            cnt++;
+        }
+        maxn=max(d,max(a,b));
+        if((d+b+a)>(maxn*2)){
+            cnt++;
+        }
+        maxn=max(d,max(c,max(a,b)));
+        if((a+d+b+c)>(maxn*2)){
+            cnt++;
+        }
+        cout<<cnt;
+    }else if(n==5){
+        long long a,b,c,d,e,cnt=0,maxn;
+        cin>>a>>b>>c>>d>>e;
+        maxn=max(a,max(b,e));
+        if((a+b+e)>(maxn*2)){
+            cnt++;
+        }
+        maxn=max(a,max(c,e));
+        if((a+e+c)>(maxn*2)){
+            cnt++;
+        }
+        maxn=max(a,max(e,d));
+        if((a+d+e)>(maxn*2)){
+            cnt++;
+        }
+        maxn=max(d,max(a,b));
+        if((d+b+a)>(maxn*2)){
+            cnt++;
+        }
+        maxn=max(a,max(c,b));
+        if((a+b+c)>(maxn*2)){
+            cnt++;
+        }
+        maxn=max(a,max(c,d));
+        if((a+d+c)>(maxn*2)){
+            cnt++;
+        }
+        maxn=max(d,max(c,b));
+        if((d+b+c)>(maxn*2)){
+            cnt++;
+        }
+        maxn=max(d,max(c,e));
+        if((d+e+c)>(maxn*2)){
+            cnt++;
+        }
+        maxn=max(e,max(c,b));
+        if((e+b+c)>(maxn*2)){
+            cnt++;
+        }
+        maxn=max(d,max(e,b));
+        if((d+b+e)>(maxn*2)){
+            cnt++;
+        }
+        maxn=max(d,max(c,max(a,b)));
+        if((a+d+b+c)>(maxn*2)){
+            cnt++;
+        }
+        maxn=max(e,max(c,max(a,b)));
+        if((a+e+b+c)>(maxn*2)){
+            cnt++;
+        }
+        maxn=max(d,max(e,max(a,b)));
+        if((a+d+b+e)>(maxn*2)){
+            cnt++;
+        }
+        maxn=max(d,max(c,max(a,e)));
+        if((a+e+d+c)>(maxn*2)){
+            cnt++;
+        }
+        maxn=max(d,max(c,max(e,b)));
+        if((e+d+b+c)>(maxn*2)){
+            cnt++;
+        }
+        maxn=max(d,max(c,max(a,max(b,e))));
+        if((a+d+b+c+e)>(maxn*2)){
+            cnt++;
+        }
+        cout<<cnt;
+    }else{
+        cout<<(int)((sqrt(2*n)*(n-1))%998244353);
+    }
+    return 0;
+}

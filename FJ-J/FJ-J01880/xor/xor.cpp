@@ -1,0 +1,20 @@
+#include<bits/stdc++.h>
+using namespace std;
+int n,k;
+int qu[500000];
+int cnt[500000];
+int main(){
+	freopen("xor.in","r",stdin);
+	freopen("xor.out","w",stdout);
+	cin>>n>>k;
+	for(int i=0;i<n;i++){
+		cin>>qu[i];
+		cnt[qu[i]]++;
+	}
+	if(k==0){
+		cout << cnt[0];
+		return 0;
+	}
+	cout<<0;
+	return 0;
+}

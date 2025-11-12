@@ -1,0 +1,13 @@
+#include<bits/stdc++.h>
+using namespace std;
+char a[1111];
+int main()
+{
+	freopen("number.in","r",stdin);	
+	freopen("number.out","w",stdout);
+	cin>>a;
+	cout<<a;
+	
+	
+	return 0;
+}

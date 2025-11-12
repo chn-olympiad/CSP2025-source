@@ -1,0 +1,93 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+	freopen("number.in","r",stdin);
+	freopen("number.out","w",stdout);
+long long w=0,a,c=0,sum=1,a0=0,a1=0,a2=0,a3=0,a4=0,a5=0,a6=0,a7=0,a8=0,a9=0;
+cin>>a;
+for(int i=0;i<10000;i++){
+	c++;
+	sum*=10;
+	if(a/sum==0){
+		break;
+	}
+}
+for(int i=0;i<c;i++){
+	if(a/(sum/10)%10==0){
+		a0++;
+	}
+	if(a/(sum/10)%10==1){
+		a1++;
+	}
+	if(a/(sum/10)%10==2){
+		a2++;
+	}
+	if(a/(sum/10)%10==3){
+		a3++;
+	}
+	if(a/(sum/10)%10==4){
+		a4++;
+	}
+	if(a/(sum/10)%10==5){
+		a5++;
+	}
+	if(a/(sum/10)%10==6){
+		a6++;
+	}
+	if(a/(sum/10)%10==7){
+		a7++;
+	}
+	if(a/(sum/10)%10==8){
+		a8++;
+	}
+	if(a/(sum/10)%10==9){
+		a9++;
+	}
+	sum/=10;
+}
+for(int i=0;i<c;i++){
+	if(a0!=0){
+		w+=0*sum;
+		continue;
+	}
+	if(a1!=0){
+		w+=1*sum;
+		continue;
+	}
+	if(a2!=0){
+		w+=2*sum;
+		continue;
+	}
+	if(a3!=0){
+		w+=3*sum;
+		continue;
+	}
+	if(a4!=0){
+		w+=4*sum;
+		continue;
+	}
+	if(a5!=0){
+		w+=5*sum;
+		continue;
+	}
+	if(a6!=0){
+		w+=6*sum;
+		continue;
+	}
+	if(a7!=0){
+		w+=7*sum;
+		continue;
+	}
+	if(a8!=0){
+		w+=8*sum;
+		continue;
+	}
+	if(a9!=0){
+		w+=9*sum;
+		continue;
+	}
+	sum*=10;
+}
+cout<<w;
+		return 0;
+} 

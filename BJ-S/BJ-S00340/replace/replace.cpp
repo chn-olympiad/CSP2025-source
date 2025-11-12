@@ -1,0 +1,15 @@
+#include<bits/stdc++.h>
+using namespace std;
+int n,m,q;
+long long num;
+int main(){
+	freopen("replace.in","r",stdin);
+	freopen("replace.out","w",stdout);
+	cin>>n>>q;
+	for(int i=1;i<=q;i++){
+		cout<<1<<endl;
+	}
+
+
+	return 0;
+}

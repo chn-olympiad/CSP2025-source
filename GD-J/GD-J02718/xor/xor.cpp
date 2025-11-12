@@ -1,0 +1,91 @@
+#include<bits/stdc++.h>
+using namespace std;
+int n,k,a[500001],ans;
+int main()
+{
+	freopen("xor.in","r",stdin);
+	freopen("xor.out","w",stdout);
+	cin>>n>>k;
+	for(int i=1;i<=n;i++)
+	  cin>>a[i];
+	if(n==1)
+	{
+		if(a[1]==k)
+		  cout<<"1";
+		else
+		  cout<<"0";
+	}
+	else if(n==2)
+	{
+		if(a[1]==k)
+		{
+			if(a[2]==k)
+			  cout<<"2";
+			else
+			  cout<<"1";
+		}
+		else
+		{
+			if(a[2]==k)
+			  cout<<"1";
+			else
+			{
+				if((a[1]==a[2]&&k==1)||(a[1]!=a[2]&&k==0))
+				  cout<<"0";
+				else
+				  cout<<"1";
+		    }
+		}
+	}
+	else if(n==3)
+	{
+		if(a[1]==k)
+		{
+			if(a[2]==k)
+			{
+				if(a[3]==k)
+				  cout<<"3";
+				else
+				  cout<<"2";
+			}
+			else
+			{
+				if(a[3]==k)
+				  cout<<"2";
+				else
+				  cout<<"1";
+			}  
+		}
+		else
+		{
+			if(a[2]==k)
+			{
+				if(a[3]==k)
+				  cout<<"2";
+				else
+				  cout<<"1";
+			}
+			else
+			{
+				if(a[3]==k)
+				{
+				    if((a[1]==a[2]&&k==1)||(a[1]!=a[2]&&k==0))
+				      cout<<"1";
+				    else
+				      cout<<"2";
+			    }
+			    else
+			    {
+			    	if((a[1]==a[2]&&k==1)||(a[1]!=a[2]&&k==0))
+			    	  ans++;
+			    	if((a[2]==a[3]&&k==1)||(a[2]!=a[3]&&k==0))
+			    	  ans++;
+			    	if((a[1]==a[3]&&k==1)||(a[1]!=a[3]&&k==0))
+			    	  ans++;
+			    	cout<<ans;
+				}
+			}  
+		}
+	}
+	return 0;
+}

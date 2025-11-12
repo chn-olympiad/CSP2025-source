@@ -1,0 +1,73 @@
+#include<bits/stdc++.h>
+using namespace std;
+long long int a[5][10000005],ans=0,a1[100005],a2[1000005],a3[1000005],s=0,maxn=0,k,d,f,c[5];
+int main()
+{
+	freopen("club.in","r",stdin);
+	freopen("club.out","w",stdout);
+	long long int  m,n,i1,i2,i3,i4,i5,i,j;
+	cin>>m;
+	for(i=1;i<=m;i++)
+	{
+		cin>>n;
+		s=0;
+		ans=0;
+		maxn=0;
+		for(i5=1;i5<=n;i5++)
+		{
+			a1[i]=0;
+			a2[i]=0;
+			a3[i]=0;	
+		}
+		for(i1=1;i1<=3;i1++)
+		{
+			for(j=1;j<=n;j++)
+			{	
+				cin>>a[i1][j];
+				if(i1==1)
+				a1[++k]=a[i1][j];
+				if(i1==2)
+				a2[++d]=a[i1][j];
+				if(i1==3)
+				a3[++f]=a[i1][j];
+				if(i1==1)
+				if(a[1][j]>maxn)
+				{
+					maxn=a[1][j];
+					s=j;
+				}
+				if(i1==2)
+				if(a[2][j]>maxn)
+				{
+					maxn=a[2][j];
+					s=j;
+				}
+				if(i1==3)
+				if(a[3][j]>maxn)
+				{
+					maxn=a[3][j];
+					s=j;
+				}
+			}	
+			c[s]++;
+			if(c[s]>(n/2))
+			{
+			sort(a1+1,a1+1+k);
+			sort(a2+1,a2+1+d);
+			sort(a3+1,a3+1+f);
+			if(s==1)
+			for(i2=k;i2>=n/2;i2++)
+			ans+=a1[i2];
+			if(s==2)
+			for(i3=d;i3>=n/2;i3++)
+			ans+=a2[i3];
+			if(s==3)
+			for(i4=f;i4>=n/2;i4++)
+			ans+=a3[i4];
+			}
+				else
+				ans+=maxn;
+		}cout<<ans;
+	}
+	return 0;
+}

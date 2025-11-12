@@ -1,0 +1,33 @@
+#include<bits/stdc++.h>
+using namespace std;
+string s;
+int a[1000010];
+int main(){
+	freopen("number.in","r",stdin);
+	freopen("number.out","w",stdout);
+	cin>>s;
+	int n=s.length();
+	bool ma=0;
+	for (int i=0;i<n;i++){
+		if (s[i]!='0'){
+			ma=1;
+		}
+	}
+	if (ma==0){
+		cout<<0;
+		return 0;
+	}
+	for (int i=0;i<n;i++){
+		if (s[i]>='0'&&s[i]<='9'){
+			int tmp=s[i]-48;
+			a[tmp]++;
+		}
+	}
+	for (int i=9;i>=0;i--){
+		if (a[i]==0) continue;
+		for (int j=1;j<=a[i];j++){
+			cout<<i;
+		}
+	}
+	return 0;
+}

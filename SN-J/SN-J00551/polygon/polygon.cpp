@@ -1,0 +1,178 @@
+#include<bits/stdc++.h>
+using namespace std;
+int n,maxx=-1;
+long long sum=0;
+int a[5005];
+bool pan(int x1,int x2,int x3)
+{
+	int maxp=-1;
+	if(a[x1]>maxp)
+	{
+		maxp=a[x1];
+	}
+	if(a[x2]>maxp)
+	{
+		maxp=a[x2];
+	}
+	if(a[x3]>maxp)
+	{
+		maxp=a[x3];
+	}
+	if((a[x1]+a[x2]+a[x3])>(2*maxp))
+	{
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+}
+bool pan2(int x1,int x2,int x3,int x4)
+{
+	int maxp2=-1;
+	if(a[x1]>maxp2)
+	{
+		maxp2=a[x1];
+	}
+	if(a[x2]>maxp2)
+	{
+		maxp2=a[x2];
+	}
+	if(a[x3]>maxp2)
+	{
+		maxp2=a[x3];
+	}
+	if(a[x4]>maxp2)
+	{
+		maxp2=a[x4];
+	}
+	if((a[x1]+a[x2]+a[x3]+a[x4])>(2*maxp2))
+	{
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+}
+int main()
+{
+	freopen("polygon.in","r",stdin);
+	freopen("polygon.out","w",stdout);
+	cin>>n;
+	for(int i=1;i<=n;i++)
+	{
+		cin>>a[i];
+		if(a[i]>maxx)
+		{
+			maxx=a[i];
+		}
+	}
+	if(n<=2)
+	{
+		cout<<0;
+	}
+	if(n==3)
+	{
+		sum=0;
+		if((a[1]+a[2]+a[3])>(2*maxx))
+		{
+			cout<<1;
+		}
+		else
+		{
+			cout<<0;
+		}
+	}
+	if(n==4)
+	{
+		sum=0;
+		if((a[1]+a[2]+a[3]+a[4])>(2*maxx))
+		{
+			sum++;
+		}
+		if(pan(1,2,3)==1)
+		{
+			sum++;
+		}
+		if(pan(1,2,4)==1)
+		{
+			sum++;
+		}
+		if(pan(2,3,4)==1)
+		{
+			sum++;
+		}
+		cout<<sum;
+	}
+	if(n==5)
+	{
+		sum=0;
+		if((a[1]+a[2]+a[3]+a[4]+a[5])>(2*maxx))
+		{
+			sum++;
+		}
+		if(pan(1,2,3)==1)
+		{
+			sum++;
+		}
+		if(pan(1,2,4)==1)
+		{
+			sum++;
+		}
+		if(pan(1,2,5)==1)
+		{
+			sum++;
+		}
+		if(pan(1,3,4)==1)
+		{
+			sum++;
+		}
+		if(pan(1,3,5)==1)
+		{
+			sum++;
+		}
+		if(pan(1,4,5)==1)
+		{
+			sum++;
+		}
+		if(pan(2,3,4)==1)
+		{
+			sum++;
+		}
+		if(pan(2,3,5)==1)
+		{
+			sum++;
+		}
+		if(pan(2,4,5)==1)
+		{
+			sum++;
+		}
+		if(pan(3,4,5)==1)
+		{
+			sum++;
+		}
+		if(pan2(1,2,3,4)==1)
+		{
+			sum++;
+		}
+		if(pan2(1,2,3,5)==1)
+		{
+			sum++;
+		}
+		if(pan2(2,3,4,5)==1)
+		{
+			sum++;
+		}
+		if(pan2(1,2,4,5)==1)
+		{
+			sum++;
+		}
+		if(pan2(1,3,4,5)==1)
+		{
+			sum++;
+		}
+		cout<<sum;
+	}
+	return 0;
+}

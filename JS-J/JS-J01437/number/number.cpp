@@ -1,0 +1,25 @@
+#include<iostream>
+#include<cstdio>
+#include<cstring>
+#include<queue>
+using namespace std;
+string s;
+priority_queue<int>q;
+int main(){
+	freopen("number.in","r",stdin);
+	freopen("number.out","w",stdout);
+	cin>>s;
+	for(int i=0;i<(int)s.size();i++){
+		if(s[i]>='0' && s[i]<='9'){
+			q.push(s[i]-'0');
+		}
+	}
+	long long num=0;
+	while(!q.empty()){
+		cout<<q.top();
+		q.pop();
+	}
+	fclose(stdin);
+	fclose(stdout);
+	return 0;
+}

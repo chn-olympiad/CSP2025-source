@@ -1,0 +1,90 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    freopen("number.in","r",stdin);
+    freopen("number.out"."w".stdout);
+    int a=0,b=0,c=0,d=0,e=0,f=0,g=0,h=0,i=0,j=0;
+    int a[100001];
+    int s;
+    cin>>s;
+    while(s!=0){
+        for(int i=0;i<100001;i++){
+            s%10;
+            s=s/10;
+            a[i]=s;
+        }
+    }
+    for(int i=0;i<100001;i++){
+        if(a[i]=='9'){
+            a++;
+        }
+        if(a[i]=='8'){
+            b++;
+        }
+        if(a[i]=='7'){
+            c++;
+        }
+        if(a[i]=='6'){
+            d++;
+        }
+        if(a[i]=='5'){
+            e++;
+        }
+        if(a[i]=='4'){
+            f++;
+        }
+        if(a[i]=='3'){
+            g++;
+        }
+        if(a[i]=='2'){
+            h++;
+        }
+        if(a[i]=='1'){
+            i++;
+        }
+        if(a[i]=='0'){
+            j++;
+        }
+    }
+    if(a>=1){
+        cout<<"9";
+        a--;
+    }
+    if(b>=1){
+        cout<<"8";
+        b--;
+    }
+    if(c>=1){
+        cout<<"7";
+        c--;
+    }
+    if(d>=1){
+        cout<<"6";
+        d--;
+    }
+    if(e>=1){
+        cout<<"5";
+        e--;
+    }
+    if(f>=1){
+        cout<<"4";
+        f--;
+    }
+    if(g>=1){
+        cout<<"3";
+        g--;
+    }
+    if(h>=1){
+        cout<<"2";
+        h--;
+    }
+    if(i>=1){
+        cout<<"1";
+        i--;
+    }
+    if(j>=1){
+        cout<<"0";
+        j--;
+    }
+    return 0;
+}

@@ -1,0 +1,29 @@
+#include<bits/stdc++.h>
+using namespace std;
+long long f[110];
+string s,str;
+int main()
+{
+	freopen("number.in","r",stdin);
+	freopen("number.out","w",stdout);
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+	cout.tie(0);
+	cin>>s;
+	int len=s.size();
+	for(int i=0;i<len;i++)
+	{
+		if((s[i]-'0')>=0&&(s[i]-'0')<=9)
+		{
+			f[s[i]-'0']++;
+		}
+	}
+	for(int i=9;i>=0;i--)
+	{
+		for(int j=1;j<=f[i];j++)
+		{
+			cout<<i;
+		}
+	}
+	return 0;
+}

@@ -1,0 +1,137 @@
+#include<bits\stdc++.h>
+using namespace std;
+long long t;
+struct node{
+    long long num,as,bs,cs;
+};
+int main(){
+    freopen("club.in","r",stdin);
+    freopen("club.out","w",stdout);
+    cin>>t;
+    for(long long i=1,n;i<=t;i++){
+        cin>>n;
+        node dp[100010][4]={};
+        long long a[100010]={},b[100010]={},c[100010]={};
+        for(long long j=1;j<=n;j++)cin>>a[i]>>b[i]>>c[i];
+        for(long long j=1;j<=n;j++){
+            if(dp[j-1][1].as+1<=n/2&&dp[j][1].num<dp[j-1][1].num+a[j]){
+                dp[j][1].num=dp[j-1][1].num+a[j];
+                dp[j][1].as=dp[j-1][1].as+1;
+                dp[j][1].bs=dp[j-1][1].bs;
+                dp[j][1].cs=dp[j-1][1].cs;
+            }
+            if(dp[j-1][2].as+1<=n/2&&dp[j][1].num<dp[j-1][2].num+a[j]){
+                dp[j][1].num=dp[j-1][2].num+a[j];
+                dp[j][1].as=dp[j-1][2].as+1;
+                dp[j][1].bs=dp[j-1][2].bs;
+                dp[j][1].cs=dp[j-1][2].cs;
+            }
+            if(dp[j-1][3].as+1<=n/2&&dp[j][1].num<dp[j-1][3].num+a[j]){
+                dp[j][1].num=dp[j-1][3].num+a[j];
+                dp[j][1].as=dp[j-1][3].as+1;
+                dp[j][1].bs=dp[j-1][3].bs;
+                dp[j][1].cs=dp[j-1][3].cs;
+            }
+            if(dp[j][1].num==0){
+                if(dp[j-1][1].num>dp[j-1][2].num&&dp[j-1][1].num>dp[j-1][3].num){
+                    dp[j][1].num=dp[j-1][1].num;
+                    dp[j][1].as=dp[j-1][1].as;
+                    dp[j][1].bs=dp[j-1][1].bs;
+                    dp[j][1].cs=dp[j-1][1].cs;
+                }
+                if(dp[j-1][2].num>dp[j-1][1].num&&dp[j-1][2].num>dp[j-1][3].num){
+                    dp[j][1].num=dp[j-1][2].num;
+                    dp[j][1].as=dp[j-1][2].as;
+                    dp[j][1].bs=dp[j-1][2].bs;
+                    dp[j][1].cs=dp[j-1][2].cs;
+                }
+                if(dp[j-1][3].num>dp[j-1][2].num&&dp[j-1][3].num>dp[j-1][1].num){
+                    dp[j][1].num=dp[j-1][3].num;
+                    dp[j][1].as=dp[j-1][3].as;
+                    dp[j][1].bs=dp[j-1][3].bs;
+                    dp[j][1].cs=dp[j-1][3].cs;
+                }
+            }
+            if(dp[j-1][1].bs+1<=n/2&&dp[j][2].num<dp[j-1][1].num+b[j]){
+                dp[j][2].num=dp[j-1][1].num+b[j];
+                dp[j][2].as=dp[j-1][1].as;
+                dp[j][2].bs=dp[j-1][1].bs+1;
+                dp[j][2].cs=dp[j-1][1].cs;
+            }
+            if(dp[j-1][2].bs+1<=n/2&&dp[j][2].num<dp[j-1][2].num+b[j]){
+                dp[j][2].num=dp[j-1][2].num+b[j];
+                dp[j][2].as=dp[j-1][2].as;
+                dp[j][2].bs=dp[j-1][2].bs+1;
+                dp[j][2].cs=dp[j-1][2].cs;
+            }
+            if(dp[j-1][3].bs+1<=n/2&&dp[j][2].num<dp[j-1][3].num+b[j]){
+                dp[j][2].num=dp[j-1][3].num+b[j];
+                dp[j][2].as=dp[j-1][3].as;
+                dp[j][2].bs=dp[j-1][3].bs+1;
+                dp[j][2].cs=dp[j-1][3].cs;
+            }
+            if(dp[j][2].num==0){
+                if(dp[j-1][1].num>dp[j-1][2].num&&dp[j-1][1].num>dp[j-1][3].num){
+                    dp[j][2].num=dp[j-1][1].num;
+                    dp[j][2].as=dp[j-1][1].as;
+                    dp[j][2].bs=dp[j-1][1].bs;
+                    dp[j][1].cs=dp[j-1][1].cs;
+                }
+                if(dp[j-1][2].num>dp[j-1][1].num&&dp[j-1][2].num>dp[j-1][3].num){
+                    dp[j][2].num=dp[j-1][2].num;
+                    dp[j][2].as=dp[j-1][2].as;
+                    dp[j][2].bs=dp[j-1][2].bs;
+                    dp[j][2].cs=dp[j-1][2].cs;
+                }
+                if(dp[j-1][3].num>dp[j-1][2].num&&dp[j-1][3].num>dp[j-1][1].num){
+                    dp[j][2].num=dp[j-1][3].num;
+                    dp[j][2].as=dp[j-1][3].as;
+                    dp[j][2].bs=dp[j-1][3].bs;
+                    dp[j][2].cs=dp[j-1][3].cs;
+                }
+            }
+            if(dp[j-1][1].cs+1<=n/2&&dp[j][3].num<dp[j-1][1].num+c[j]){
+                dp[j][3].num=dp[j-1][1].num+c[j];
+                dp[j][3].as=dp[j-1][1].as;
+                dp[j][3].bs=dp[j-1][1].bs;
+                dp[j][3].cs=dp[j-1][1].cs+1;
+            }
+            if(dp[j-1][2].cs+1<=n/2&&dp[j][3].num<dp[j-1][2].num+c[j]){
+                dp[j][3].num=dp[j-1][2].num+c[j];
+                dp[j][3].as=dp[j-1][2].as;
+                dp[j][3].bs=dp[j-1][2].bs;
+                dp[j][3].cs=dp[j-1][2].cs+1;
+            }
+            if(dp[j-1][3].cs+1<=n/2&&dp[j][3].num<dp[j-1][3].num+c[j]){
+                dp[j][3].num=dp[j-1][3].num+c[j];
+                dp[j][3].as=dp[j-1][3].as;
+                dp[j][3].bs=dp[j-1][3].bs;
+                dp[j][3].cs=dp[j-1][3].cs+1;
+            }
+            if(dp[j][3].num==0){
+                if(dp[j-1][1].num>dp[j-1][2].num&&dp[j-1][1].num>dp[j-1][3].num){
+                    dp[j][3].num=dp[j-1][1].num;
+                    dp[j][3].as=dp[j-1][1].as;
+                    dp[j][3].bs=dp[j-1][1].bs;
+                    dp[j][3].cs=dp[j-1][1].cs;
+                }
+                if(dp[j-1][2].num>dp[j-1][1].num&&dp[j-1][2].num>dp[j-1][3].num){
+                    dp[j][3].num=dp[j-1][2].num;
+                    dp[j][3].as=dp[j-1][2].as;
+                    dp[j][3].bs=dp[j-1][2].bs;
+                    dp[j][3].cs=dp[j-1][2].cs;
+                }
+                if(dp[j-1][3].num>dp[j-1][2].num&&dp[j-1][3].num>dp[j-1][1].num){
+                    dp[j][3].num=dp[j-1][3].num;
+                    dp[j][3].as=dp[j-1][3].as;
+                    dp[j][3].bs=dp[j-1][3].bs;
+                    dp[j][3].cs=dp[j-1][3].cs;
+                }
+            }
+        }
+        long long ans=max(dp[n][1],dp[n][2]);
+        ans=max(dp[n][3],ans);
+        cout<<ans<<endl;
+    }
+    return 0;
+}

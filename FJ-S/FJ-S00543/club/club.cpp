@@ -1,0 +1,117 @@
+#include<bits/stdc++.h>
+using namespace std;
+int n,t,zy1[100005],zy2[100005],zy3[100005],zyc[100005],fzy[100005],fs[3],yzy,yzys,z[100005],zo,zd=0,fy[100005];
+int main()
+{
+	freopen("club.in","r",stdin);
+	freopen("club.out","w",stdout);
+	cin>>t;
+	for(int k=1;k<=t;k++)
+	{
+		cin>>n;
+		yzy=0;
+		yzys=0;
+		zo=0;
+		zd=0;
+		fs[1]=0;
+		fs[2]=0;
+		fs[3]=0;
+		for(int i=1;i<=n;i++)
+		{
+			zy1[i]=0;
+			zy2[i]=0;
+			zy3[i]=0;
+			zyc[i]=0;
+			fzy[i]=0;
+			z[i]=0;
+			fy[i]=0;
+		}
+		for(int i=1;i<=n;i++)
+		{
+			cin>>zy1[i]>>zy2[i]>>zy3[i];
+			if(zy1[i]>=zy2[i])
+			{
+				if(zy1[i]>=zy3[i])
+				{
+					fs[1]++;
+					fy[i]=zy1[i];
+					fzy[i]=1;
+					if(zy2[i]>=zy3[i])
+					{
+						zyc[i]=zy1[i]-zy2[i];
+					}
+					else
+					{
+						zyc[i]=zy1[i]-zy3[i];
+					}
+				}
+				else
+				{
+					fs[3]++;
+					fy[i]=zy3[i];
+					fzy[i]=3;
+					zyc[i]=zy3[i]-zy1[i];
+				}
+			}
+			else
+			{
+				if(zy2[i]>=zy3[i])
+				{
+					fs[2]++;
+					fy[i]=zy2[i];
+					fzy[i]=2;
+					if(zy1[i]>=zy3[i])
+					{
+						zyc[i]=zy2[i]-zy1[i];
+					}
+					else
+					{
+						zyc[i]=zy2[i]-zy3[i];
+					}
+				}
+				else
+				{
+					fs[3]++;
+					fy[i]=zy3[i];
+					fzy[i]=3;
+					zyc[i]=zy3[i]-zy2[i];
+				}
+			}
+		}
+    	if(fs[1]>n/2)
+		{
+			yzy=1;
+    		yzys=fs[1];
+		}
+		if(fs[3]>n/2)
+		{
+			yzy=3;
+    		yzys=fs[3];
+		}
+		if(fs[2]>n/2)
+		{
+			yzy=2;
+    		yzys=fs[2];
+		}
+		for(int i=1;i<=n;i++)
+		{
+			if(fzy[i]==yzy)
+			{
+				z[i]=zyc[i];
+			}
+		}
+		sort(z+1,z+1+n);
+		for(int i=n-yzys;i<=n-n/2;i++)
+		{
+			zo+=z[i];
+		}
+		for(int i=1;i<=n;i++)
+		{
+			zd=zd+fy[i];
+		}
+		cout<<zd-zo<<endl;
+	}
+	fclose(stdin);
+	fclose(stdout);
+	return 0;
+}

@@ -1,0 +1,201 @@
+#include<bits/stdc++.h>
+#include<string>
+#include<cstdio>
+using namespace std;
+int main(){
+freopen("number.in","r",stdin);
+freopen("number.out","w",stdout);
+string s,a;
+int c=0,d=0,e=0,f=0,g=0,h=0,i=0,j=0,k=0,l=0;
+cin>>s;
+int n;
+n=s.size();
+for(int i=0;i<=n;i++){
+    if(s[i]=='1'||s[i]=='2'||s[i]=='3'||s[i]=='4'||s[i]=='5'||s[i]=='6'||s[i]=='7'||s[i]=='8'||s[i]=='9')
+        if(s[i]=='9')
+            cout<<s[i];
+        if(s[i]=='8')
+            c=c+1;
+        if(s[i]=='7')
+            d=d+1;
+        if(s[i]=='6')
+            e=e+1;
+        if(s[i]=='5')
+            f=f+1;
+        if(s[i]=='4')
+            g=g+1;
+        if(s[i]=='3')
+            h=h+1;
+        if(s[i]=='2')
+            l=l+1;
+        if(s[i]=='1')
+            j=j+1;
+        if(s[i]=='0')
+            k=k+1;
+}
+if(c==1)
+    cout<<'8';
+if(c==2)
+   cout<<"88";
+if(c==3)
+    cout<<"888";
+if(c==4)
+   cout<<"8888";
+if(c==5)
+    cout<<"88888";
+if(c==6)
+   cout<<"888888";
+if(c==7)
+    cout<<"8888888";
+if(c==8)
+   cout<<"88888888";
+if(c==9)
+    cout<<"888888888";
+if(d==1)
+    cout<<'7';
+if(d==2)
+   cout<<"77";
+if(d==3)
+    cout<<"777";
+if(d==4)
+   cout<<"7777";
+if(d==5)
+    cout<<"77777";
+if(d==6)
+   cout<<"777777";
+if(d==7)
+    cout<<"7777777";
+if(d==8)
+   cout<<"77777777";
+if(d==9)
+    cout<<"777777777";
+if(e==1)
+    cout<<'6';
+if(e==2)
+   cout<<"66";
+if(e==3)
+    cout<<"666";
+if(e==4)
+    cout<<"6666";
+if(e==5)
+    cout<<"66666";
+if(e==6)
+   cout<<"666666";
+if(e==7)
+    cout<<"6666666";
+if(e==8)
+   cout<<"66666666";
+if(e==9)
+    cout<<"666666666";
+if(f==1)
+    cout<<'5';
+if(f==2)
+   cout<<"55";
+if(f==3)
+    cout<<"555";
+if(f==4)
+    cout<<"5555";
+if(f==5)
+    cout<<"55555";
+if(f==6)
+   cout<<"555555";
+if(f==7)
+    cout<<"5555555";
+if(f==8)
+   cout<<"55555555";
+if(f==9)
+    cout<<"555555555";
+if(g==1)
+    cout<<'4';
+if(g==2)
+   cout<<"44";
+if(g==3)
+    cout<<"444";
+if(g==4)
+    cout<<"4444";
+if(g==5)
+    cout<<"44444";
+if(g==6)
+   cout<<"444444";
+if(g==7)
+    cout<<"4444444";
+if(g==8)
+   cout<<"44444444";
+if(g==9)
+    cout<<"44444444";
+if(h==1)
+    cout<<'3';
+if(h==2)
+   cout<<"33";
+if(h==3)
+    cout<<"333";
+if(h==4)
+    cout<<"3333";
+if(h==5)
+    cout<<"33333";
+if(h==6)
+   cout<<"333333";
+if(h==7)
+    cout<<"3333333";
+if(h==8)
+   cout<<"33333333";
+if(h==9)
+    cout<<"333333333";
+if(l==1)
+    cout<<'2';
+if(l==2)
+   cout<<"22";
+if(l==3)
+    cout<<"222";
+if(l==4)
+    cout<<"2222";
+if(l==5)
+    cout<<"22222";
+if(l==6)
+   cout<<"222222";
+if(l==7)
+    cout<<"2222222";
+if(l==8)
+   cout<<"22222222";
+if(l==9)
+    cout<<"222222222";
+if(j==1)
+    cout<<'1';
+if(j==2)
+   cout<<"11";
+if(j==3)
+    cout<<"111";
+if(j==4)
+    cout<<"1111";
+if(j==5)
+    cout<<"11111";
+if(j==6)
+   cout<<"111111";
+if(j==7)
+    cout<<"1111111";
+if(j==8)
+   cout<<"11111111";
+if(j==9)
+    cout<<"111111111";
+if(k==1)
+    cout<<'0';
+if(k==2)
+    cout<<"00";
+if(k==3)
+    cout<<"000";
+if(k==4)
+    cout<<"0000";
+if(k==5)
+    cout<<"00000";
+if(k==6)
+   cout<<"000000";
+if(k==7)
+    cout<<"0000000";
+if(k==8)
+   cout<<"00000000";
+if(k==9)
+    cout<<"000000000";
+fclose(stdin);
+fclose(stdout);
+return 0;
+}

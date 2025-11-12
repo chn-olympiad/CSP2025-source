@@ -1,0 +1,64 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define int long long
+const int N=514,mod=998244353;
+int n,m,c[N],a[N],ans;
+bool book[N];
+string s;
+inline bool pd()
+{
+	int sum=0;
+	for(int i=1;i<=n;i++)
+	{
+		if(s[i-1]=='0'||sum>=c[a[i]]) sum++;
+	}
+	return sum+m<=n;
+}
+void dfs(int p)
+{
+	if(p==n+1)
+	{
+		ans+=pd();
+		return;
+	}
+	for(int i=1;i<=n;i++)
+	{
+		if(book[i]) continue;
+		a[p]=i;book[i]=1;
+		dfs(p+1);
+		book[i]=0;
+	}
+}
+signed main()
+{
+	freopen("employ.in","r",stdin);
+	freopen("employ.out","w",stdout);
+	cin>>n>>m>>s;
+	for(int i=1;i<=n;i++) cin>>c[i];
+	dfs(1);
+	cout<<ans;
+}
+
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+/*
+我常常追忆过去。
+
+生命瞬间定格在脑海。我将背后的时间裁剪、折叠、蜷曲、揉捻成天上朵朵白云。  
+
+云朵之间亦有分别：积云厚重，而卷云缥缈。生命中震撼的场景掠过我的思绪便一生无法忘怀，而更为普通平常的记忆在时间的冲刷下只剩下些许残骸。
+追忆宛如入梦，太过清楚则无法愉悦自己的幻想，过于模糊却又堕入虚无。
+只有薄雾间的山水、面纱下的女子，那恰到好处的朦胧，才能满足我对美的苛求。
+
+回忆总在不经意间将我裹进泛黄的纸页中。分别又重聚的朋友，推倒又重建的街道，种种线索帮助我从某个具体时间点沿时间的河逆流而上。
+曾经的日子无法重来，我也不过是一个过客，但我仍然渴望在每一次追忆之旅中留下闲暇时间，在特定的场景，在岁月的朦胧中瞭望过去的自己，获取尽可能多的甜蜜。
+欢乐的时光流过我的身体，我便心满意足。
+
+过去已经凝结。我带着回忆向前，只是时常疏于保管，回忆也改变着各自的形态，这为我的追忆之旅带来些许挑战。
+
+我该在哪里停留？我问我自己。
+
+（必备课文没背清楚/kk）
+Luogu uid=1524111
+*/
+

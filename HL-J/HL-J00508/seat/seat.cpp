@@ -1,0 +1,12 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+int main()
+{
+    freopen("number.in","r",stdin);
+	freopen("number.iout","w",stdout);
+	string a;
+	cin>>a;
+	cout<<a;
+	return 0;
+}

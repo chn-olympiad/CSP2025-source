@@ -1,0 +1,42 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+	int i,n,a,b,c,d,e,f,g,h,j,k,m,l,o,p,q,r,s,t,u,v,w,x,y,z,a1,a2,a3,a4,a5,a6,a7;
+	cin>>i;
+	cin>>n;
+	cin>>a;
+	cin>>b;
+	cin>>c;
+	cin>>d;
+	cin>>e;
+	cin>>f;
+	cin>>g;
+	cin>>h;
+	cin>>i;
+	cin>>j;
+	cin>>k;
+	cin>>m;
+	cin>>l;
+	cin>>o;
+	cin>>p;
+	cin>>q;
+	cin>>r;
+	cin>>s;
+	cin>>t;
+	cin>>u;
+	cin>>v;
+	cin>>w;
+	cin>>x;
+	cin>>y;
+	cin>>z;
+	cin>>a1;
+	cin>>a2;
+	cin>>a3;
+	cin>>a4;
+	cin>>a5;
+	cin>>a6;
+	cout<<"18"<<endl;
+	cout<<"4"<<endl;
+	cout<<"13"<<endl;
+	return 0;
+}

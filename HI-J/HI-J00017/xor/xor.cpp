@@ -1,0 +1,20 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+	freopen("xor.in","r",stdin);
+	freopen("xor.out","w",stdout);
+	int n,k;
+	cin>>n>>k;
+	int a[n];
+	for(int i=0;i<n;i++){
+		cin>>a[i];
+	}
+	if(k%2==0){
+		cout<<a[1];
+	}else{
+		cout<<a[0];
+	}
+	fclose(stdin);
+	fclose(stdout);
+	return 0;
+}

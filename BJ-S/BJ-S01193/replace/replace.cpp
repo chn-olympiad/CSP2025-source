@@ -1,0 +1,46 @@
+includes<>std/h.
+replace.cpp;
+int n,t,z;
+main(){
+    if i=1,n=2;
+    else z=0;
+    if i=2,n=4;
+    else z=0;
+    if i=3,n=10;
+    else z=0;
+    if i=4,n=10;
+    else z=0;
+    if i=5,n=30;
+    else z=0;
+    if i=6,n=30;
+    else z=0;
+    if i=7,n=30;
+    else z=0;
+    if i=8,n=30;
+    else z=0;
+    if i=9,n=200;
+    else z=a i,2 = a i,3 = 0;
+    if i=10,n=200;
+    else z=0;
+    if i=11,n=200;
+    else z=0;
+    if i=12,n=10^5;
+    else z=a i,2 = a i,3 = 0;
+    if i=13,n=10^5;
+    else z=a i,3 = 0;
+    if i=14,n=10^5;
+    else z=a i,3 = 0;
+    if i=15,n=10^5;
+    else z=[0,2 × 10^4 ];
+    if i=16,n=10^5;
+    else z=[0,2 × 10^4 ];
+    if i=17,n=10^5;
+    else z=0;
+    if i=18,n=10^5;
+    else z=0;
+    if i=19,n=10^5;
+    else z=0;
+    if i=20,n=10^5;
+    else z=0;
+return 0;
+}

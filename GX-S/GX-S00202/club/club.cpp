@@ -1,0 +1,129 @@
+#include<bits/stdc++.h>
+using namespace std;
+int bm[4];
+struct b{
+	int m[4],mi,ma,mz;
+}a[100000+5];
+bool cmp(b x,b y)
+{
+	return x.m[x.mz]<y.m[y.mz];
+}
+int main()
+{
+	freopen("club.in","r",stdin);
+	freopen("club.out","w",stdout);
+	int t;
+	scanf("%d",&t);
+	while(t--)
+	{
+		memset(bm,0,sizeof(bm));
+		int n,ans=0;
+		scanf("%d",&n);
+		for(int i=1;i<=n;++i)
+		{
+			scanf("%d%d%d",&a[i].m[1],&a[i].m[2],&a[i].m[3]);
+			if(a[i].m[1]>a[i].m[2])
+			{
+				if(a[i].m[1]>a[i].m[3])
+				{
+					a[i].m[2]-=a[i].m[1];
+					a[i].m[3]-=a[i].m[1];
+					if(a[i].m[2]>a[i].m[3])
+					{
+						a[i].mz=2;
+						a[i].mi=3;
+					}
+					else
+					{
+						a[i].mi=2;
+						a[i].mz=3;
+					}
+					a[i].ma=1;
+					ans+=a[i].m[1];
+					a[i].m[1]=0;
+				}
+				else
+				{
+					a[i].m[1]-=a[i].m[3];
+					a[i].m[2]-=a[i].m[3];
+					if(a[i].m[1]>a[i].m[2])
+					{
+						a[i].mz=1;
+						a[i].mi=2;
+					}
+					else
+					{
+						a[i].mz=2;
+						a[i].mi=1;
+					}
+					a[i].ma=3;
+					ans+=a[i].m[3];
+					a[i].m[3]=0;
+				}
+			}
+			else
+			{
+				if(a[i].m[2]>a[i].m[3])
+				{
+					a[i].m[1]-=a[i].m[2];
+					a[i].m[3]-=a[i].m[2];
+					if(a[i].m[1]>a[i].m[3])
+					{
+						a[i].mz=1;
+						a[i].mi=3;
+					}
+					else
+					{
+						a[i].mz=3;
+						a[i].mi=1;
+					}
+					a[i].ma=2;
+					ans+=a[i].m[2];
+					a[i].m[2]=0;
+				}
+				else
+				{
+					a[i].m[1]-=a[i].m[3];
+					a[i].m[2]-=a[i].m[3];
+					if(a[i].m[1]>a[i].m[2])
+					{
+						a[i].mz=1;
+						a[i].mi=2;
+					}
+					else
+					{
+						a[i].mz=2;
+						a[i].mi=1;
+					}
+					a[i].ma=3;
+					ans+=a[i].m[3];
+					a[i].m[3]=0;
+				}
+			}
+		}
+		sort(a+1,a+1+n,cmp);
+		for(int i=1;i<=n;++i)
+		{
+			if(bm[a[i].ma]>=n/2)
+			{
+				if(bm[a[i].mz]>=n/2)
+				{
+					bm[a[i].mi]++;
+					ans+=a[i].m[a[i].mi];
+				}
+				else
+				{
+					bm[a[i].mz]++;
+					ans+=a[i].m[a[i].mz];
+				}
+			}
+			else
+			{
+				bm[a[i].ma]++;
+				ans+=a[i].m[a[i].ma];
+			}
+		}
+		printf("%d\n",ans);
+	}
+	return 0;
+}

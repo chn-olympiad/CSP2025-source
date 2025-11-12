@@ -1,0 +1,29 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+bool cmp(int a, int b) {
+	return a > b;
+}
+
+const int N = 1e6+10;
+int a[N], x = 1;
+string s;
+
+int main() {
+	freopen("number.in", "r", stdin);
+	freopen("number.out", "w", stdout);
+	cin >> s;
+	for (int i = 0; i < s.size(); i++) {
+		if (s[i] >= '0' && s[i] <= '9') {
+			a[x] = s[i] - '0';
+			x++;
+		}
+	}
+	sort(a + 1, a + s.size(), cmp);
+	for (int i = 1; i < x; i++) {
+		cout << a[i];
+	}
+	return 0;
+	fclose(stdin);
+	fclose(stdout);
+}

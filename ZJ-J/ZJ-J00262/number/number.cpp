@@ -1,0 +1,20 @@
+#include<bits/stdc++.h>
+using namespace std;
+int cnt[10];
+string s;
+int main() {
+	freopen("number.in","w",stdin);
+	freopen("number.out","r",stdout);
+	cin>>s;
+	for(int i=0; i<s.size(); i++) {
+		if(s[i]>='0' && s[i]<='9') {
+			cnt[s[i]-'0']++;
+		}
+	}
+	for(int i=9; i>=0; i--) {
+		for(int j=1; j<=cnt[i]; j++) {
+			printf("%d",i);
+		}
+	}
+	return 0;
+}

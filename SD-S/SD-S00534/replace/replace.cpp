@@ -1,0 +1,16 @@
+#include<bits/stdc++.h>
+#define int long long
+using namespace std;
+int n,q;
+signed main(){
+	ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+	freopen("replace.in","r",stdin);
+	freopen("replace.out","w",stdout);
+	srand(time(0));
+	cin>>n>>q;
+	while(q--){
+		cout<<rand()<<"\n";
+	} 
+	return 0;
+}
+

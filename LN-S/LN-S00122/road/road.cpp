@@ -1,0 +1,186 @@
+#include<iostream>
+#include<algorithm>
+using namespace std;
+struct str{
+    int id,t;
+}t1[100010],t2[100010],t3[100010];
+bool flag[100010];
+bool cmp(str x,str y)
+{
+    return x.t>y.t;
+}
+int main()
+{
+
+    freopen("club.in","r",stdin);
+    freopen("club.out","w",stdout);
+    int T;
+    cin>>T;
+    while(T--)
+    {
+        int n;
+        cin>>n;
+        for(int i=1;i<=n;i++)
+        {
+            flag[i]=false;
+            cin>>t1[i].t>>t3[i].t>>t3[i].t;
+        }
+        sort(t1+1,t1+n+1,cmp);
+
+        sort(t2+1,t2+n+1,cmp);
+        sort(t3+1,t3+n+1,cmp);
+        int cnt=0,cur1=1,cur2=1,cur3=1;
+        int sum=0;
+        while(cnt<=n)
+        {
+            if(!flag[t1[cur1].id])
+            {
+                if(!flag[t2[cur2].id])
+                {
+                    if(!flag[t3[cur3].id])
+                    {
+                        if(max(max(t1[cur1].t,t2[cur2].t),t3[cur3].t)==t1[cur1].t&&cur1<=n/2)
+                        {
+                            cnt++;
+                            flag[t1[cur1].id]=true;
+                            cur1++;
+                            sum+=t1[cur1].t;
+                        }
+                        else if(max(max(t1[cur1].t,t2[cur2].t),t3[cur3].t)==t2[cur2].t&&cur2<=n/2)
+                        {
+                            cnt++;
+                            flag[t2[cur2].id]=true;
+                            cur2++;
+                            sum+=t2[cur2].t;
+                        }
+                        else
+                        {
+                            cnt++;
+                            flag[t3[cur3].id]=true;
+                            cur3++;
+                            sum+=t3[cur3].t;
+                        }
+                    }
+                    else
+                    {
+                        cur3++;
+                        if(max(t1[cur1].t,t2[cur2].t)==t1[cur1].t&&cur1<=n/2)
+                        {
+                            cnt++;
+                            flag[t1[cur1].id]=true;
+                            cur1++;
+                            sum+=t1[cur1].t;
+                        }
+                        else
+                        {
+                            cnt++;
+                            flag[t2[cur2].id]=true;
+                            cur2++;
+                            sum+=t2[cur2].t;
+                        }
+                    }
+                }
+                else
+                {
+                    if(!flag[t3[cur3].id])
+                    {
+                        cur2++;
+                        if(max(t1[cur1].t,t3[cur3].t)==t1[cur1].t&&cur1<=n/2)
+                        {
+                            cnt++;
+                            flag[t1[cur1].id]=true;
+                            cur1++;
+                            sum+=t1[cur1].t;
+                        }
+                        else
+                        {
+                            cnt++;
+                            flag[t3[cur3].id]=true;
+                            cur3++;
+                            sum+=t3[cur3].t;
+                        }
+                    }
+                    else
+                    {
+
+                        cur2++,cur3++;
+                        if(cur1<=n/2)
+                        {
+                            cnt++;
+                            flag[t1[cur1].id]=true;
+                            cur1++;
+                            sum+=t1[cur1].t;
+                        }
+                        else
+                        {
+                            cur1++;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if(!flag[t2[cur2].id])
+                {
+                    if(!flag[t3[cur3].id])
+                    {
+                        cur1++;
+                        if(max(t3[cur3].t,t2[cur2].t)==t3[cur3].t&&cur3<=n/2)
+                        {
+                            cnt++;
+                            flag[t3[cur3].id]=true;
+                            cur3++;
+                            sum+=t3[cur3].t;
+                        }
+                        else
+                        {
+                            cnt++;
+                            flag[t2[cur2].id]=true;
+                            cur2++;
+                            sum+=t2[cur2].t;
+                        }
+                    }
+                    else
+                    {
+                        cur1++,cur3++;
+                        if(cur2<=n/2)
+                        {
+                            cnt++;
+                            flag[t2[cur2].id]=true;
+                            cur2++;
+                            sum+=t2[cur2].t;
+                        }
+                        else
+                        {
+                            cur2++;
+                        }
+                    }
+                }
+                else
+                {
+                    if(!flag[t3[cur3].id])
+                    {
+                        cur1++,cur2++;
+                        if(cur3<=n/2)
+                        {
+                            cnt++;
+                            flag[t3[cur3].id]=true;
+                            cur3++;
+                            sum+=t3[cur3].t;
+                        }
+                        else
+                        {
+                            cur3++;
+                        }
+                    }
+                    else
+                    {
+                        cur1++,cur2++,cur3++;
+                    }
+                }
+            }
+        }
+        cout<<sum<<endl;
+    }
+    return 0;
+}

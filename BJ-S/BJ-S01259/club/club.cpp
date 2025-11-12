@@ -1,0 +1,121 @@
+#include <bits/stdc++.h>
+using namespace.std
+int main()
+{
+freopen("club.in","r",stdin);
+freopen("club.out","w",stdout);
+int n,a[100005],t,b1[100005]={},b2[100005]={},b3[100005]={},q=0;
+cin>>t;
+for(int i=1;i<=t;i++)
+{
+    cin>>n;
+    for(int i=1;i<=n;i++)
+    {
+        cin>>b1[i]>>b2[i]>>b3[i];
+    }
+    for(int i=1;i<=n;i++)
+    {
+        int u=max(b1[i],b2[i],b3[i]),v=min(b1[i],b2[i],b3[i]);
+        if(u==b1[i])
+        {
+            if(b1[0]<=n/2)
+            {
+                b1[0]++;
+                 q+=b1[i];
+            }
+            else
+            {
+                if(b2[0]==v)
+                {
+                        if(b3[0]<=n/2)
+                         {
+                               b3[0]++;
+                                q+=b3[i];
+                         }
+                         else{
+                          b2[0]++;
+                          q+=b2[i];
+                          }
+                 }
+                  else{
+                           if(b2[0]<=n/2){
+                                   b2[0]++;
+                                   q+=b2[i];
+                           }
+                           else{
+                                   b3[0]++;
+                                   q+=b3[i];        
+                           }
+                   }
+            }
+        if(u==b2[i])
+        {
+            if(b2[0]<=n/2)
+            {
+                b2[0]++;
+                q+=b2[i];
+            }
+            else
+            {
+                if(b3[0]==v)
+                {
+                        if(b1[0]<=n/2)
+                         {
+                               b1[0]++;
+                               q+=b1[i];
+                         }
+                         else{
+                          b3[0]++;
+                          q+=b3[i];
+                          }
+                 }
+                  else{
+                           if(b3[0]<=n/2){
+                                   b3[0]++;
+                                   q+=b3[i];
+                           }
+                           else{
+                                   b1[0]++;   
+                                   q+=b1[i];     
+                           }
+                   }
+            }
+        if(u==b3[i])
+        {
+            if(b3[0]<=n/2)
+            {
+                b3[0]++;
+                q+=b3[i];
+            }
+            else
+            {
+                if(b2[0]==v)
+                {
+                        if(b1[0]<=n/2)
+                         {
+                               b1[0]++;
+                               q+=b1[i];
+                         }
+                         else{
+                          b2[0]++;
+                          q+=b2[i];
+                          }
+                 }
+                  else{
+                           if(b2[0]<=n/2){
+                                   b2[0]++;
+                                   q+=b2[i];
+                           }
+                           else{
+                                   b1[0]++;    
+                                   q+=b1[i];    
+                           }
+                   }
+            }
+        }
+        cout<<q;
+}
+fclose(stdin);
+fclose(stdout);
+    return 0;
+}

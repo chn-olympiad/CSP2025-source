@@ -1,0 +1,26 @@
+#include "bits/stdc++.h"
+#define int long long
+using namespace std;
+const int N=1e6+10;
+string s;
+int a[N],cnt;
+bool cmp(int n1,int n2){
+	return n1>n2;
+}
+signed main(){
+	freopen("number.in","r",stdin);
+	freopen("number.out","w",stdout);
+	
+	cin >> s;
+	int len=s.size();
+	for(int i=0; i < len; i ++){
+		if(s[i] >= '0' && s[i] <= '9'){
+			 a[++cnt]=s[i]-'0';
+		}
+	}
+	sort(a+1,a+1+cnt,cmp);
+	for(int i=1; i <= cnt; i ++){
+		cout << a[i];
+	}
+	return 0;
+}

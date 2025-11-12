@@ -1,0 +1,13 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+    freopen("replace.in", "r", stdin);
+    freopen("replace.out", "w", stdout);
+    int s;
+    cin >> s;
+    cout << "0" << endl << "0" << endl << "0" << endl << "0";
+    fclose(stdin);
+    fclose(stdout);
+    return 0;
+}

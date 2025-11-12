@@ -1,0 +1,11 @@
+#include<iostream>
+using namespace std;
+
+int a,b;
+
+int main(){
+	freopen("employ.in","r",stdin);
+	freopen("employ.out","w",stdout);
+	cout<<0;
+	return 0;
+} 

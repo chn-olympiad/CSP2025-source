@@ -1,0 +1,14 @@
+#include <iostream>
+using namespace std;
+int main(){
+    freopen("xor.in","r",stdin);
+    freopen("xor.out","w",stdout);
+    int n,m,a[100000];
+    cin>>n>>m;
+    for(int i=0;i<n;i++)
+    {
+        cin>>a[i];
+    }
+    cout<<0;
+    return 0;
+}

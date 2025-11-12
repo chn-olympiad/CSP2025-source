@@ -1,0 +1,19 @@
+#include<iostream>
+#include<cstdio>
+#include<algorithm>
+#include<cmath>
+#include<string>
+#include<cstring>
+using namespace std;
+
+
+
+int main(){
+    freopen("xor.in","r",stdin);
+    freopen("xor.out","w",stdout);
+    int n,m;
+    cin>>n>>m;
+    cout<<n/2;
+
+    return 0;
+}

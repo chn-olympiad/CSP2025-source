@@ -1,0 +1,2 @@
+#include <bits/stdc++.h>
+using namespace std;int n,l[10010];long long int ans;bool cmp(int a,int b){return a>b;}int dfs(int max,int cmb,int size){long long int way=0;for(int s=size;s<n;s++){if(cmb+l[s]>max*2)way++;way+=dfs(max,cmb+l[s],s+1);}return way;}int main(){freopen("polygon.in","r",stdin);freopen("polygon.out","w",stdin);cin>>n;for(int i=0;i<n;i++)cin>>l[i];sort(l,l+n,cmp);for(int i=0;i<n;i++)for(int j=i+1;j<n;j++)ans+=dfs(l[i],l[i]+l[j],j+1);		cout<<ans;}

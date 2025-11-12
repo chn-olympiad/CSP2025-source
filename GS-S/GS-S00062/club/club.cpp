@@ -1,0 +1,122 @@
+#include<bits/stdc++.h>
+using namespace std;
+int t;
+int main()
+{
+    freopen("club.in","r",stdin);
+    freopen("club.out","w",stdout);
+    cin>>t;
+    for(int i=1;i<=t;i++)
+    {
+        int x,y,z,n,m=0,o;
+        cin>>n;
+        int a[n],c[4]{0,0,0,0};
+        for(int i=1,j=1;i<=n;i++,j++)
+        {
+            cin>>x>>y>>z;
+            sort(a+1,a+j+1);
+            a[j]=max(x,y);
+            a[j]=max(a[j],z);
+            if(a[j]==x)
+            {
+                o=1;
+            }
+            else if(a[j]==y)
+            {
+                o=2;
+            }
+            else
+            {
+                o=3;
+            }
+            c[o]++;
+            if(c[o]>n/2)
+            {
+                c[o]--;
+                if(a[j]>a[1])
+                {
+                    a[1]=a[j];
+                }
+                else
+                {
+                    if(o==1)
+                    {
+                        if(y>z)
+                        {
+                            a[j]=y;
+                            c[2]++;
+                            if(c[2]>n/2)
+                            {
+                                c[3]++;
+                                a[j]=z;
+                                c[2]--;
+                            }
+                        }
+                        else{
+                            a[j]=z;
+                            c[3]++;
+                            if(c[3]>n/2)
+                            {
+                                c[2]++;
+                                a[j]=y;
+                                c[3]--;
+                            }
+                        }
+                    }
+                    else if(o==2)
+                    {
+                        if(x>z)
+                        {
+                            a[j]=x;
+                            c[1]++;
+                            if(c[1]>n/2)
+                            {
+                                c[3]++;
+                                a[j]=z;
+                                c[1]--;
+                            }
+                        }
+                        else{
+                            a[j]=z;
+                            c[3]++;
+                            if(c[3]>n/2)
+                            {
+                                c[1]++;
+                                a[j]=z;
+                                c[3]--;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if(x>y)
+                        {
+                            a[j]=x;
+                            c[1]++;
+                            if(c[1]>n/2)
+                            {
+                                c[2]++;
+                                a[j]=y;
+                                c[1]--;
+                            }
+                        }
+                        else{
+                            a[j]=y;
+                            c[2]++;
+                            if(c[2]>n/2)
+                            {
+                                c[1]++;
+                                a[j]=x;
+                                c[2]--;
+                            }
+                        }
+                    }
+                }
+                j--;
+            }
+            m+=a[i];
+        }
+        cout<<m<<endl;
+    }
+    return 0;
+}

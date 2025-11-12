@@ -1,0 +1,14 @@
+#include<bits/stdc++.h>
+using namespace std;
+int n;
+int main()
+{
+	freopen("xor.in","r",stdin);
+	freopen("xor.out","w",stdout);
+    int a,b;
+    cin>>a>>b;
+    cout<<a+b;
+	fclose(stdin);
+	fclose(stdout);
+    return 0;	
+}

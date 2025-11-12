@@ -1,0 +1,266 @@
+#include<bits/stdc++.h>
+using namespace std;
+bool oka;
+long long num[5],maxx,minn,t,n,ans,ans2;
+struct node{
+    long long a,b,c,sum;
+}st[100010];
+bool cmp(node p,node q){
+    return p.sum<q.sum;
+}
+bool cmpa(node p,node q){
+    return p.a>q.a;
+}
+void dfs(long long now,long long nowsum,long long nowa,long long nowb,long long nowc){
+    if(now>n){
+        ans=max(ans,nowsum);
+        return;
+    }
+    if(nowa<(n/2)){
+        dfs(now+1,nowsum+st[now].a,nowa+1,nowb,nowc);
+    }
+
+    if(nowb<(n/2)){
+        dfs(now+1,nowsum+st[now].b,nowa,nowb+1,nowc);
+    }
+
+    if(nowc<(n/2)){
+        dfs(now+1,nowsum+st[now].c,nowa,nowb,nowc+1);
+    }
+}
+void solve1(){//dfs
+    dfs(1ll,0ll,0ll,0ll,0ll);
+}
+void solve3(){
+    sort(st+1,st+1+n,cmp);
+    for(int i=1;i<=n;i++){
+        maxx=max(st[i].a,max(st[i].b,st[i].c));
+        minn=min(st[i].a,min(st[i].b,st[i].c));
+        if(maxx==st[i].a){
+            if(num[1]<(n/2)){
+                num[1]++;
+                ans+=maxx;
+                continue;
+            }
+            if(minn==st[i].c){//b
+                if(num[2]<(n/2)){
+                    num[2]++;
+                    ans+=st[i].b;
+                    continue;
+                }
+                else{
+                    num[3]++;
+                    ans+=st[i].c;
+                    continue;
+                }
+            }
+            if(minn==st[i].b){//c
+                if(num[3]<(n/2)){
+                    num[3]++;
+                    ans+=st[i].c;
+                    continue;
+                }
+                else{
+                    num[2]++;
+                    ans+=st[i].b;
+                    continue;
+                }
+            }
+        }
+        if(maxx==st[i].b){//b
+            if(num[2]<(n/2)){
+                num[2]++;
+                ans+=maxx;
+                continue;
+            }
+            if(minn==st[i].c){//a
+                if(num[1]<(n/2)){
+                    num[1]++;
+                    ans+=st[i].a;
+                    continue;
+                }
+                else{
+                    num[3]++;
+                    ans+=st[i].c;
+                    continue;
+                }
+            }
+            if(minn==st[i].a){//c
+                if(num[3]<(n/2)){
+                    num[3]++;
+                    ans+=st[i].c;
+                    continue;
+                }
+                else{
+                    num[1]++;
+                    ans+=st[i].a;
+                    continue;
+                }
+            }
+        }
+        if(maxx==st[i].c){//c
+            if(num[3]<(n/2)){
+                num[3]++;
+                ans+=maxx;
+                continue;
+            }
+            if(minn==st[i].a){//b
+                if(num[2]<(n/2)){
+                    num[2]++;
+                    ans+=st[i].b;
+                    continue;
+                }
+                else{
+                    num[1]++;
+                    ans+=st[i].a;
+                    continue;
+                }
+            }
+            if(minn==st[i].b){//a
+                if(num[1]<(n/2)){
+                    num[1]++;
+                    ans+=st[i].a;
+                    continue;
+                }
+                else{
+                    num[2]++;
+                    ans+=st[i].b;
+                    continue;
+                }
+            }
+        }
+    }
+
+    ans2=0;
+    memset(num,0,sizeof(num));
+    for(int i=n;i>=1;i--){
+        maxx=max(st[i].a,max(st[i].b,st[i].c));
+        minn=min(st[i].a,min(st[i].b,st[i].c));
+        if(maxx==st[i].a){
+            if(num[1]<(n/2)){
+                num[1]++;
+                ans2+=maxx;
+                continue;
+            }
+            if(minn==st[i].c){//b
+                if(num[2]<(n/2)){
+                    num[2]++;
+                    ans2+=st[i].b;
+                    continue;
+                }
+                else{
+                    num[3]++;
+                    ans2+=st[i].c;
+                    continue;
+                }
+            }
+            if(minn==st[i].b){//c
+                if(num[3]<(n/2)){
+                    num[3]++;
+                    ans2+=st[i].c;
+                    continue;
+                }
+                else{
+                    num[2]++;
+                    ans2+=st[i].b;
+                    continue;
+                }
+            }
+        }
+        if(maxx==st[i].b){//b
+            if(num[2]<(n/2)){
+                num[2]++;
+                ans2+=maxx;
+                continue;
+            }
+            if(minn==st[i].c){//a
+                if(num[1]<(n/2)){
+                    num[1]++;
+                    ans2+=st[i].a;
+                    continue;
+                }
+                else{
+                    num[3]++;
+                    ans2+=st[i].c;
+                    continue;
+                }
+            }
+            if(minn==st[i].a){//c
+                if(num[3]<(n/2)){
+                    num[3]++;
+                    ans2+=st[i].c;
+                    continue;
+                }
+                else{
+                    num[1]++;
+                    ans2+=st[i].a;
+                    continue;
+                }
+            }
+        }
+        if(maxx==st[i].c){//c
+            if(num[3]<(n/2)){
+                num[3]++;
+                ans2+=maxx;
+                continue;
+            }
+            if(minn==st[i].a){//b
+                if(num[2]<(n/2)){
+                    num[2]++;
+                    ans2+=st[i].b;
+                    continue;
+                }
+                else{
+                    num[1]++;
+                    ans2+=st[i].a;
+                    continue;
+                }
+            }
+            if(minn==st[i].b){//a
+                if(num[1]<(n/2)){
+                    num[1]++;
+                    ans2+=st[i].a;
+                    continue;
+                }
+                else{
+                    num[2]++;
+                    ans2+=st[i].b;
+                    continue;
+                }
+            }
+        }
+    }
+    ans=max(ans,ans2);
+}
+int main(){
+	freopen("club.in","r",stdin);
+	freopen("club.out","w",stdout);
+    scanf("%lld",&t);
+    while(t--){
+        oka=1;
+        ans=-100;
+        memset(num,0,sizeof(num));
+        scanf("%lld",&n);
+        for(int i=1;i<=n;i++){
+            scanf("%lld%lld%lld",&st[i].a,&st[i].b,&st[i].c);
+            if(!((st[i].b==0)&&(st[i].c==0))){
+                oka=0;
+            }
+        }
+        if(oka==1){
+            ans=0;
+            sort(st+1,st+1+n,cmpa);
+            for(int i=1;i<=n/2;i++){
+                ans+=st[i].a;
+            }
+        }
+        else if(n<=10){
+            solve1();
+        }
+        else{
+            solve3();
+        }
+        printf("%lld\n",ans);
+    }
+	return 0;
+}

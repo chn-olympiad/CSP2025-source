@@ -1,0 +1,14 @@
+#include<bits/stdc++.h>
+using namespace std;
+long long n,m,a[100000];
+int main()
+{
+	freopen("replace.in","r",stdin);
+	freopen("replace.out","w",stdout);
+	cin>>n>>m;
+	while(m--)
+	{
+		cout<<0<<endl;
+	}
+	
+}

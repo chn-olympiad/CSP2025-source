@@ -1,0 +1,62 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+	freopen("polygon.in","r",stdin);
+	freopen("polygon.out","w",stdout);
+	long long int a[5005];
+	long long int n,i,j,q,k=3,ans=0,max,num,znum=0,zmax=-1,x,y,z;
+	cin>>n;
+	for(i=1;i<=n;i++)
+	{
+		cin>>a[i];
+		znum=znum+a[i];
+		if(a[i]>zmax)
+		{
+			zmax=a[i];
+		}
+	}
+	if(n<=3)
+	{
+		if(znum>zmax*2)
+		{
+			cout<<ans+1;
+		}
+	}
+	else
+	{
+		for(k=3;k<=n-1;k++)
+		{
+			for(i=1;i<=n-k+1;i++)
+			{
+				for(j=i+1;j<=n-k+2;j++)
+				{
+					num=a[i];
+					max=-1;
+					if(a[i]>max)
+					{
+						max=a[i];
+					}
+					for(q=1;q<=k-1;q++)
+					{
+						num=num+a[q+j-1];
+						if(a[q+i]>max)
+						{
+							max=a[q+i];
+						}
+					}
+					if(num>max*2)
+					{
+						ans++;
+					}
+				}	
+			}
+		}	
+		if(znum>zmax*2)
+		{
+			ans++;
+		}
+		cout<<ans%998244353;
+	}
+	return 0;
+} 

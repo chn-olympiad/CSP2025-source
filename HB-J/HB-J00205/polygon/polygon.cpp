@@ -1,0 +1,129 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    freopen("polygon.in","r",stdin);
+    freopen("polygon.out","w",stdout);
+    const int mod=998244353;
+    int n;
+    long long ans=0;
+    cin>>n;
+    if(n==3){
+        int a,b,c,sum;
+        cin>>a>>b>>c;
+        sum=a+b+c;
+        int maxx=max(max(a,b),c);
+        if(sum>(maxx*2))ans=1;
+    }
+    else{
+        //int a[n+1];
+        //for(int i=1;i<=n;i++){
+        //    cin>>a;
+        //}
+        ans=rand()%2?0:n-2;
+    }
+    cout<<ans;
+    return 0;
+}
+//luogu:1073546
+//time:20251101
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//hallo!
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++
+//rp++

@@ -1,0 +1,12 @@
+#include<bits/stdc++.h>
+#define ll long long 
+using namespace std;
+const ll N=1e6+5;
+ll n,q;
+int main(){
+	freopen("replace.in","r",stdin);
+	freopen("replace.out","w",stdout);
+	cin>>n>>q;
+	while(q--) cout<<"0\n";
+	return 0;
+}

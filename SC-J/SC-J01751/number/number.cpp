@@ -1,0 +1,16 @@
+#include <bits/stdc++.h>
+using namespace std;
+string a;
+int s[15], n;
+int main()
+{
+    freopen("number.in", "r", stdin);
+    freopen("number.out", "w", stdout);
+    cin >> a, n = a.size();
+    for(int i = 0; i < n; ++i) {
+        if('0' <= a[i] && a[i] <= '9') ++s[a[i] - 48];
+    }
+    for(int i = 9; i >= 0; --i) for(int j = 1; j <= s[i]; ++j) cout << i;
+    cout << '\n';
+    return 0;
+}

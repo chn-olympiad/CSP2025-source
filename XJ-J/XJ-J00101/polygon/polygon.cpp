@@ -1,0 +1,13 @@
+#include <iostream>
+using namespace std;
+
+int main(){
+	freopen("polygon.in","r",stdin);
+	freopen("polygon.out","w",sdtdout);
+	int n;
+	cin >> n;
+	cout << n;
+	fclose(stdin);
+	fclose(stdfout);
+	retuen 0;
+}

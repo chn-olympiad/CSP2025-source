@@ -1,0 +1,143 @@
+#include<bits/stdc++.h>
+using namespace std;
+struct node
+{
+	long long int a,b,c,d,e;
+}p[100005];
+bool cmp(node a,node b)
+{
+	if(a.d<b.d)
+	return a.d>b.d;
+}
+int main()
+{
+	freopen("club.in","r",stdin);
+	freopen("club.out","w",stdout);
+	long long int t,n,m,i,j,ans,k[4];
+	cin>>t;
+	while(t--)
+	{
+		k[0]=k[1]=k[2]=k[3]=1;
+		ans=0;
+		cin>>n;
+		m=n/2;
+		for(i=1;i<=n;i++)
+		{
+			cin>>p[i].a>>p[i].b>>p[i].c; 
+			p[i].d=max(p[i].a,max(p[i].b,p[i].c));
+		}
+		sort(p+1,p+1+n,cmp);
+		for(i=1;i<=n;i++)
+		{
+			if(p[i].d==p[i].a)
+			{
+				if(k[1]<=m)
+				{
+					ans+=p[i].a;
+					k[1]++;
+				}
+				else
+				if(k[2]<=m&&k[3]<=m)
+				{
+					if(p[i].b>p[i].c)
+					{
+						ans+=p[i].b;
+						k[2]++;
+					}
+					else
+					{
+						ans+=p[i].c;
+						k[3]++;
+					}
+				}
+				else
+				{
+					if(k[2]<=m)
+					{
+						ans+=p[i].b;
+						k[2]++;
+					}
+					if(k[3]<=m)
+					{
+						ans+=p[i].c;
+						k[3]++;
+					}
+				}
+			}
+			else
+			if(p[i].d==p[i].b)
+			{
+				if(k[2]<=m)
+				{
+					ans+=p[i].b;
+					k[2]++;
+				}
+				else
+				if(k[1]<=m&&k[3]<=m)
+				{
+					if(p[i].a>p[i].c)
+					{
+						ans+=p[i].a;
+						k[1]++;
+					}
+					else
+					{
+						ans+=p[i].c;
+						k[3]++;
+					}
+				}
+				else
+				{
+					if(k[1]<=m)
+					{
+						ans+=p[i].a;
+						k[1]++;
+					}
+					if(k[3]<=m)
+					{
+						ans+=p[i].c;
+						k[3]++;
+					}
+				}
+			}
+			else
+			if(p[i].d==p[i].c)
+			{
+				if(k[3]<=m)
+				{
+					ans+=p[i].c;
+					k[3]++;
+				}
+				else
+				if(k[1]<=m&&k[2]<=m)
+				{
+					if(p[i].a>p[i].b)
+					{
+						ans+=p[i].a;
+						k[1]++;
+					}
+					else
+					{
+						ans+=p[i].b;
+						k[2]++;
+					}
+				}
+				else
+				{
+					if(k[1]<=m)
+					{
+						ans+=p[i].a;
+						k[1]++;
+					}
+					if(k[2]<=m)
+					{
+						ans+=p[i].b;
+						k[2]++;
+					}
+				}
+			}
+		}
+		cout<<ans<<endl;
+	} 
+	return 0;
+} 

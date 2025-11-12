@@ -1,0 +1,59 @@
+#include<iostream>
+#include<cstring>
+#include<cmath>
+using namespace std;
+int n,a[500001],ans,k;
+int main(){	
+freopen("xor.in","r",stdin);
+freopen("xor.out","w",stdout);
+cin>>n>>k;
+for(int i=1;i<=n;i++){
+	cin>>a[i];
+}
+if(n<=2&&k==0){
+if(n==1){
+	if(a[1]==0){
+		cout<<1;
+	}
+	else{
+		cout<<0;
+	}
+}
+else{
+	if(a[1]==0&&a[2]==0)
+	ans+=2;
+	else
+	if(a[1]==a[2]){
+		ans++;
+	}
+	cout<<ans;
+}
+}
+else{
+if(n<=2&&k==1){
+	if(n==1){
+	if(a[1]==1){
+		cout<<1;
+	}
+	else{
+		cout<<0;
+	}
+}
+else{
+	if(a[1]==1)
+	ans++;
+	if(a[2]==1)
+	ans++;
+	if(abs(a[1]-a[2])==1){
+		ans++;
+	}
+	cout<<ans;
+}
+}	
+else{
+	if(n<=10&&k==0){
+		
+	}
+}
+}
+}

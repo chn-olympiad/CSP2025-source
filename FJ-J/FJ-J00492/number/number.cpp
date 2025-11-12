@@ -1,0 +1,24 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+char s[1000010];
+int a[1000010], l;
+bool cmp(int x, int y){
+	return x > y;
+}
+
+int main(){
+	freopen("number.in","r",stdin);
+	freopen("number.out","w",stdout);
+	cin >> (s+1);
+	l = strlen(s+1);
+	int j = 0;
+	for (int i = 1; i <= l; i++)
+		if(s[i] >= '0' && s[i] <= '9')
+			a[++j] = s[i] - '0';
+	sort(a+1, a+j+1, cmp);
+	for (int i = 1; i <= j; i++)
+		printf("%d", a[i]);
+	return 0;
+}

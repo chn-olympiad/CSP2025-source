@@ -1,0 +1,20 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+string s;
+vector<int> c;
+
+int main(){
+	freopen("number.in", "r", stdin);
+	freopen("number.out", "w", stdout); 
+    cin >> s;
+    for(int i = 0;i < s.length();i++){
+        if(isdigit(s[i])){
+            c.push_back(s[i] - '0');
+        }
+    }
+    sort(c.begin(), c.end());
+    for(int i = c.size() - 1;i >= 0;i--){
+        cout << c[i];
+    }
+}

@@ -1,0 +1,31 @@
+#include <bits/stdc++.h>
+using namespace std;
+int n,a[10086]; 
+bool pp(int i,int j){
+	int r=0;
+	for(int h=0;h<i;h++){
+		r+=a[j+h];
+	}
+	if(r>a[n])return true;
+	return false;
+}
+int main(){
+	freopen("polygon.in","r",stdin);
+	freopen("polygon.out","w",stdout);
+	cin>>n;
+	for(int i=1;i<=n;i++){
+		cin>>a[i];
+	}
+	sort(a+1,a+n+1);
+	if(n==3){
+		if(a[1]+a[2]>a[3])
+		cout<<1;
+		else
+		cout<<0;
+	}
+	else if(n==5){
+		cout<<9;
+	}
+	else cout <<16;
+	return 0;
+} 

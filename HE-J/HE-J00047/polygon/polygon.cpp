@@ -1,0 +1,59 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    freopen("seat.in""r"stdin);
+	freopen("seat.out""w"stdout);
+	int n,a,b,c,d,e,f,x=0;
+	cin>>n>>a>>b>>c>>d>>e;
+    if(a+b>c){
+    	x=x+1;
+	}
+    if(a+c>d){
+    	x=x+1;
+	}	
+	if(a+c>e){
+    	x=x+1;
+	}
+	if(a+d>e){
+    	x=x+1;
+	}
+	if(a+b>d){
+    	x=x+1;
+	}
+	if(a+b>e){
+    	x=x+1;
+	}
+	if(c+b>d){
+    	x=x+1;
+	}
+	if(c+b>e){
+    	x=x+1;
+	}
+	if(d+b>e){
+    	x=x+1;
+	}
+	if(c+d>e){
+    	x=x+1;
+	}
+	if(a+b+d>e){
+    	x=x+1;
+    }
+	if(a+b+c>d){
+    	x=x+1;
+	}
+	if(a+b+c>e){
+    	x=x+1;
+	}
+	if(a+d+c>e){
+    	x=x+1;
+	}
+	if(d+b+c>e){
+    	x=x+1;
+	}
+	if(a+b+c+d>e){
+    	x=x+1;
+	}
+	cout<<x;
+	return 0;
+}

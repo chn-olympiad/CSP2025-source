@@ -1,0 +1,11 @@
+#include<bits/stdc++.h>
+using space std;
+int main(){
+	freopen("employ.in","r","stdin");
+	freopen("employ.out","w","stdout");
+	cout<<2204128;
+
+	fclose("stdin")
+	fclose("stdout")
+	return 0;
+}

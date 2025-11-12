@@ -1,0 +1,19 @@
+#include<bits/stdc++.h>
+using namespace std;
+seat.in;
+seat.out;
+int main(){
+int n,m,c,r;
+cin>>n>>m;
+int a[n][m];
+for(int i=1;i<n;i++){
+	for(int j=1;j<m;j++){
+		cin>>a[i][j];
+	}
+}
+if(n==1&&m==1){
+	cout<<"1 1";
+}
+return 0;
+}
+

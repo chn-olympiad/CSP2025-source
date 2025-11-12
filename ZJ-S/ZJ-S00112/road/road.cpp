@@ -1,0 +1,17 @@
+#include<bits/stdc++.h>
+using namespace std;
+struct node{
+	int pre[10005],cnt;
+};
+int n,m,k,u,v,w,ans;
+int main(){
+	freopen("road.in","r",stdin);
+	freopen("road.out","w",stdout);
+	cin>>n>>m>>k;
+	for(int i=1;i<=n;i++){
+		cin>>u>>v>>w;
+		ans+=w;
+	}
+	cout<<ans;
+	return 0;
+}

@@ -1,0 +1,140 @@
+#include<bits/stdc++.h>
+using namespace std;
+long long n,t,tt,j,f=0,ff=0,u=11415141,a[200000],ant,b[221222],c[221222],aa[100000],bb[100000],cc[100000],ans[114];
+int main(){
+	freopen("club.in","r",stdin);
+	freopen("club.out","w",stdout);
+	cin>>tt;
+	for(int p=1;p<=tt;p++){
+	cin>>n;
+	for(int i=1;i<=n;i++){
+	if(f==0)
+	cin>>a[i]>>b[i]>>c[i];
+	if(f==1)
+	i--;
+	t=max(a[i],max(b[i],c[i]));
+	if(((t==a[i]&&f==0)||ff==1)&&(aa[p]<n/2||ff==1)){ant++;
+	aa[p]++;
+}
+	else if(((t==a[i]&&f==0)||ff==1)&&(aa[p]>=n/2||ff==1)){ant++;
+		u=-1;
+		for(j=1;j<=i-1;j++){
+			if(max(a[j],max(b[j],c[j]))==a[j])
+			u=max(u,max(b[j],c[j]));
+		}
+		for(j=1;j<=i-1;j++){
+			if(max(b[j],c[j])==u&&max(a[j],max(b[j],c[j]))==a[j])
+			break;
+		}
+		int uu=max(b[i],c[i]);
+		if(t==b[i])
+		uu=max(a[i],c[i]);
+		if(t==c[i])
+		uu=max(b[i],a[i]);
+		if(t+u>=a[j]+uu){
+				ans[p]-=a[j];
+				ans[p]+=u;
+		}
+		else{
+			ans[p]+=max(b[i],c[i]);
+			if(b[i]>c[i]){ff=2;ans[p]+=b[i];
+				if(bb[p]>n/2){ans[p]+=c[i];
+					ans[p]-=b[i];
+				ff=3;}
+			}
+			else{ans[p]+=c[i];
+			ff=3;
+			if(cc[p]>n/2){ans[p]+=b[i];
+				ans[p]-=c[i];
+			ff=2;}}
+			continue;
+		}
+	}
+	
+	if(((t==b[i]&&f==0)||ff==2)&&(bb[p]<n/2||ff==2)){ant++;
+	bb[p]++;
+	}
+	else if(((t==b[i]&&f==0)||ff==2)&&(bb[p]>=n/2||ff==2)){ant++;
+		u=-1;
+		for(j=1;j<=i-1;j++){
+			if(max(b[j],max(a[j],c[j]))==b[j])
+			u=max(u,max(a[j],c[j]));
+		}
+		for(j=1;j<=i-1;j++){
+			if(max(a[j],c[j])==u&&max(b[j],max(a[j],c[j]))==b[j])
+			break;
+		}
+		int uu=max(a[i],c[i]);
+		if(t==a[i])
+		uu=max(b[i],c[i]);
+		if(t==c[i])
+		uu=max(a[i],b[i]);
+		if(t+u>=b[j]+uu){
+				ans[p]-=b[j];
+				ans[p]+=u;
+		}
+		else{
+			if(a[i]>c[i]){ff=1;ans[p]+=a[i];
+				if(aa[p]>n/2){
+				ff=3;ans[p]+=c[i];
+				ans[p]-=a[i];
+			}
+			}
+			else{
+			ff=3;ans[p]+=c[i];
+			if(cc[p]>n/2){
+				ans[p]+=a[i];ans[p]-=c[i];
+			ff=1;}}
+			f=1;
+			continue;
+		}
+	}
+	if(((t==c[i]&&f==0)||ff==3)&&(cc[p]<n/2||ff==3)){ant++;
+		cc[p]++;
+	}
+	else if(((t==c[i]&&f==0)||ff==3)&&(cc[p]>=n/2||ff==3)){ant++;
+		u=-1;
+		for(j=1;j<=i-1;j++){
+			if(max(c[j],max(a[j],b[j]))==c[j])
+			u=max(u,max(a[j],b[j]));
+		}
+		for(j=1;j<=i-1;j++){
+			if(max(a[j],b[j])==u&&max(c[j],max(a[j],b[j]))==c[j])
+			break;
+		}
+		int uu=max(b[i],a[i]);
+		if(t==b[i])
+		uu=max(a[i],c[i]);
+		if(t==a[i])
+		uu=max(b[i],c[i]);
+		if(t+u>=c[j]+uu){
+				ans[p]-=c[j];
+				ans[p]+=u;
+		}
+		else{
+			if(a[i]>b[i]){ff=1;ans[p]+=a[i];
+				if(aa[p]>n/2){
+				ff=2;
+				ans[p]+=b[i];
+				ans[p]-=a[i];
+			}
+		}
+			else{
+			ff=2;ans[p]+=b[i];
+			if(bb[p]>n/2){
+			ff=1;
+			ans[p]+=a[i];
+			ans[p]-=b[i];}
+			}
+			f=1;
+			continue;
+		}
+	}
+	if(f==0)
+	ans[p]+=t;
+	f=0;
+	ff=0;
+}
+}for(int i=1;i<=tt;i++)
+cout<<ans[i]<<endl;
+}

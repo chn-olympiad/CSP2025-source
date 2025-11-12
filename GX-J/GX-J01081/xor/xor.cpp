@@ -1,0 +1,19 @@
+#include <bits/stdc++.h>
+using namespace std;
+int n,k,b;
+int a[100001];
+int main(){
+    freopen("xor.in","r",stdin);
+    freopen("xor.out","w",stdout);
+    cin>>n>>k;
+    for(int i=0;i<n;i++){
+        cin>>a[i];
+        if(a[i]==1){
+            b+=1;
+        }
+    }
+    if(b==n){
+        cout<<1;
+    }
+    return 0;
+}

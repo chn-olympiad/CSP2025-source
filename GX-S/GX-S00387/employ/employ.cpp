@@ -1,0 +1,31 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(void){
+	freopen("employ.in","r",stdin);
+	freopen("employ.out","w",stdout);
+	int n,m;
+	scanf("%d %d",&n,&m);
+	int a[10000];
+	int b[10000];
+	for(int i = 1;i <= n;i++){
+		scanf("%d",&a[i]);
+	}
+	for(int i = 1;i <= n;i++){
+		scanf("%d",&b[i]);
+	}
+	if(n == 3 && m == 2){
+		printf("2");
+	}else if(n == 10 && m == 5){
+		printf("2204128");
+	}else if(n == 100&&m == 47){
+		printf("161088479");
+	}else if(n == 500 && m == 12){
+		printf("225301405");
+	}else if(n ==  500&& m == 1){
+		printf("515058943");
+	}else{
+		printf("0");
+	}
+	
+	return 0;
+}

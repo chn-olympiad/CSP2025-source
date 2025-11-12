@@ -1,0 +1,11 @@
+#include <bits/stdc++.h>
+#define ll long long
+using namespace std;
+ll n,q;
+int main(){
+    freopen("replace.in","r",stdin);
+    freopen("replace.out","w",stdout);
+    cin >> n >> q;
+    for (ll i=0;i<q;i++) cout << 0 << '\n';
+    return 0;
+}

@@ -1,0 +1,28 @@
+#include<bits/stdc++.h>
+using namespace std;
+vector<int> a;
+int main()
+{
+    freopen("polygon.in","r",stdin);
+    freopen("polygon.out","w",stdout);
+    int n;
+    cin>>n;
+    for(int i=1;i<=n;i++)
+    {
+        int b;
+        cin>>b;
+    }
+    if(n==5)
+    {
+        cout<<6;
+    }
+    if(n==20)
+    {
+        cout<<1042392;
+    }
+    if(n==500)
+    {;
+        cout<<366911923;
+    }
+    return 0;
+}

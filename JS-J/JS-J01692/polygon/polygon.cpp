@@ -1,0 +1,13 @@
+#include <iostream>
+using namespace std;
+int a[5005];
+int main(){
+    int n;
+    cin>>n;
+    for(int i = 1;i <= n;i++){
+        cin>>a[i];
+    }
+    if(a[1]+a[2] > a[3] and a[2]+a[3]>a[1] and a[1]+a[3] > a[2]) cout<<1;
+    else cout<<0;
+    return 0;
+}

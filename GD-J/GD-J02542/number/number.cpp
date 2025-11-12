@@ -1,0 +1,21 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+	freopen("number.in","r",stdin);
+	freopen("number.out","w",stdout);
+	string s;
+	int a[1000010],sum=0;
+	getline(cin,s);
+	for(int i=0;i<s.size();i++)
+	{
+		if(s[i]-'0'>=0&&s[i]-'0'<=9)
+		{
+			a[sum]=s[i]-'0';
+			sum++;
+		}
+	}
+	sort(a,a+sum);
+	for(int i=sum-1;i>=0;i--)cout<<a[i];
+	return 0;
+}

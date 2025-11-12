@@ -1,0 +1,79 @@
+#include<iostream>
+using namespace std;
+int a[100005];
+int main()
+{
+	freopen("number.in","r",stdin);
+	freopen("number.out","w",stdout);
+	string s;
+	int i,j,l=1;
+	cin>>s;
+	for(i=1;i<=s.size()-1;i++)
+	{
+		if(s[i]=='0')
+		{
+			a[l]=0;
+			l++;
+		}
+		if(s[i]=='1')
+		{
+			a[l]=1;
+			l++;	
+		}
+		if(s[i]=='2')
+		{
+			a[l]=2;
+			l++;
+		}
+		if(s[i]=='3')
+		{
+			a[l]=3;
+			l++;
+		}
+		if(s[i]=='4')
+		{
+			a[l]=4;
+			l++;
+		}
+		if(s[i]=='5')
+		{
+			a[l]=5;
+			l++;
+		}
+		if(s[i]=='6')
+		{
+			a[l]=6;
+			l++;
+		}
+		if(s[i]=='7')
+		{
+			a[l]=7;
+			l++;
+		}
+		if(s[i]=='8')
+		{
+			a[l]=8;
+			l++;
+		}
+		if(s[i]=='9')
+		{
+			a[l]=9;
+			l++;
+		}
+	}
+	for(i=1;i<=l;i++)
+	{
+		for(j=1;j<=l;j++)
+		{
+			if(a[j]<a[j+1])
+			{
+				swap(a[j],a[j+1]);
+			}
+		}
+	}
+	for(i=1;i<=l;i++)
+	{
+		cout<<a[i];
+	}
+	return 0;
+}

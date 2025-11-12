@@ -1,0 +1,296 @@
+#include<bits/stdc++.h>
+using namespace std;
+long long a[10000000],k,n,jx[100000000],jishu1,jishu2,jishu3;
+int main(){
+    freopen("xor.in","r",stdin);
+    freopen("xor.in","w",stdout);
+    cin>>n>>k;
+    if(k==0&&n==2){
+        cout<<1;
+    }
+    else
+    for(int i=1;i<=n;i++){
+        cin>>a[i];
+        if(a[i]==1){
+            jishu1++;
+        }
+    }
+    jishu2=n-jishu1;
+    for(int i=1;i<=n;i++){
+    if(k==0){
+        if(a[i]~a[i+1]==0&&i<=n){jishu2++;}
+        if(n==10){
+            if(a[i]~a[i+1]~a[i+2]==0&&i+1<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]==0&&i+2<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]~a[i+4]==0&&i+3<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]~a[i+4]~a[i+5]==0&&i+4<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]~a[i+4]~a[i+5]~a[i+6]==0&&i+5<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]~a[i+4]~a[i+5]~a[i+6]~a[i+7]==0&&i+6<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]~a[i+4]~a[i+5]~a[i+6]~a[i+7]~a[i+8]==0&&i+7<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]~a[i+4]~a[i+5]~a[i+6]~a[i+7]~a[i+8]~a[i+9]==0&&i+8<=n){
+            jishu2++;
+        }
+ }
+        if(n==9){
+            if(a[i]~a[i+1]~a[i+2]==0&&i+1<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]==0&&i+2<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]~a[i+4]==0&&i+3<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]~a[i+4]~a[i+5]==0&&i+4<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]~a[i+4]~a[i+5]~a[i+6]==0&&i+5<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]~a[i+4]~a[i+5]~a[i+6]~a[i+7]==0&&i+6<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]~a[i+4]~a[i+5]~a[i+6]~a[i+7]~a[i+8]==0&&i+7<=n){
+            jishu2++;
+        }
+}
+        if(n==8){
+            if(a[i]~a[i+1]~a[i+2]==0&&i+1<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]==0&&i+2<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]~a[i+4]==0&&i+3<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]~a[i+4]~a[i+5]==0&&i+4<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]~a[i+4]~a[i+5]~a[i+6]==0&&i+5<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]~a[i+4]~a[i+5]~a[i+6]~a[i+7]==0&&i+6<=n){
+            jishu2++;
+        }
+
+        }
+if(n==7){
+            if(a[i]~a[i+1]~a[i+2]==0&&i+1<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]==0&&i+2<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]~a[i+4]==0&&i+3<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]~a[i+4]~a[i+5]==0&&i+4<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]~a[i+4]~a[i+5]~a[i+6]==0&&i+5<=n){
+            jishu2++;
+        }
+
+}
+            
+        
+if(n==6){
+            if(a[i]~a[i+1]~a[i+2]==0&&i+1<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]==0&&i+2<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]~a[i+4]==0&&i+3<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]~a[i+4]~a[i+5]==0&&i+4<=n){
+            jishu2++;
+        }
+
+    }
+if(n==5){
+            if(a[i]~a[i+1]~a[i+2]==0&&i+1<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]==0&&i+2<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]~a[i+4]==0&&i+3<=n){
+            jishu2++;
+        }
+
+        }
+if(n==4){
+            if(a[i]~a[i+1]~a[i+2]==0&&i+1<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]==0&&i+2<=n){
+            jishu2++;
+        }
+
+}
+if(n==3){
+            if(a[i]~a[i+1]~a[i+2]==0&&i+1<=n){
+            jishu2++;
+        }
+
+ }
+    }
+       if(k==1){
+        if(a[i]~a[i+1]==1&&i<=n){jishu2++;}
+        if(n==10){
+            if(a[i]~a[i+1]~a[i+2]==1&&i+1<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]==1&&i+2<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]~a[i+4]==1&&i+3<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]~a[i+4]~a[i+5]==1&&i+4<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]~a[i+4]~a[i+5]~a[i+6]==1&&i+5<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]~a[i+4]~a[i+5]~a[i+6]~a[i+7]==1&&i+6<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]~a[i+4]~a[i+5]~a[i+6]~a[i+7]~a[i+8]==1&&i+7<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]~a[i+4]~a[i+5]~a[i+6]~a[i+7]~a[i+8]~a[i+9]==1&&i+8<=n){
+            jishu2++;
+        }
+      }
+        if(n==9){
+            if(a[i]~a[i+1]~a[i+2]==1&&i+1<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]==1&&i+2<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]~a[i+4]==1&&i+3<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]~a[i+4]~a[i+5]==1&&i+4<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]~a[i+4]~a[i+5]~a[i+6]==1&&i+5<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]~a[i+4]~a[i+5]~a[i+6]~a[i+7]==1&&i+6<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]~a[i+4]~a[i+5]~a[i+6]~a[i+7]~a[i+8]==1&&i+7<=n){
+            jishu2++;
+        }
+}
+        if(n==8){
+            if(a[i]~a[i+1]~a[i+2]==1&&i+1<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]==1&&i+2<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]~a[i+4]==1&&i+3<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]~a[i+4]~a[i+5]==1&&i+4<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]~a[i+4]~a[i+5]~a[i+6]==1&&i+5<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]~a[i+4]~a[i+5]~a[i+6]~a[i+7]==1&&i+6<=n){
+            jishu2++;
+        }
+
+        }
+if(n==7){
+            if(a[i]~a[i+1]~a[i+2]==1&&i+1<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]==1&&i+2<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]~a[i+4]==1&&i+3<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]~a[i+4]~a[i+5]==1&&i+4<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]~a[i+4]~a[i+5]~a[i+6]==1&&i+5<=n){
+            jishu2++;
+        }
+  
+}
+            
+        
+if(n==6){
+            if(a[i]~a[i+1]~a[i+2]==1&&i+1<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]==&&i+2<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]~a[i+4]==1&&i+3<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]~a[i+4]~a[i+5]==1&&i+4<=n){
+            jishu2++;
+        }
+       
+    }
+if(n==5){
+            if(a[i]~a[i+1]~a[i+2]==1&&i+1<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]==1&&i+2<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]~a[i+4]==1&&i+3<=n){
+            jishu2++;
+        }
+    
+        }
+if(n==4){
+            if(a[i]~a[i+1]~a[i+2]==1&&i+1<=n){
+            jishu2++;
+        }
+        if(a[i]~a[i+1]~a[i+2]~a[i+3]==1&&i+2<=n){
+            jishu2++;
+        }
+
+}
+if(n==3){
+            if(a[i]~a[i+1]~a[i+2]==1&&i+1<=n){
+            jishu2++;
+        }
+ 
+ }
+    } 
+    }
+    cout<<jishu2;
+    
+    
+
+    return 0;
+}

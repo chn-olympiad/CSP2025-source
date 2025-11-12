@@ -1,0 +1,16 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+    freopen("number.in","r",stdin);
+    freopen("number.out","w",stdout);
+    //int N=1e6+5;
+
+    long long a;
+    cin>>a;
+    cout<<a;
+
+    fclose(stdin);
+    fclose(stdout);
+    return 0;
+}

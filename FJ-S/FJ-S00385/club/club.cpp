@@ -1,0 +1,1487 @@
+#include <bits/stdc++.h>
+using namespace std;
+int t,n,first,second,third,h;
+struct q
+{
+	int s[4]={0};
+	int now=0;
+	int cha[4][4];
+}a[100005];
+bool cmp1(q a1,q a2)
+{
+	if(a1.now!=a2.now) return a1.now<a2.now;
+	int minn=0x3f3f3f3f,mink=0;
+	for(int i=2;i<=3;i++)
+	{
+		if((minn-a1.cha[1][i])>(minn-a2.cha[1][i]))
+		{
+			mink=1;
+			minn=a1.cha[1][i];
+		}
+		else
+		{
+			mink=2;
+			minn=a2.cha[1][i];
+		}
+	}
+	return (mink==1);
+}
+bool cmp2(q a1,q a2)
+{
+	if(a1.now!=a2.now) return (a1.now==2);
+	int minn=0x3f3f3f3f,mink=0;
+	for(int i=1;i<=3;i++)
+	{
+		if(i==2) continue;
+		if((minn-a1.cha[2][i])>(minn-a2.cha[2][i]))
+		{
+			mink=1;
+			minn=a1.cha[2][i];
+		}
+		else
+		{
+			mink=2;
+			minn=a2.cha[2][i];
+		}
+	}
+	return (mink==1);
+}
+bool cmp3(q a1,q a2)
+{
+	if(a1.now!=a2.now) return (a1.now==3);
+	int minn=0x3f3f3f3f,mink=0;
+	for(int i=1;i<=2;i++)
+	{
+		if((minn-a1.cha[3][i])>(minn-a2.cha[3][i]))
+		{
+			mink=1;
+			minn=a1.cha[3][i];
+		}
+		else
+		{
+			mink=2;
+			minn=a2.cha[3][i];
+		}
+	}
+	return (mink==1);
+}
+int main()
+{
+	freopen("club.in","r",stdin);
+	freopen("club.out","w",stdout);	
+	cin>>t;
+	while(t--)
+	{
+		cin>>n;
+		for(int i=1;i<=n;i++)
+		{
+			cin>>a[i].s[1]>>a[i].s[2]>>a[i].s[3];
+			for(int j=1;j<=3;j++)
+			{
+				for(int k=1;k<=3;k++)
+				{
+					a[i].cha[j][k]=a[i].s[j]-a[i].s[k];
+				}
+			}
+			if(a[i].s[1]>=a[i].s[2]&&a[i].s[1]>=a[i].s[3])
+			{
+				a[i].now=1;
+				first++;
+				h+=a[i].s[1];
+			}
+			else if(a[i].s[2]>a[i].s[1]&&a[i].s[2]>a[i].s[3])
+			{
+				a[i].now=2;
+				second++;
+				h+=a[i].s[2];
+			}
+			else if(a[i].s[3]>a[i].s[1]&&a[i].s[3]>a[i].s[2])
+			{
+				a[i].now=3;
+				third++;
+				h+=a[i].s[3];
+			}
+		}
+		if((first<=(n/2))&&(second<=(n/2))&&(third<=(n/2)))
+		{
+			cout<<h<<endl;
+			h=0;
+			first=0;
+			second=0;
+			third=0;
+			continue;
+		}
+		if(first>(n/2))
+		{
+			int u=first-(n/2);
+			sort(a+1,a+n+1,cmp1);
+			for(int i=1;i<=u;i++)
+			{
+				if(a[i].cha[1][2]<a[i].cha[1][3])
+				{
+					if(second==(n/2))
+					{
+						a[i].now=3;
+						first--;
+						third++;
+						h-=a[i].cha[1][3];
+					}
+					else
+					{
+						a[i].now=2;
+						first--;
+						second++;
+						h-=a[i].cha[1][2];
+					}
+				}
+				else
+				{
+					if(third==(n/2))
+					{
+						a[i].now=2;
+						first--;
+						second++;
+						h-=a[i].cha[1][2];
+					}
+					else
+					{
+						a[i].now=3;
+						first--;
+						third++;
+						h-=a[i].cha[1][3];
+					}
+				}
+			}
+		}
+		else if(second>(n/2))
+		{
+			int u=second-(n/2);
+			sort(a+1,a+n+1,cmp2);
+			for(int i=1;i<=u;i++)
+			{
+				if(a[i].cha[2][1]<a[i].cha[2][3])
+				{
+					if(first==(n/2))
+					{
+						a[i].now=3;
+						second--;
+						third++;
+						h-=a[i].cha[2][3];
+					}
+					else
+					{
+						a[i].now=1;
+						second--;
+						first++;
+						h-=a[i].cha[2][1];
+					}
+				}
+				else
+				{
+					if(third==(n/2))
+					{
+						a[i].now=1;
+						second--;
+						first++;
+						h-=a[i].cha[2][1];
+					}
+					else
+					{
+						a[i].now=3;
+						second--;
+						third++;
+						h-=a[i].cha[2][3];
+					}
+				}
+			}
+		}
+		else if(third>(n/2))
+		{
+			int u=third-(n/2);
+			sort(a+1,a+n+1,cmp3);
+			for(int i=1;i<=u;i++)
+			{
+				if(a[i].cha[3][1]<a[i].cha[3][2])
+				{
+					if(first==(n/2))
+					{
+						a[i].now=2;
+						third--;
+						second++;
+						h-=a[i].cha[3][2];
+					}
+					else
+					{
+						a[i].now=1;
+						third--;
+						first++;
+						h-=a[i].cha[3][1];
+					}
+				}
+				else
+				{
+					if(second==(n/2))
+					{
+						a[i].now=1;
+						third--;
+						first++;
+						h-=a[i].cha[3][1];
+					}
+					else
+					{
+						a[i].now=2;
+						third--;
+						second++;
+						h-=a[i].cha[3][2];
+					}
+				}
+			}
+		}
+		cout<<h<<endl;
+		h=0;
+		first=0;
+		second=0;
+		third=0;
+	}
+}
+/*
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+WBG_Persica最强！！
+/*

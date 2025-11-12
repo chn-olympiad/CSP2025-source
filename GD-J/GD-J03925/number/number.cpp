@@ -1,0 +1,20 @@
+#include<bits/stdc++.h>
+using namespace std;
+const int N=1e6+6;
+int a[N];
+int main(){
+	freopen("number.in","r",stdin);
+	freopen("number.out","w",stdout);
+	string s;
+	cin>>s;
+	int len=s.size(),j=0;
+	for(int i=0;i<len;i++){
+		if(s[i]>='0' && s[i]<='9'){
+			int k=(s[i]-'0');
+			a[j++]=k;
+		}
+	}
+	sort(a,a+j);
+	for(int i=j-1;i>=0;i--)cout<<a[i];
+	return 0;
+} 

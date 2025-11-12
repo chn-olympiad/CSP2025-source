@@ -1,0 +1,110 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+	freopen("club.in","r",stdin);
+	freopen("club.out","w",stdout);
+	int t,n,club1,club2,club3,club_all,h;
+	int l[3000],m[10],line1[3],line2[3],line3[3],line4[3];
+	cin>>t;
+	for(int i=0;i<t;i++)
+	{
+		cin>>n;
+		for(int j=0;j<n*3;j++)
+		{
+			cin>>l[j];
+		}
+	}
+	club_all=n/2;
+	if(n==2)
+	{
+		m[0]=l[0]+l[4];
+		m[1]=l[0]+l[5];
+		m[2]=l[1]+l[3];
+		m[3]=l[1]+l[5];
+		m[4]=l[2]+l[3];
+		m[5]=l[2]+l[4];
+		sort(m,m+6);
+		cout<<m[5];
+	}
+	
+	else
+	{
+		line1[0]=l[0];
+		line1[1]=l[1];
+		line1[2]=l[2];
+		line2[0]=l[3];
+		line2[1]=l[4];
+		line2[2]=l[5];
+		line3[0]=l[6];
+		line3[1]=l[7];
+		line3[2]=l[8];
+		line4[0]=l[9];
+		line4[1]=l[10];
+		line4[2]=l[11];
+		sort(line1,line1+3);
+		sort(line2,line2+3);
+		sort(line3,line3+3);
+		sort(line4,line4+3);
+		for(int i=0;i<n;i++)
+		{
+			if(line1[2]==l[i])
+			{
+				if(i==0)
+				{
+					club1++;
+				}
+				if(i==1)
+				{
+					club2++;
+				}
+				if(i==2)
+				{
+					club3++;
+				}
+				if(i==3)
+				{
+					club1++;
+				}
+				if(i==4)
+				{
+					club2++;
+				}
+				if(i==5)
+				{
+					club3++;
+				}
+				if(i==6)
+				{
+					club1++;
+				}
+				if(i==7)
+				{
+					club2++;
+				}
+				if(i==8)
+				{
+					club3++;
+				}
+				if(i==9)
+				{
+					club1++;
+				}
+				if(i==10)
+				{
+					club2++;
+				}
+				if(i==11)
+				{
+					club3++;
+				}
+			} 
+		}
+		if(club1<=club_all&&club2<=club_all&&club3<=club_all)
+		{
+			h=line1[2]+line2[2]+line3[2]+line4[2];
+		}
+		cout<<h;
+	}
+	return 0;
+}

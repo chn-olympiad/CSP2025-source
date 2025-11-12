@@ -1,0 +1,66 @@
+#include<iostream>
+#include<cstring>
+#include<cmath>
+#include<algorithm>
+#include<cstdio>
+#include<iomanip>
+using namespace std;
+long long A[10010][10010];
+int main(){
+	freopen("club.in","r",stdin);
+	freopen("club.out","w",stdout); 
+	long long i,t,n,j,g=0,c,s,d1=0,d2=0,d3=0,f,h=0,p=0;
+	cin>>t;
+	g=t;
+	while(t--){
+		cin>>n;
+		f=0;
+		for(i=1;i<=n;i++){
+			c=-1;s=0;
+			for(j=1;j<=3;j++){
+				cin>>A[i][j];
+				if(A[i][j]>=c){
+					c=A[i][j];
+					s=j;
+				}		
+			}
+			f+=c;
+			if(s==1){
+				d1++;
+			}
+			if(s==2){
+				d2++;
+			}
+			if(s==3){
+				d3++;
+			}
+		}
+		if(d1<=n/2&&d2<=n/2&&d3<=n/2){
+			cout<<f<<endl;
+		}else{
+			for(i=1;i<=n;i++){
+				for(j=1;j<=3;j++){
+					if(A[i][j]+A[i+1][j]>=h&&A[i][j]+A[i+1][j]<f){
+						h=A[i][j]+A[i+1][j];
+					}
+					if(A[i][j]+A[i+1][j+1]>=h&&A[i][j]+A[i+1][j+1]<f){
+						h=A[i][j]+A[i+1][j+1];
+					}
+					if(A[i][j]+A[i+1][j+2]>=h&&A[i][j]+A[i+1][j+2]<f){
+						h=A[i][j]+A[i+1][j+2];
+					}
+					if(A[i][j]+A[i+1][j-1]>=h&&A[i][j]+A[i+1][j-1]<f){
+						h=A[i][j]+A[i+1][j-1];
+					}
+					if(A[i][j]+A[i+1][j-2]>=h&&A[i][j]+A[i+1][j-2]<f){
+						h=A[i][j]+A[i+1][j-2];
+					}
+				}
+			}
+			cout<<h<<endl;
+		}
+	}
+	fclose(stdin);
+	fclose(stdout);
+	return 0;
+}

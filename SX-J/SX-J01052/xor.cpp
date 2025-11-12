@@ -1,0 +1,17 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	//freopen("xor".in", "r", stdin);
+	//freopen("xorr.out", "w", stdout);
+	int n,k;
+	cin>>n>>k;
+	int n;
+	for(int a=1;a<=n;a++){
+		cout<<maxx(k)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ;
+	}
+//fclose(stdin);
+//fclose(stdout);
+
+	return 0;
+}

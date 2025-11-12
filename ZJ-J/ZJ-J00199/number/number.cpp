@@ -1,0 +1,26 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define int long long
+
+const int N = 1e6 + 5;
+
+int a[10];
+
+signed main()
+{
+	freopen("number.in", "r", stdin);
+	freopen("number.out", "w", stdout);
+	string s;
+	cin >> s;
+	int len = s.size();
+	for(int i = 0; i < len; i++)
+		if(s[i] >= '0' && s[i] <= '9') a[s[i] - '0']++;
+	for(int i = 9; i >= 0; i--)
+		while(a[i])
+		{
+			cout << i;
+			a[i]--;
+		}
+	cout << "\n";
+	return 0;
+}

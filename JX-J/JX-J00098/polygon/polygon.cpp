@@ -1,0 +1,10 @@
+#include <iostream>
+using namespace std;
+using ll = long long;
+
+int main() {
+    freopen("polygon.in", "r", stdin);
+    freopen("polygon.out", "w", stdout);
+    cout << 1;
+    return 0;
+}

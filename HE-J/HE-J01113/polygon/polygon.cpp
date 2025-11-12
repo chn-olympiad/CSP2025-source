@@ -1,0 +1,40 @@
+#include<bits/stdc++.h>
+using namespace std;
+const int MOD = 998244353,N = 5005;
+long long n,a[N],cnt,ans;
+int main(){
+	freopen("polygon.in","r",stdin);
+	freopen("polygon.out","w",stdout);
+	cin>>n; 
+	for(int i=0;i<n;i++){
+		cin>>a[i];
+		if(a[i]==1)cnt++;
+	} 
+	if(cnt==n){
+		for(int i=3;i<=n;i++){
+			ans+=cnt;
+			ans-=i;
+		}
+		cout<<ans%MOD;
+		return 0; 
+	}
+	if(n==3){
+		if(a[0]+a[1]+a[2]>=max(a[0],max(a[1],a[2]))*2)cout<<1;
+		else cout<<0;
+	}
+	if(n==4){
+		if(a[0]+a[1]+a[2]>=max(a[0],max(a[1],a[2]))*2)ans++;
+		if(a[3]+a[1]+a[2]>=max(a[3],max(a[1],a[2]))*2)ans++;
+		if(a[0]+a[1]+a[2]+a[3]>=max(a[3],max(a[0],max(a[1],a[2]))*2))ans++;
+		cout<<ans;
+	}
+	if(n==5){
+		if(a[0]+a[1]+a[2]>=max(a[0],max(a[1],a[2]))*2)ans++;
+		if(a[3]+a[1]+a[2]>=max(a[3],max(a[1],a[2]))*2)ans++;
+		if(a[3]+a[4]+a[2]>=max(a[3],max(a[4],a[2]))*2)ans++;
+		if(a[0]+a[1]+a[2]+a[3]>=max(a[3],max(a[0],max(a[1],a[2])))*2)ans++;
+		if(a[0]+a[1]+a[2]+a[3]+a[4]>=max(a[4],max(a[3],max(a[0],max(a[1],a[2]))))*2)ans++;
+		cout<<ans;
+	}
+	return 0;
+}

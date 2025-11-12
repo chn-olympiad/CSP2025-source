@@ -1,0 +1,29 @@
+#include<bits/stdc++.h>
+using namespace std;
+string s;
+long long a[20];
+bool f=0;
+int main(){
+	freopen("number.in","r",stdin);
+	freopen("number.out","w",stdout);
+	cin>>s;
+	for(int i=0;i<s.size();i++){
+		if(s[i]>='0'&&s[i]<='9'){
+			a[s[i]-'0']++;
+		}
+	}
+	for(int i=9;i>=1;i--){
+		if(a[i]){
+			f=1;
+			break;
+		}
+	}
+	if(f){
+		for(int i=9;i>=0;i--){
+			for(int j=1;j<=a[i];j++){
+				cout<<i;
+			}
+		}
+	}
+	return 0;
+}

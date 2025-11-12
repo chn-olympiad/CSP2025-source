@@ -1,0 +1,40 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+	freopen("number.in","r",stdin);
+	freopen("number.out","w",stdout);
+	string s;
+	cin>>s;
+	long long i,l=s.size();
+	for(i=0;i<l;i++){
+		if(s[i]=='9') cout<<9;
+	}
+	for(i=0;i<l;i++){
+		if(s[i]=='8') cout<<8;
+	}
+	for(i=0;i<l;i++){
+		if(s[i]=='7') cout<<7;
+	}
+	for(i=0;i<l;i++){
+		if(s[i]=='6') cout<<6;
+	}
+	for(i=0;i<l;i++){
+		if(s[i]=='5') cout<<5;
+	}
+	for(i=0;i<l;i++){
+		if(s[i]=='4') cout<<4;
+	}
+	for(i=0;i<l;i++){
+		if(s[i]=='3') cout<<3;
+	}
+	for(i=0;i<l;i++){
+		if(s[i]=='2') cout<<2;
+	}
+	for(i=0;i<l;i++){
+		if(s[i]=='1') cout<<1;
+	}
+	for(i=0;i<l;i++){
+		if(s[i]=='0') cout<<0;
+	}
+	return 0;
+}

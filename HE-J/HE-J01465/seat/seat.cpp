@@ -1,0 +1,29 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int n,m,a[105],r,rid;
+
+bool cmp(int a,int b){
+	return a>b;
+}
+
+int main(){
+	freopen("seat.in","r",stdin);
+	freopen("seat.out","w",stdout);
+	cin>>n>>m;
+	for(int i=1;i<=n*m;++i){
+		cin>>a[i];
+		if(i==1) r=a[i];
+	}
+	sort(a+1,a+n*m+1,cmp);
+	for(int i=1;i<=n*m;++i){
+		if(a[i]==r) rid=i;
+	}
+	int l=0,h=0;
+	l=(rid-1)/n+1;
+	h=(rid%n==0?n:rid%n);
+	if(l%2==0) h=n-h+1;
+	cout<<l<<' '<<h;
+	return 0;
+};

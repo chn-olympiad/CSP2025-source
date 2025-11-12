@@ -1,0 +1,179 @@
+#include<bits/stdc++.h>
+using namespace std;
+long long t,n,dp[100005][5],dpl[100005][5][5],zcd1,zcd2,zcd3,bj1,bj2,bj3;
+struct node{
+	long long b1,b2,b3,ma;
+}a[1000005];
+bool cmp(node x,node y)
+{
+	return x.ma>y.ma;
+}
+int main()
+{
+	freopen("club.in","r",stdin);
+	freopen("club.out","w",stdout);
+	cin>>t;
+	while(t--)
+	{
+		cin>>n;
+		for(int i=1;i<=n;i++)
+		{
+			cin>>a[i].b1>>a[i].b2>>a[i].b3;
+			a[i].ma=max(a[i].b1,max(a[i].b2,a[i].b3));
+		}
+		sort(a+1,a+n+1,cmp);
+		dp[1][1]=a[1].b1;
+		dpl[1][1][1]=1;
+		dp[1][2]=a[1].b2;
+		dpl[1][2][2]=1;
+		dp[1][3]=a[1].b3;
+		dpl[1][3][3]=1;
+		for(int i=2;i<=n;i++)
+		{
+			zcd1=0;
+			zcd2=0;
+			zcd3=0;
+			bj1=0;
+			bj2=0;
+			bj3=0;
+			dpl[i][1][1]=dpl[i-1][1][1];
+			dpl[i][1][2]=dpl[i-1][1][2];
+			dpl[i][1][3]=dpl[i-1][1][3];
+			dpl[i][2][1]=dpl[i-1][2][1];
+			dpl[i][2][2]=dpl[i-1][2][2];
+			dpl[i][2][3]=dpl[i-1][2][3];
+			dpl[i][3][1]=dpl[i-1][3][1];
+			dpl[i][3][2]=dpl[i-1][3][2];
+			dpl[i][3][3]=dpl[i-1][3][3];
+			if(dpl[i-1][1][1]<n/2)
+			{
+				zcd1=dp[i-1][1]+a[i].b1;
+				bj1=1;
+			}
+			if(dpl[i-1][1][2]<n/2)
+			{
+				zcd2=dp[i-1][1]+a[i].b2;
+				bj2=1;
+			}
+			if(dpl[i-1][1][3]<n/2)
+			{
+				zcd3=dp[i-1][1]+a[i].b3;
+				bj3=1;
+			}
+			
+			if(dpl[i-1][2][1]<n/2)
+			{
+				if(zcd1<dp[i-1][2]+a[i].b1)
+				{
+					bj1=2;
+				}
+				zcd1=max(zcd1,dp[i-1][2]+a[i].b1);
+			}
+			if(dpl[i-1][2][2]<n/2)
+			{
+				if(zcd2<dp[i-1][2]+a[i].b2)
+				{
+					bj2=2;
+				}
+				zcd2=max(zcd2,dp[i-1][2]+a[i].b2);
+			}
+			if(dpl[i-1][2][3]<n/2)
+			{
+				if(zcd3<dp[i-1][2]+a[i].b3)
+				{
+					bj3=2;
+				}
+				zcd3=max(zcd3,dp[i-1][2]+a[i].b3);
+			}
+			
+			if(dpl[i-1][3][1]<n/2)
+			{
+				if(zcd1<dp[i-1][3]+a[i].b1)
+				{
+					bj1=3;
+				}
+				zcd1=max(zcd1,dp[i-1][3]+a[i].b1);
+			}
+			if(dpl[i-1][3][2]<n/2)
+			{
+				if(zcd1<dp[i-1][3]+a[i].b2)
+				{
+					bj2=3;
+				}
+				zcd2=max(zcd2,dp[i-1][3]+a[i].b2);
+			}
+			if(dpl[i-1][3][3]<n/2)
+			{
+				if(zcd1<dp[i-1][3]+a[i].b3)
+				{
+					bj3=3;
+				}
+				zcd3=max(zcd3,dp[i-1][3]+a[i].b3);
+			}
+			
+			if(zcd1==dp[i-1][1]+a[i].b1&&bj1==1)
+			{
+				dpl[i][1][1]=dpl[i-1][1][1]+1;
+				dpl[i][1][2]=dpl[i-1][1][2];
+				dpl[i][1][3]=dpl[i-1][1][3];
+			}
+			if(zcd1==dp[i-1][2]+a[i].b1&&bj1==2)
+			{
+				dpl[i][1][1]=dpl[i-1][2][1]+1;
+				dpl[i][1][2]=dpl[i-1][2][2];
+				dpl[i][1][3]=dpl[i-1][2][3];
+			}
+			if(zcd1==dp[i-1][3]+a[i].b1&&bj1==3)
+			{
+				dpl[i][1][1]=dpl[i-1][3][1]+1;
+				dpl[i][1][2]=dpl[i-1][3][2];
+				dpl[i][1][3]=dpl[i-1][3][3];
+			}
+			
+			if(zcd2==dp[i-1][1]+a[i].b2&&bj2==1)
+			{
+				dpl[i][2][2]=dpl[i-1][1][2]+1;
+				dpl[i][2][1]=dpl[i-1][1][1];
+				dpl[i][2][3]=dpl[i-1][1][3];
+			}
+			if(zcd2==dp[i-1][2]+a[i].b2&&bj2==2)
+			{
+				dpl[i][2][2]=dpl[i-1][2][2]+1;
+				dpl[i][2][1]=dpl[i-1][2][1];
+				dpl[i][2][3]=dpl[i-1][2][3];
+			}
+			if(zcd2==dp[i-1][3]+a[i].b2&&bj2==3)
+			{
+				dpl[i][2][2]=dpl[i-1][3][2]+1;
+				dpl[i][2][1]=dpl[i-1][3][1];
+				dpl[i][2][3]=dpl[i-1][3][3];
+			}
+			
+			if(zcd3==dp[i-1][1]+a[i].b3&&bj3==1)
+			{
+				dpl[i][3][3]=dpl[i-1][1][3]+1;
+				dpl[i][3][1]=dpl[i-1][1][1];
+				dpl[i][3][2]=dpl[i-1][1][2];
+			}
+			if(zcd3==dp[i-1][2]+a[i].b3&&bj3==2)
+			{
+				dpl[i][3][3]=dpl[i-1][2][3]+1;
+				dpl[i][3][1]=dpl[i-1][2][1];
+				dpl[i][3][2]=dpl[i-1][2][2];
+			}
+			if(zcd3==dp[i-1][3]+a[i].b3&&bj3==3)
+			{
+				dpl[i][3][3]=dpl[i-1][3][3]+1;
+				dpl[i][3][1]=dpl[i-1][3][1];
+				dpl[i][3][2]=dpl[i-1][3][2];
+			}
+			
+			dp[i][1]=zcd1;
+			dp[i][2]=zcd2;
+			dp[i][3]=zcd3;
+		}
+		cout<<max(dp[n][1],max(dp[n][2],dp[n][3]))<<endl;
+	}
+	
+	return 0;
+}

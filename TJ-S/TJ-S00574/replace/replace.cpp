@@ -1,0 +1,27 @@
+#include<iostream>
+#include<cstdio>
+#include<string>
+#include<cstring>
+#include<cmath>
+#include<algorithm>
+#include<queue>
+#include<deque>
+#include<set>
+#include<stack>
+#define ll long long
+using namespace std;
+int a,b;
+int main()
+{
+	freopen("replace.in","r",stdin);
+	freopen("replace.out","w",stdout);
+	ios::sync_with_stdio(false);
+	cin.tie(0);
+	cin>>a>>b;
+	for(int i=1;i<=b;i++)
+	{
+		cout<<0<<"\n";
+	}
+	return 0;
+ }
+

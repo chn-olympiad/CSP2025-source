@@ -1,0 +1,83 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    freopen("number.in","r",stdin);
+    freopen("number.out","w",stdout);
+    string n;
+    cin>>n;
+    int a[10];
+    memset(a,0,sizeof(a));
+    for(int i=0;i<n.size();i++){
+        if(n[i]=='0'){
+            a[0]++;
+        }
+        if(n[i]=='1'){
+            a[1]++;
+        }
+        if(n[i]=='2'){
+            a[2]++;
+        }
+        if(n[i]=='3'){
+            a[3]++;
+        }
+        if(n[i]=='4'){
+            a[4]++;
+        }
+        if(n[i]=='5'){
+            a[5]++;
+        }
+        if(n[i]=='6'){
+            a[6]++;
+        }
+        if(n[i]=='7'){
+            a[7]++;
+        }
+        if(n[i]=='8'){
+            a[8]++;
+        }
+        if(n[i]=='9'){
+            a[9]++;
+        }
+    }
+    while(a[9]){
+        cout<<"9";
+        a[9]--;
+    }
+    while(a[8]){
+        cout<<"8";
+        a[8]--;
+    }
+    while(a[7]){
+        cout<<"7";
+        a[7]--;
+    }
+    while(a[6]){
+        cout<<"6";
+        a[6]--;
+    }
+    while(a[5]){
+        cout<<"5";
+        a[5]--;
+    }
+    while(a[4]){
+        cout<<"4";
+        a[4]--;
+    }
+    while(a[3]){
+        cout<<"3";
+        a[3]--;
+    }
+    while(a[2]){
+        cout<<"2";
+        a[2]--;
+    }
+    while(a[1]){
+        cout<<"1";
+        a[1]--;
+    }
+    while(a[0]){
+        cout<<"0";
+        a[0]--;
+    }
+    return 0;
+}

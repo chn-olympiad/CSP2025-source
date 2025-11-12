@@ -1,0 +1,24 @@
+#include<bits/stdc++.h>
+#define ll long long
+using namespace std;
+int main()
+{
+	freopen("replace.in","r",stdin);
+	freopen("replace.out","w",stdout);
+	cin.sync_with_stdio(0),cin.tie(0),cout.tie(0);
+	ll n,m;
+	string s;
+	for(ll i=1;i<=n;i++)
+	{
+		cin>>s;
+	}
+	for(ll i=1;i<=m;i++)
+	{
+		cin>>s;
+	}
+	for(ll i=1;i<=m;i++)
+	{
+		cout<<0<<'\n';
+	}
+	return 0;
+}

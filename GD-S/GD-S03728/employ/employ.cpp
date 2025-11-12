@@ -1,0 +1,28 @@
+#include<bits/stdc++.h>
+#define int long long 
+using namespace std;
+const int mod=998244353;
+int n,m,a[1000],ans=1;
+string s;
+signed main(){
+	freopen("employ.in","r",stdin);
+	freopen("employ.out","w",stdout);
+	cin>>n>>m;
+	cin>>s;
+	for(int i=1;i<=n;i++){
+		cin>>a[i];
+		//if(a[i]==a[i-1]) ans++;
+	}
+	sort(a+1,a+n+1);
+	for(int i=1;i<=n;i++){
+		if(a[i]<i) break;
+		ans+=i;
+	}
+	cout<<ans;
+	return 0;
+} 
+/*
+3 2
+101
+1 1 2
+*/

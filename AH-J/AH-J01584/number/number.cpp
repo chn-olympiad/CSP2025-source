@@ -1,0 +1,19 @@
+#include<bits/stdc++.h>
+using namespace std;
+int n,a[1000001],b,c,f;
+string s;
+int main(){
+	freopen("number.in","r",stdin);
+	freopen("number.out","w",stdout);
+	cin>>s;
+	for(int i=0;i<=s.size()-1;i++){
+		if(s[i]>='0'&&s[i]<='9'){
+			a[++f]=int(s[i]-'0');
+		}
+	}
+	sort(a+1,a+1+f);
+	for(int i=f;i>=1;i--){
+		cout<<a[i];
+	}
+	return 0;
+}

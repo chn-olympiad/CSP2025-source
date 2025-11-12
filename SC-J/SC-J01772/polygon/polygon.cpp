@@ -1,0 +1,91 @@
+#include<bits/stdc++.h>
+using namespace std;
+int n,a[5005],maxa,cot;
+int main(){
+	freopen("polygon.in","r",stdin);
+	freopen("polygon.out","w",stdout);
+	cin>>n;
+	for(int i=1;i<=n;i++){
+		cin>>a[i];
+		maxa=max(maxa,a[i]);
+	}
+	if(n<=2){
+		cout<<"0";
+	}else if(n==3){
+		if((a[1]+a[2]+a[3])>(maxa*2)){
+			cout<<"1";
+		}else{
+			cout<<"0";
+		}
+	}else if(n==4){
+		if((a[1]+a[2]+a[3])>max(a[1],max(a[2],a[3]))*2){
+			cot++;
+		}
+		if((a[1]+a[2]+a[4])>max(a[1],max(a[2],a[4]))*2){
+			cot++;
+		}
+		if((a[1]+a[3]+a[4])>max(a[1],max(a[3],a[4]))*2){
+			cot++;
+		}
+		if((a[2]+a[3]+a[4])>max(a[2],max(a[3],a[4]))*2){
+			cot++;
+		}
+		if((a[1]+a[2]+a[3]+a[4])>maxa*2){
+			cot++;
+		}
+		cout<<cot;
+	}else if(n==5){
+		if((a[1]+a[2]+a[3])>max(a[1],max(a[2],a[3]))*2){
+			cot++;
+		}
+		if((a[1]+a[2]+a[4])>max(a[1],max(a[2],a[4]))*2){
+			cot++;
+		}
+		if((a[1]+a[2]+a[5])>max(a[1],max(a[2],a[5]))*2){
+			cot++;
+		}
+		if((a[1]+a[3]+a[4])>max(a[1],max(a[3],a[4]))*2){
+			cot++;
+		}
+		if((a[1]+a[3]+a[5])>max(a[1],max(a[3],a[5]))*2){
+			cot++;
+		}
+		if((a[1]+a[4]+a[5])>max(a[1],max(a[4],a[5]))*2){
+			cot++;
+		}
+		if((a[2]+a[3]+a[4])>max(a[2],max(a[3],a[4]))*2){
+			cot++;
+		}
+		if((a[2]+a[3]+a[5])>max(a[2],max(a[3],a[5]))*2){
+			cot++;
+		}
+		if((a[2]+a[4]+a[5])>max(a[2],max(a[4],a[5]))*2){
+			cot++;
+		}
+		if((a[3]+a[4]+a[5])>max(a[3],max(a[4],a[5]))*2){
+			cot++;
+		}
+		if((a[1]+a[2]+a[3]+a[4])>max(max(a[1],a[2]),max(a[3],a[4]))*2){
+			cot++;
+		}
+		if((a[1]+a[2]+a[3]+a[5])>max(max(a[1],a[2]),max(a[3],a[5]))*2){
+			cot++;
+		}
+		if((a[1]+a[2]+a[4]+a[5])>max(max(a[1],a[2]),max(a[4],a[5]))*2){
+			cot++;
+		}
+		if((a[1]+a[3]+a[4]+a[5])>max(max(a[1],a[3]),max(a[4],a[5]))*2){
+			cot++;
+		}
+		if((a[2]+a[3]+a[4]+a[5])>max(max(a[2],a[3]),max(a[4],a[5]))*2){
+			cot++;
+		}
+		if((a[1]+a[2]+a[3]+a[4]+a[5])>maxa*2){
+			cot++;
+		}
+		cout<<cot;
+	}else{
+		cout<<n;
+	}
+	return 0;
+} 

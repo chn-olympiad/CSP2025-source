@@ -1,0 +1,83 @@
+#include<cstdio>
+#include<algorithm>
+using namespace std;
+long long T,I,n,a1[110000],a2[110000],a3[110000],wh[110000],val[110000],s[110000],rr,cnt1,cnt2,cnt3,tt,tv,ans,i;
+main()
+{
+	freopen("club.in","r",stdin);
+	freopen("club.out","w",stdout);
+	scanf("%lld",&T);
+	for(I=1;I<=T;I++)
+	{
+		scanf("%lld",&n);
+		cnt1=0;
+		cnt2=0;
+		cnt3=0;
+		ans=0;
+		for(i=1;i<=n;i++)
+		{
+			scanf("%lld%lld%lld",&a1[i],&a2[i],&a3[i]);
+			if(a1[i]>=a2[i]&&a1[i]>=a3[i])
+			{
+				cnt1++;
+				ans=ans+a1[i];
+				wh[i]=1;
+				if(a2[i]>=a3[i])
+				val[i]=a1[i]-a2[i];
+				else
+				val[i]=a1[i]-a3[i];
+			}
+			else if(a2[i]>=a1[i]&&a2[i]>=a3[i])
+			{
+				cnt2++;
+				ans=ans+a2[i];
+				wh[i]=2;
+				if(a1[i]>=a3[i])
+				val[i]=a2[i]-a1[i];
+				else
+				val[i]=a2[i]-a3[i];
+			}
+			else
+			{
+				cnt3++;
+				ans=ans+a3[i];
+				wh[i]=3;
+				if(a1[i]>=a2[i])
+				val[i]=a3[i]-a1[i];
+				else
+				val[i]=a3[i]-a2[i];
+			}
+		}
+		if(cnt1<=n/2&&cnt2<=n/2&&cnt3<=n/2)
+		{
+			printf("%lld\n",ans);
+			continue;
+		}
+		if(cnt1>n/2)
+		{
+			tt=1;
+			tv=cnt1-n/2;
+		}
+		else if(cnt2>n/2)
+		{
+			tt=2;
+			tv=cnt2-n/2;
+		}
+		else
+		{
+			tt=3;
+			tv=cnt3-n/2;
+		}
+		rr=0;
+		for(i=1;i<=n;i++)
+		if(wh[i]==tt)
+		{
+			rr++;
+			s[rr]=val[i];
+		}
+		sort(s+1,s+rr+1);
+		for(i=1;i<=tv;i++)
+		ans=ans-s[i];
+		printf("%lld\n",ans);
+	}
+}

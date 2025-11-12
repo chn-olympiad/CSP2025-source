@@ -1,0 +1,47 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+	freopen("number.in","r",stdin);
+	freopen("number.out","w",stdout);
+	long long a;
+	cin>>a;
+	if(a/10==0&&a==0)
+	cout<<0;
+	else
+	if(a/10==0&&a==1)
+	cout<<1;
+	else
+	if(a/10==0&&a==2)
+	cout<<2;
+	else
+	if(a/10==0&&a==3)
+	cout<<3;
+	else
+	if(a/10==0&&a==4)
+	cout<<4;
+	else
+	if(a/10==0&&a==5)
+	cout<<5;
+	else
+	if(a/10==0&&a==6)
+	cout<<6;
+	else
+	if(a/10==0&&a==7)
+	cout<<7;
+	else
+	if(a/10==0&&a==8)
+	cout<<8;
+	if(a/10==0&&a==9)
+	cout<<9;
+	else
+	if(a/10>0&&a/10<10&&a/10>=a%10)
+	cout<<a;
+	else
+	if(a/10>0&&a/10<10&&a/10<a%10)
+	cout<<a%10*10+a/10;
+	else
+	cout<<123456;
+	fclose(stdin);
+	fclose(stdout);
+}

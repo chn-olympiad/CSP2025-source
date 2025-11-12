@@ -1,0 +1,99 @@
+#include<iostream>
+#include<cstdio>
+#include<algorithm>
+#include<cmath>
+#include<string>
+#include<cstring>
+#include<stack>
+#include<queue>
+#include<map>
+#include<set>
+#include<vector>
+#include<stdio.h>
+using namespace std;
+string s;
+int len;
+int a=0,b=0,c=0,d=0,e=0,f=0,g=0,h=0,m=0,n=0;
+int cnt=0;
+int main()
+{
+		freopen("number.in","r",stdin);
+		freopen("number.out","w",stdout);
+		cin>>s;
+		len=s.size();
+		for(int i=0;i<=len-1;i++)
+		{
+			if(s[i]=='1')
+				a++;
+			if(s[i]=='2')
+				b++;
+			if(s[i]=='3')
+				c++;
+			if(s[i]=='4')
+				d++;
+			if(s[i]=='5')
+				e++;
+			if(s[i]=='6')
+				f++;
+			if(s[i]=='7')
+				g++;
+			if(s[i]=='8')
+				h++;
+			if(s[i]=='9')
+				m++;
+			if(s[i]=='0')
+				n++;
+			cnt++;
+		}
+		while(m!=0)
+		{
+			cout<<9;
+			m--;
+		}
+		while(h!=0)
+		{
+			cout<<8;
+			h--;
+		}
+		while(g!=0)
+		{
+			cout<<7;
+			g--;
+		}
+		while(f!=0)
+		{
+			cout<<6;
+			f--;
+		}
+		while(e!=0)
+		{
+			cout<<5;
+			e--;
+		}
+		while(d!=0)
+		{
+			cout<<4;
+			d--;
+		}
+		while(c!=0)
+		{
+			cout<<3;
+			c--;
+		}
+		while(b!=0)
+		{
+			cout<<2;
+			b--;
+		}
+		while(a!=0)
+		{
+			cout<<1;
+			a--;
+		}
+		while(n!=0)
+		{
+			cout<<0;
+			n--;
+		}
+		return 0;
+}

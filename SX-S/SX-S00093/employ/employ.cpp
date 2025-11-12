@@ -1,0 +1,17 @@
+#include <bits/stdc++.h>
+using namespace std;
+int n, m;
+char s[10005];
+int c[10005];
+
+int main() {
+	freopen("employ.in", "r", stdin);
+	freopen("employ.out", "w", stdout);
+	cin >> n >> m;
+	for (int i = 1; i <= n; i++) {
+		cin >> s[i];
+		cin >> c[i];
+	}
+	cout << 1;
+	return 0;
+}

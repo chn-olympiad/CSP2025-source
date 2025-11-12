@@ -1,0 +1,20 @@
+#include<bits/stdc++.h>
+#include<cstdio>
+using namespace std;
+char s[200010][3];
+int main()
+{
+	freopen("replace.in","r",stdin);
+	freopen("replace.out","w",stdout);
+	int n,q;
+	cin>>n>>q;
+	for(int i=1;i<=n+q;i++)
+	{
+		cin>>s[i][1]>>s[i][2];
+	}
+	for(int i=1;i<=q;i++)
+	{
+		cout<<0<<endl;
+	}
+	return 0;
+ } 
